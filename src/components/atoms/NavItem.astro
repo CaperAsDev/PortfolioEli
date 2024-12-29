@@ -4,13 +4,36 @@ interface Props {
   text: string;
 }
 const { href, text } = Astro.props;
+const currentPage = Astro.url.pathname;
+console.log(currentPage == href);
 ---
 
-<a href={href}>{text}</a>
+<a href={href} aria-current={currentPage == href}>{text}</a>
 <style>
+  @property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+  a {
+    border-bottom: 2px solid transparent;
+    border-image: conic-gradient(
+        from var(--angle),
+        var(--secondary-0) 90deg,
+        transparent 90deg 270deg,
+        var(--secondary-0) 270deg
+      )
+      1;
+  }
+  @keyframes underline {
+    to {
+      --angle: -180deg;
+    }
+  }
   a:hover,
   a:focus,
-  a:active {
-    text-decoration: underline;
+  a:active,
+  a[aria-current="true"] {
+    animation: underline 0.3s linear forwards;
   }
 </style>

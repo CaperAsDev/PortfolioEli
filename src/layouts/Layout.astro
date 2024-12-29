@@ -41,7 +41,10 @@ import Header from "@/components/organisms/Header.astro";
 
     --secondary-0: #d97d1a;
     --secondary-1: #f2b25f;
-    --secondary-2: #f6c574;
+    --secondary-2: #ffd597;
+
+    --dark: #200752;
+    --ligth: #f2f2f2;
 
     --terciary-0: #5917db;
     --terciary-1: #a25bdf;
@@ -50,8 +53,8 @@ import Header from "@/components/organisms/Header.astro";
 
   html {
     scroll-behavior: smooth;
-    background-color: var(--primary-3);
-    color: var(--secondary-0);
+    background-color: var(--primary-1);
+    color: var(--dark);
     font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
   }
 
@@ -82,13 +85,10 @@ import Header from "@/components/organisms/Header.astro";
 
     a {
       padding: 4px;
-      border-radius: calc(var(--fs-xs) / 2);
       text-decoration: none;
       color: inherit;
 
-      &:hover,
-      &:focus,
-      &:active {
+      &:focus {
         outline: 1px solid var(--terciary-1);
       }
     }
