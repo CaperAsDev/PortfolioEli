@@ -1,0 +1,28 @@
+---
+import NavItem from "@/components/atoms/NavItem.astro";
+import HeaderName from "@/components/atoms/HeaderName.astro";
+---
+
+<header>
+  <HeaderName />
+  <nav>
+    <ul>
+      <NavItem href="/" text="Home" />
+      <NavItem href="/about" text="About" />
+      <NavItem href="/contact" text="Contact" />
+    </ul>
+  </nav>
+</header>
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 1rem;
+  }
+</style>

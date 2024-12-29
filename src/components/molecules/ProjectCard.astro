@@ -1,0 +1,44 @@
+---
+import Image from "astro/components/Image.astro";
+
+interface Props {
+  name: string;
+  description: string;
+  image: string;
+  url: string;
+  id: number;
+}
+
+const { name, description, image, url, id } = Astro.props;
+---
+
+<article>
+  <div>
+    <h2>{name}</h2>
+    <p>{description}</p>
+    <a href={url}>View project</a>
+  </div>
+  <Image src={image} alt={name} inferSize={true} />
+</article>
+<style>
+  article {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: clamp(300px, 25%, 800px);
+    aspect-ratio: 1 / 1;
+    flex-grow: 1;
+  }
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  article:hover img,
+  article:focus-within img {
+    opacity: 0;
+  }
+</style>

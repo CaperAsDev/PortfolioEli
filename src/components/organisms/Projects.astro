@@ -1,0 +1,14 @@
+---
+import projects from "@/data/projects.json";
+import ProjectCard from "../molecules/ProjectCard.astro";
+---
+
+<section>
+  {projects.map((project) => <ProjectCard {...project} />)}
+</section>
+<style>
+  section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>
