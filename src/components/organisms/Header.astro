@@ -1,14 +1,17 @@
 ---
 import NavItem from "@/components/atoms/NavItem.astro";
 import HeaderName from "@/components/atoms/HeaderName.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+console.log("baseUrl", baseUrl);
 ---
 
 <header>
   <HeaderName />
   <nav>
     <ul>
-      <NavItem href="/" text="Work" />
-      <NavItem href="/about" text="About/Contact" />
+      <NavItem href={`${baseUrl}`} text="Work" />
+      <NavItem href={`${baseUrl}about`} text="About/Contact" />
       <NavItem
         href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157"
         text="Linkedin"

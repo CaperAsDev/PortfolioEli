@@ -6,5 +6,5 @@ import icon from 'astro-icon';
 // https://astro.build/config
 export default defineConfig({
   integrations: [icon()],
-  base: process.env.SERVER === 'development' ? `/${process.env.REPO}` : '/',
+  base: process.env.SERVER === 'development' ? `/${process.env.REPO}/` : '/',
 });
