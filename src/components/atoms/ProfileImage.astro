@@ -1,0 +1,50 @@
+---
+import Image from "astro/components/Image.astro";
+
+interface Props {
+  src: string;
+  alt: string;
+  size?: sizes;
+}
+
+export enum sizes {
+  sm = "sm",
+  md = "md",
+  lg = "lg",
+}
+
+const { src, alt, size } = Astro.props;
+---
+
+<div class={`${size}`}>
+  <Image src={src} alt={alt} inferSize />
+</div>
+
+<style>
+  div {
+    display: grid;
+    border-radius: 50%;
+    place-items: center;
+    width: clamp(100px, 20vw, 200px);
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  div.sm {
+    width: clamp(50px, 10vw, 100px);
+  }
+
+  div.md {
+    width: clamp(100px, 20vw, 200px);
+  }
+
+  div.lg {
+    width: clamp(150px, 30vw, 300px);
+  }
+</style>

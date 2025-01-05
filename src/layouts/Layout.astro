@@ -82,7 +82,29 @@ import Header from "@/components/organisms/Header.astro";
       display: block;
       max-inline-size: 100%;
     }
+    svg {
+      stroke-width: 1px;
 
+      &.sm {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      &md {
+        width: 2rem;
+        height: 2rem;
+      }
+      &lg {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+
+    p,
+    a,
+    span,
+    div {
+      font-size: var(--fs-s);
+    }
     a {
       padding: 4px;
       text-decoration: none;
@@ -111,6 +133,8 @@ import Header from "@/components/organisms/Header.astro";
     h5,
     h6 {
       overflow-wrap: break-word;
+      font-size: var(--fs-s);
+      font-weight: 200;
     }
 
     ol,

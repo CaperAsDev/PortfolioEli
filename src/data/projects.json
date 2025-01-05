@@ -1,29 +1,29 @@
 [
   {
     "id": 1,
-    "name": "Project 1",
+    "name": "FOCUS4PFAS (Marie Curie Fellowship)",
     "description": "This is a description of project 1",
     "image": "https://img.freepik.com/free-vector/hand-drawn-science-background-with-elements-set_23-2148526999.jpg",
     "url": "https://www.google.com"
   },
   {
     "id": 2,
-    "name": "Project 2",
+    "name": "Education in science ",
     "description": "This is a description of project 2",
     "image": "https://img.freepik.com/free-vector/hand-drawn-science-background-with-elements-set_23-2148526999.jpg",
     "url": "https://www.google.com"
   },
   {
     "id": 3,
-    "name": "Project 3",
+    "name": "Science Without Borders",
     "description": "This is a description of project 3",
     "image": "https://img.freepik.com/free-vector/hand-drawn-science-background-with-elements-set_23-2148526999.jpg",
     "url": "https://www.google.com"
   },
   {
-    "id": 3,
-    "name": "Project 3",
-    "description": "This is a description of project 3",
+    "id": 4,
+    "name": "Social justice",
+    "description": "This is a description of project 4",
     "image": "https://img.freepik.com/free-vector/hand-drawn-science-background-with-elements-set_23-2148526999.jpg",
     "url": "https://www.google.com"
   }
