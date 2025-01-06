@@ -1,0 +1,47 @@
+---
+import Image from "astro/components/Image.astro";
+import focusImg from "@/assets/images/focusImg.png";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout>
+  <main>
+    <h2>FOCUS4PFAS</h2>
+    <p>
+      PFAS have been used since the 1940s and are known as “forever chemicals”
+      due to their extreme persistency to advanced water and wastewater
+      treatment strategies. Due to the strength of the C-F bond, each released
+      molecule of PFAS remains in the environment. This project aims at <strong
+        >developing graphene sponge anodes tailored for electrochemical
+        degradation of poly- and perfluoroalkyl substances (PFAS), including
+        long- (>C6) and highly polar shorter-chain (C2-C6) homologues, and newly
+        introduced PFAS,</strong
+      > and their complete defluorination and removal from the contaminated water
+      of different origin.
+    </p>
+    <figure>
+      <Image src={focusImg} alt="FOCUS4PFAS" />
+      <figcaption>
+        <strong>Figure 1.</strong> Functionalization of graphene for PFAS removal
+      </figcaption>
+    </figure>
+  </main>
+</Layout>
+<style>
+  main {
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: clamp(300px, 80vw, 1280px);
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+  h2 {
+    font-weight: 600;
+    font-size: var(--fs-m);
+  }
+  strong {
+    font-weight: 400;
+  }
+</style>
