@@ -1,0 +1,45 @@
+---
+import Image from "astro/components/Image.astro";
+import Focus from "@/assets/images/FOCUS4PFAS.jpg";
+---
+
+<footer>
+  <div class="info-wrapper">
+    <div class="info">
+      <p class="name">Elisabeth Cuervo Lumbaque</p>
+      <a href="mailto:Fake@mail.com">Fake@mail.com</a>
+    </div>
+    <div class="sponsor">
+      <Image src={Focus} alt={"Focus for PFAS LOGO"} />
+    </div>
+  </div>
+  <p>© 2025, All rights reserved.</p>
+</footer>
+
+<style>
+  footer {
+    display: grid;
+    width: 100%;
+    border-top: 1px solid oklch(from var(--primary-0) l c h / 1);
+    place-items: center;
+    background-color: oklch(from var(--primary-0) l c h / 0.2);
+  }
+  .info-wrapper {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .name {
+    font-weight: 600;
+    font-size: var(--fs-m);
+  }
+  a {
+    font-weight: 200;
+    text-decoration: underline;
+  }
+
+  img {
+    mix-blend-mode: multiply;
+  }
+</style>

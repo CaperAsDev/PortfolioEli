@@ -14,35 +14,72 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <article>
-  <div>
+  <div class="info">
     <h2>{name}</h2>
     <p>{description}</p>
     <a href={`${baseUrl}${url}`}>View project</a>
   </div>
-  <Image src={image} alt={name} inferSize={true} />
+  <p class="title">{name}</p>
+  <Image src={image} alt={"illustrative image"} inferSize />
 </article>
-<style>
+<style define:vars={{ image: image.trim() }}>
   article {
     position: relative;
     display: grid;
     place-items: center;
-    width: clamp(300px, 25%, 800px);
-    aspect-ratio: 1 / 1;
+    margin-block: 2rem;
+    width: clamp(500px, 50%, 800px);
+    aspect-ratio: 2 / 1;
     flex-grow: 1;
-    background-image: linear-gradient(
+    color: var(--primary-3);
+    /* background-image: linear-gradient(
       to bottom,
-      var(--primary-1),
-      var(--primary-0)
-    );
+      transparent,
+      oklch(from var(--terciary-2) l c h / 0.3),
+      oklch(from var(--terciary-1) l c h / 0.7),
+      oklch(from var(--terciary-0) l c h / 0.5)
+    ); */
+    background-color: oklch(from var(--terciary-0) l c h / 0.5);
   }
-  div {
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
     padding: 1rem;
     font-weight: 200;
+
+    p {
+      text-align: center;
+    }
+
+    a {
+      align-self: flex-end;
+
+      &:hover {
+        color: var(--primary-1);
+      }
+    }
   }
 
   h2 {
     font-size: var(--fs-m);
     font-weight: 400;
+  }
+
+  .title {
+    position: absolute;
+    padding: var(--fs-xs);
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    text-align: end;
+    color: var(--primary-3);
+    z-index: 10;
+    font-weight: 600;
+    backdrop-filter: blur(5px) brightness(0.5);
+    pointer-events: none;
   }
 
   img {
@@ -53,8 +90,8 @@ const baseUrl = import.meta.env.BASE_URL;
     transition: opacity 0.5s;
     pointer-events: none;
   }
-  article:hover img,
-  article:focus-within img {
+  article:hover :is(.title, img),
+  article:focus-within :is(.title, img) {
     opacity: 0;
   }
 </style>

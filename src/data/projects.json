@@ -3,28 +3,28 @@
     "id": 1,
     "name": "FOCUS4PFAS (Marie Curie Fellowship)",
     "description": "This is a description of project 1",
-    "image": "https://img.freepik.com/free-vector/hand-drawn-science-background-with-elements-set_23-2148526999.jpg",
+    "image": "https://media.istockphoto.com/id/803155598/photo/close-up-the-pouring-purified-fresh-drink-water-from-the-bottle-on-table-in-living-room.jpg?s=612x612&w=0&k=20&c=SfoCBOTYa8E38ivCLXtWAxLBpSvJZrG0wB18n3qTG48=",
     "url": "focus/"
   },
   {
     "id": 2,
     "name": "Education in science ",
     "description": "This is a description of project 2",
-    "image": "https://img.freepik.com/free-vector/hand-drawn-science-background-with-elements-set_23-2148526999.jpg",
+    "image": "https://image.pbs.org/bento3-prod/pbs-education-blogs-bento-live-pbs/26461979c7_Inspire-Children-to-think-and-act-like-scientists.jpeg",
     "url": "https://www.google.com"
   },
   {
     "id": 3,
     "name": "Science Without Borders",
     "description": "This is a description of project 3",
-    "image": "https://img.freepik.com/free-vector/hand-drawn-science-background-with-elements-set_23-2148526999.jpg",
+    "image": "https://img.freepik.com/premium-photo/science-nature-concept_257123-14962.jpg",
     "url": "https://www.google.com"
   },
   {
     "id": 4,
     "name": "Social justice",
     "description": "This is a description of project 4",
-    "image": "https://img.freepik.com/free-vector/hand-drawn-science-background-with-elements-set_23-2148526999.jpg",
+    "image": "https://images.stockcake.com/public/f/c/9/fc9b1a82-ca19-4b8d-8c3f-76d9fd956fe8_large/farmer-in-field-stockcake.jpg",
     "url": "https://www.google.com"
   }
 ]
