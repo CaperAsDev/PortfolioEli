@@ -1,0 +1,22 @@
+{
+  "/home": {
+    "en": {
+      "title": "Focus On by Elisabeth",
+      "description": "Se lo que quieras ser, barbie"
+    },
+    "es": {
+      "title": "Focus on por Elisabeth",
+      "description": "Se lo que quieras ser, barbie."
+    }
+  },
+  "/about": {
+    "en": {
+      "title": "Elisabeth | About me",
+      "description": "Se lo que quieras ser, barbie."
+    },
+    "es": {
+      "title": "Elisabeth | Sobre mi",
+      "description": "Se lo que quieras ser, barbie."
+    }
+  }
+}

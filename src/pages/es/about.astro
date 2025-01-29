@@ -1,0 +1,70 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ProfileImage from "@/components/atoms/ProfileImage.astro";
+
+import { Icon } from "astro-icon/components";
+
+import { Content } from "@/data/about.md";
+
+import { sizes } from "@/components/atoms/ProfileImage.astro";
+---
+
+<Layout>
+  <main>
+    <div class="profile">
+      <ProfileImage
+        src="https://media.licdn.com/dms/image/v2/D4E03AQFreTQsLokhVQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1699312548938?e=1741824000&v=beta&t=e9svYl9qwecgWRYmn-rFbn9XSqyUCzD_wCnlifVXO1g"
+        alt="Elisabeth Cuervo Lumbaque"
+        size={sizes.lg}
+      />
+      <div class="contact">
+        <a href="mailto:caperasdev@gmail.com">fakeMail@gmail.com</a>
+        <div class="links-icons">
+          <a
+            href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157/"
+          >
+            <Icon name="tabler:brand-linkedin" class={"sm"} />
+          </a>
+        </div>
+      </div>
+    </div>
+    <section>
+      <Content />
+    </section>
+  </main>
+</Layout>
+<style>
+  main {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: clamp(300px, 80vw, 1280px);
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-block-start: clamp(1rem, 10vh, 3rem);
+  }
+
+  .contact {
+    display: grid;
+    place-items: center;
+  }
+  .links-icons {
+    a {
+      padding: 0;
+    }
+  }
+
+  section {
+    width: clamp(300px, 50vw, 720px);
+    p {
+      font-weight: 300;
+    }
+  }
+</style>
