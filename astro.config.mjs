@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://focuson.com",
+  site: "https://bridgetoscience.com",
   integrations: [icon(), sitemap()],
   base: process.env.SERVER === 'development' ? `/${process.env.REPO}/` : '/',
 });

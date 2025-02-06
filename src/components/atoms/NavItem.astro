@@ -2,12 +2,18 @@
 interface Props {
   href: string;
   text: string;
+  target?: string;
 }
-const { href, text } = Astro.props;
+const { href, text, target = "_self" } = Astro.props;
 const currentPage = Astro.url.pathname;
 ---
 
-<a href={href} aria-current={currentPage == href}>{text}</a>
+<a
+  href={href}
+  aria-current={currentPage == href}
+  target={target}
+  rel="noopener noreferrer">{text}</a
+>
 <style>
   @property --angle {
     syntax: "<angle>";
@@ -15,6 +21,7 @@ const currentPage = Astro.url.pathname;
     initial-value: 0deg;
   }
   a {
+    height: fit-content;
     font-size: var(--fs-xs);
     border-bottom: 2px solid transparent;
     border-image: conic-gradient(

@@ -2,10 +2,15 @@
 import Header from "@/components/organisms/Header.astro";
 import Footer from "@/components/organisms/footer.astro";
 import metaData from "@/seo/pagesMeta.json";
+import Seo from "@/components/seo.astro";
 
 import { getLangFromUrl, MetaManager, parseURL } from "@/i18n/utils";
-const lang = getLangFromUrl(Astro.url);
-const parsedURL = parseURL(Astro.url);
+
+const URL = Astro.url;
+
+const lang = getLangFromUrl(URL);
+
+const parsedURL = parseURL(URL);
 const layoutMetaManager = new MetaManager(metaData);
 const { title, description } = layoutMetaManager.getMetaData(parsedURL);
 ---
@@ -27,12 +32,24 @@ const { title, description } = layoutMetaManager.getMetaData(parsedURL);
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap"
       rel="stylesheet"
     />
+
+    <Seo
+      title={title}
+      description={description}
+      image={{
+        alt: "un texto temporal",
+        src: "url.fake",
+        height: "600",
+        width: "800",
+      }}
+    />
+
     <title>{title}</title>
   </head>
   <body>
-    <Header />
+    <Header lang={lang} />
     <slot />
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>
 <style is:global>

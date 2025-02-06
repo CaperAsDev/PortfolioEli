@@ -1,22 +1,22 @@
 {
   "/home": {
     "en": {
-      "title": "Focus On by Elisabeth",
-      "description": "Se lo que quieras ser, barbie"
+      "title": "Brifge to Science by Elisabeth",
+      "description": "Sitio web destinado a conectar la ciencia con la sociedad por medio de la divulgacion de proyectos cientificos."
     },
     "es": {
-      "title": "Focus on por Elisabeth",
-      "description": "Se lo que quieras ser, barbie."
+      "title": "Brifge to Science por Elisabeth",
+      "description": "Sitio web destinado a conectar la ciencia con la sociedad por medio de la divulgacion de proyectos cientificos.."
     }
   },
   "/about": {
     "en": {
       "title": "Elisabeth | About me",
-      "description": "Se lo que quieras ser, barbie."
+      "description": "Sitio web destinado a conectar la ciencia con la sociedad por medio de la divulgacion de proyectos cientificos.."
     },
     "es": {
       "title": "Elisabeth | Sobre mi",
-      "description": "Se lo que quieras ser, barbie."
+      "description": "Sitio web destinado a conectar la ciencia con la sociedad por medio de la divulgacion de proyectos cientificos.."
     }
   }
 }

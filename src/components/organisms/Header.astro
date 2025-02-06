@@ -1,20 +1,35 @@
 ---
 import NavItem from "@/components/atoms/NavItem.astro";
 import HeaderName from "@/components/atoms/HeaderName.astro";
+import ChangeLangAnchor from "@/components/atoms/ChangeLangAnchor.astro";
+
+import { navigation } from "@/i18n/ui";
+import type { Languages } from "@/i18n/consts";
+import { shiftLang } from "@/i18n/utils";
 
 const baseUrl = import.meta.env.BASE_URL;
+const changeLangOptions = shiftLang(Astro.url);
+interface Props {
+  lang: keyof typeof Languages;
+}
+
+const { lang } = Astro.props;
+
+const { home, about } = navigation[lang];
 ---
 
 <header>
   <HeaderName />
   <nav>
     <ul>
-      <NavItem href={`${baseUrl}`} text="Work" />
-      <NavItem href={`${baseUrl}about`} text="About/Contact" />
+      <NavItem href={`${baseUrl}${home.link}`} text={home.label} />
+      <NavItem href={`${baseUrl}${about.link}`} text={about.label} />
       <NavItem
         href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157"
         text="LinkedIn"
+        target="_blank"
       />
+      <ChangeLangAnchor langoptions={changeLangOptions} />
     </ul>
   </nav>
 </header>
@@ -28,6 +43,8 @@ const baseUrl = import.meta.env.BASE_URL;
 
   nav ul {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
   }
 </style>
