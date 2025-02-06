@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://focuson.com/sitemap-index.xml
+Sitemap: https://bridgetoscience.com/sitemap-index.xml
