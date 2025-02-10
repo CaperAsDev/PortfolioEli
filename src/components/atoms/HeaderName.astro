@@ -1,6 +1,60 @@
-<h1>Elisabeth Cuervo Lumbaque</h1>
+---
+import Image from "astro/components/Image.astro";
+import Logo from "@/assets/images/BTS_LogoC-H.svg";
+---
+
+<div class="sticky-wrapper">
+  <Image class="image" src={Logo} alt={"un bello logo"} height={70} />
+  <p class="by">by Elisabeth Cuervo</p>
+</div>
 <style>
-  h1 {
-    font-weight: 600;
+  .sticky-wrapper {
+    width: max-content;
+    position: sticky;
+    margin-bottom: 5ch;
+    top: 1rem;
+    display: grid;
+    place-content: center;
+    z-index: 20;
+  }
+  .image {
+    will-change: transform;
+    animation: linear headerMove forwards;
+    animation-timeline: --scroll-in-body;
+    animation-range: exit-crossing 0% cover 50%;
+    translate: calc(50vw - 50%) 0px 0;
+  }
+
+  .by {
+    text-wrap: nowrap;
+    font-weight: 500;
+    position: absolute;
+    bottom: 0px;
+    translate: calc(50vw - 50%) 0px 0;
+
+    animation: linear pMove forwards;
+    animation-timeline: --scroll-in-body;
+    animation-range: exit-crossing 0% cover 50%;
+  }
+
+  @keyframes headerMove {
+    0% {
+      clip-path: circle(100%);
+    }
+    100% {
+      transform: translateX(calc((50vw - 60%) * -1));
+      clip-path: circle(20% at 16%);
+    }
+  }
+  @keyframes pMove {
+    0% {
+      translate: calc(50vw - 50%) 35px 0;
+    }
+    50% {
+      translate: calc(50vw - 50%) 0% 0;
+    }
+    100% {
+      translate: calc(100px) -40% 0;
+    }
   }
 </style>

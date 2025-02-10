@@ -9,6 +9,8 @@ import { shiftLang } from "@/i18n/utils";
 
 const baseUrl = import.meta.env.BASE_URL;
 const changeLangOptions = shiftLang(Astro.url);
+console.log(changeLangOptions);
+
 interface Props {
   lang: keyof typeof Languages;
 }
@@ -19,7 +21,6 @@ const { home, about } = navigation[lang];
 ---
 
 <header>
-  <HeaderName />
   <nav>
     <ul>
       <NavItem href={`${baseUrl}${home.link}`} text={home.label} />
@@ -29,16 +30,54 @@ const { home, about } = navigation[lang];
         text="LinkedIn"
         target="_blank"
       />
-      <ChangeLangAnchor langoptions={changeLangOptions} />
+      {
+        changeLangOptions.map(
+          (op) =>
+            op.available && <ChangeLangAnchor langoptions={changeLangOptions} />
+        )
+      }
     </ul>
   </nav>
 </header>
+<HeaderName />
+
 <style>
+  @property --opacity {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+  }
+  @property --hue {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
   header {
+    position: sticky;
+    color: oklch(from var(--dark) l c calc(h + var(--hue)));
+    top: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: end;
     padding: 1rem;
+    backdrop-filter: blur(10px);
+    background-color: oklch(from var(--primary-3) l c h / var(--opacity));
+    animation: opacityChange linear forwards;
+    animation-timeline: view(block);
+    animation-range: cover 0% cover 50%;
+    z-index: 20;
+  }
+
+  @keyframes opacityChange {
+    80% {
+      --opacity: 0;
+      --hue: 100deg;
+    }
+    100% {
+      --opacity: 0.7;
+      --hue: 280deg;
+    }
   }
 
   nav ul {

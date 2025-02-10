@@ -1,8 +1,9 @@
 import { paths, Languages, defaultLang } from "./consts";
+import availableRoutes from "@/availableRoutes.js";
 
 type LangKey = keyof typeof Languages
 type PathKey = keyof typeof paths
-export type LanguagesAnchorProps = { path: string, label: Languages, lang:LangKey}
+export type LanguagesAnchorProps = {available: boolean, path: string, label: Languages, lang:LangKey}
 
 export function getLangFromUrl (url : URL)  {
   const pathArray = url.pathname.split('/');
@@ -21,11 +22,12 @@ export function shiftLang (url: URL) : LanguagesAnchorProps[] {
 
   const linksObj = reminderLangs.reduce<LanguagesAnchorProps[]>((acc, lang ) => {
 
-    const isDefLang = lang[0] === defaultLang 
-    const definedPath = isDefLang ? paths[path] : '/' + lang[0] + paths[path]
+    const isAvailable = Boolean(availableRoutes[lang[0]][path])
+    const link = isAvailable ? availableRoutes[lang[0]][path] : '/'
 
     const linkObj = {
-      path: definedPath,
+      available: isAvailable,
+      path: link,
       lang: lang[0],
       label: lang[1]
     }

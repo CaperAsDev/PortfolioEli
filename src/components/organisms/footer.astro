@@ -1,13 +1,17 @@
 ---
 import Image from "astro/components/Image.astro";
 import Focus from "@/assets/images/FOCUS4PFAS.jpg";
+import Logo from "@/assets/images/BTS_LogoC-V.svg";
 ---
 
 <footer>
   <div class="info-wrapper">
     <div class="info">
-      <p class="name">Elisabeth Cuervo Lumbaque</p>
-      <a href="mailto:Fake@mail.com">Fake@mail.com</a>
+      <Image src={Logo} alt={"Bridge to Science LOGO"} width={200} />
+      <div class="contact">
+        <p class="name">By Elisabeth Cuervo</p>
+        <a href="mailto:Fake@mail.com">Fake@mail.com</a>
+      </div>
     </div>
     <div class="sponsor">
       <Image src={Focus} alt={"Focus for PFAS LOGO"} />
@@ -31,9 +35,14 @@ import Focus from "@/assets/images/FOCUS4PFAS.jpg";
     display: flex;
     justify-content: space-between;
   }
+  .info {
+    display: flex;
+    gap: 1rem;
+    align-items: end;
+  }
   .name {
     font-weight: 600;
-    font-size: var(--fs-m);
+    font-size: var(--fs-s);
   }
   a {
     font-weight: 200;
