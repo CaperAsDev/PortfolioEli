@@ -1,27 +1,24 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import Logo from "@/assets/images/BTS_LogoC-H.svg";
 ---
 
 <div class="sticky-wrapper">
   <Image class="image" src={Logo} alt={"un bello logo"} height={70} />
-  <p class="by">by Elisabeth Cuervo</p>
+  <p class="by">By Elisabeth Cuervo Lumbaque</p>
 </div>
 <style>
   .sticky-wrapper {
-    width: max-content;
-    position: sticky;
-    margin-bottom: 5ch;
-    top: 1rem;
     display: grid;
-    place-content: center;
+    position: sticky;
+    top: 1rem;
+    margin-bottom: 5ch;
     z-index: 20;
+    pointer-events: none;
   }
   .image {
     will-change: transform;
     animation: linear headerMove forwards;
-    animation-timeline: --scroll-in-body;
-    animation-range: exit-crossing 0% cover 50%;
     translate: calc(50vw - 50%) 0px 0;
   }
 
@@ -30,31 +27,75 @@ import Logo from "@/assets/images/BTS_LogoC-H.svg";
     font-weight: 500;
     position: absolute;
     bottom: 0px;
-    translate: calc(50vw - 50%) 0px 0;
 
     animation: linear pMove forwards;
-    animation-timeline: --scroll-in-body;
-    animation-range: exit-crossing 0% cover 50%;
+  }
+  .image,
+  .by {
+    animation-timeline: scroll();
+    animation-range: 0 200px;
   }
 
   @keyframes headerMove {
-    0% {
+    from {
       clip-path: circle(100%);
     }
-    100% {
-      transform: translateX(calc((50vw - 60%) * -1));
+    50% {
+      clip-path: circle(20% at 16%);
+    }
+    to {
+      scale: 0.5;
+      transform: translate(calc((50vw + 20%) * -1), 110%);
       clip-path: circle(20% at 16%);
     }
   }
   @keyframes pMove {
     0% {
-      translate: calc(50vw - 50%) 35px 0;
+      translate: calc(50vw - 50%) 35px;
     }
     50% {
-      translate: calc(50vw - 50%) 0% 0;
+      translate: calc(50vw - 50%) 35px;
     }
     100% {
-      translate: calc(100px) -40% 0;
+      translate: calc(50vw - 45%) 100%;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    @keyframes headerMove {
+      from {
+        clip-path: circle(100%);
+      }
+      50% {
+        clip-path: circle(20% at 16%);
+      }
+      to {
+        transform: translateX(calc((50vw - 60%) * -1));
+        clip-path: circle(20% at 16%);
+      }
+    }
+    @keyframes pMove {
+      0% {
+        translate: calc(50vw - 50%) 35px;
+      }
+      40% {
+        translate: calc(50vw - 50%) 35px;
+      }
+      100% {
+        translate: 100px calc((50% + 0.5ch) * -1);
+      }
+    }
+  }
+  @media screen and (width > 1440px) {
+    @keyframes pMove {
+      0% {
+        translate: calc(50vw - 50%) 35px;
+      }
+      40% {
+        translate: calc(50vw - 50%) 35px;
+      }
+      100% {
+        translate: 100px calc((50% - 0.5ch) * -1);
+      }
     }
   }
 </style>

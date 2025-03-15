@@ -1,6 +1,8 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import Focus from "@/assets/images/FOCUS4PFAS.jpg";
+import ICRA from "@/assets/images/Logo-ICRA_2-1.svg";
+import UE from "@/assets/images/Flag_of_Europe.svg";
 import Logo from "@/assets/images/BTS_LogoC-V.svg";
 ---
 
@@ -9,12 +11,20 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
     <div class="info">
       <Image src={Logo} alt={"Bridge to Science LOGO"} width={200} />
       <div class="contact">
-        <p class="name">By Elisabeth Cuervo</p>
-        <a href="mailto:Fake@mail.com">Fake@mail.com</a>
+        <p class="name">By Elisabeth Cuervo Lumbaque</p>
+        <a href="mailto:Fake@mail.com">ecuervo@icra.cat</a>
       </div>
     </div>
     <div class="sponsor">
+      <a
+        href="https://icra.cat/wp-content/uploads/2023/09/Logo-ICRA-e1695802767909.png"
+        target="_blank"
+        aria-label="Go to ICRA web site"
+      >
+        <Image src={ICRA} alt={"ICRA LOGO"} />
+      </a>
       <Image src={Focus} alt={"Focus for PFAS LOGO"} />
+      <Image src={UE} alt={"Flaf of European Union"} />
     </div>
   </div>
   <p>© 2025, All rights reserved.</p>
@@ -32,13 +42,19 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
   .info-wrapper {
     width: 100%;
     padding: 1rem;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    place-items: center;
   }
   .info {
-    display: flex;
+    display: grid;
     gap: 1rem;
-    align-items: end;
+    place-items: center;
+    margin-block: 1rem;
+  }
+  .contact {
+    display: grid;
+    gap: 0.5rem;
+    place-items: center;
   }
   .name {
     font-weight: 600;
@@ -48,8 +64,57 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
     font-weight: 200;
     text-decoration: underline;
   }
+  .sponsor {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 1rem;
+    border-top: 1px solid oklch(from var(--secondary-0) l c h / 1);
+
+    a {
+      width: 100%;
+    }
+  }
 
   img {
-    mix-blend-mode: multiply;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+
+    /* mix-blend-mode: multiply; */
+  }
+  @media screen and (min-width: 768px) {
+    .info-wrapper {
+      width: 80%;
+    }
+    .info {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .info-wrapper {
+      width: 100%;
+      grid-template-columns: 30% 60%;
+      justify-content: space-between;
+    }
+    .info {
+      justify-self: flex-start;
+      grid-template-columns: 1fr;
+    }
+    .sponsor {
+      border-top: none;
+      justify-self: flex-end;
+    }
+    @media screen and (width > 1440px) {
+      .info-wrapper {
+        grid-template-columns: 50% 40%;
+      }
+      .info {
+        grid-template-columns: 30% 60%;
+      }
+      .contact {
+        align-self: flex-end;
+      }
+    }
   }
 </style>

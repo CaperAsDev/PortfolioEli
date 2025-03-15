@@ -9,7 +9,6 @@ import { shiftLang } from "@/i18n/utils";
 
 const baseUrl = import.meta.env.BASE_URL;
 const changeLangOptions = shiftLang(Astro.url);
-console.log(changeLangOptions);
 
 interface Props {
   lang: keyof typeof Languages;
@@ -54,15 +53,17 @@ const { home, about } = navigation[lang];
   }
 
   header {
+    width: 100%;
     position: sticky;
-    color: oklch(from var(--dark) l c calc(h + var(--hue)));
     top: 0;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
     padding: 1rem;
+    padding-bottom: 2rem;
     backdrop-filter: blur(10px);
     background-color: oklch(from var(--primary-3) l c h / var(--opacity));
+    color: oklch(from var(--dark) l c calc(h + var(--hue)));
     animation: opacityChange linear forwards;
     animation-timeline: view(block);
     animation-range: cover 0% cover 50%;
@@ -83,7 +84,15 @@ const { home, about } = navigation[lang];
   nav ul {
     display: flex;
     justify-content: center;
+    padding: 0;
     align-items: center;
-    gap: 1rem;
+    gap: var(--fs-xs);
+  }
+
+  @media screen and (min-width: 768px) {
+    header {
+      padding: 1rem;
+      align-items: end;
+    }
   }
 </style>

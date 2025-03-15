@@ -8,7 +8,7 @@ const availableRoutes = {
   "es": {
     "/about": "/es/about",
     "/focus": "/es/focus",
-    "/home": "/es/"
+    "/home": "/es"
   }
 }; 
 export default availableRoutes
