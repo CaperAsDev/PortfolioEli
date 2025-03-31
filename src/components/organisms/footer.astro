@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import Focus from "@/assets/images/FOCUS4PFAS.jpg";
 import ICRA from "@/assets/images/Logo-ICRA_2-1.svg";
-import UE from "@/assets/images/Flag_of_Europe.svg";
+import EC from "@/assets/images/European-Commission.svg";
 import Logo from "@/assets/images/BTS_LogoC-V.svg";
 ---
 
@@ -24,7 +24,7 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
         <Image src={ICRA} alt={"ICRA LOGO"} />
       </a>
       <Image src={Focus} alt={"Focus for PFAS LOGO"} />
-      <Image src={UE} alt={"Flaf of European Union"} />
+      <Image src={EC} alt={"Flaf of European Union"} />
     </div>
   </div>
   <p>© 2025, All rights reserved.</p>
@@ -100,6 +100,10 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
     .info {
       justify-self: flex-start;
       grid-template-columns: 1fr;
+
+      img {
+        width: 50%;
+      }
     }
     .sponsor {
       border-top: none;

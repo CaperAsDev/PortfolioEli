@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ProfileImage from "@/components/atoms/ProfileImage.astro";
+import ProfileImageSRC from "@/assets/images/profile.jpeg";
 
 import { Icon } from "astro-icon/components";
 
@@ -13,9 +14,11 @@ import { sizes } from "@/components/atoms/ProfileImage.astro";
   <main>
     <div class="profile">
       <ProfileImage
-        src="https://icra.cat/wp-content/uploads/2023/06/Elisabeth-Cuervo-cuadrado-4.jpg"
         alt="Elisabeth Cuervo Lumbaque"
         size={sizes.lg}
+        src={ProfileImageSRC}
+        height={800}
+        width={800}
       />
       <div class="contact">
         <a href="mailto:caperasdev@gmail.com">fakeMail@gmail.com</a>

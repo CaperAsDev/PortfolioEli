@@ -2,9 +2,11 @@
 import Image from "astro/components/Image.astro";
 
 interface Props {
-  src: string;
+  src: ImageMetadata;
   alt: string;
   size?: sizes;
+  height: number;
+  width: number;
 }
 
 export enum sizes {
@@ -13,11 +15,11 @@ export enum sizes {
   lg = "lg",
 }
 
-const { src, alt, size } = Astro.props;
+const { src, alt, size, height, width } = Astro.props;
 ---
 
 <div class={`${size}`}>
-  <Image src={src} alt={alt} inferSize />
+  <Image src={src} alt={alt} height={height} width={width} />
 </div>
 
 <style>
