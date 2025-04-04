@@ -1,0 +1,9 @@
+- quitar by elisabeth--------> DONE
+- revisar foto about ----> DONE
+- quitar fondo a logo focus-----> DONE
+- contact information en lugar de about------> DONE
+- color texto revisar contraste ----> DONE
+- letrero de pagina en construccion -----> DONE
+- en about poner nombre bajo foto---------> DONE
+- quitar link de linkedind en header ------------> DONE
+- quirtar links de cards ----> DONE

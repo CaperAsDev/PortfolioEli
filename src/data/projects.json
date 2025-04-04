@@ -9,22 +9,22 @@
   {
     "id": 2,
     "name": "Education in science ",
-    "description": "This is a description of project 2",
+    "description": "This project is under construction.",
     "image": "https://image.pbs.org/bento3-prod/pbs-education-blogs-bento-live-pbs/26461979c7_Inspire-Children-to-think-and-act-like-scientists.jpeg",
-    "url": "https://www.google.com"
+    "url": "#"
   },
   {
     "id": 3,
     "name": "Science Without Borders",
-    "description": "This is a description of project 3",
+    "description": "This project is under construction.",
     "image": "https://img.freepik.com/premium-photo/science-nature-concept_257123-14962.jpg",
-    "url": "https://www.google.com"
+    "url": "#"
   },
   {
     "id": 4,
     "name": "Social justice",
-    "description": "This is a description of project 4",
+    "description": "This project is under construction.",
     "image": "https://images.stockcake.com/public/f/c/9/fc9b1a82-ca19-4b8d-8c3f-76d9fd956fe8_large/farmer-in-field-stockcake.jpg",
-    "url": "https://www.google.com"
+    "url": "#"
   }
 ]

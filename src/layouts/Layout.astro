@@ -3,6 +3,7 @@ import Header from "@/components/organisms/Header.astro";
 import Footer from "@/components/organisms/footer.astro";
 import metaData from "@/seo/pagesMeta.json";
 import Seo from "@/components/seo.astro";
+import UnderConstrucction from "@/components/atoms/UnderConstrucction.astro";
 
 import { getLangFromUrl, MetaManager, parseURL } from "@/i18n/utils";
 
@@ -47,6 +48,7 @@ const { title, description } = layoutMetaManager.getMetaData(parsedURL);
     <title>{title}</title>
   </head>
   <body>
+    <UnderConstrucction />
     <Header lang={lang} />
     <slot />
     <Footer lang={lang} />

@@ -1,0 +1,108 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<dialog open>
+  <div>
+    <Icon class="alert" name="tabler:alert-triangle" />
+    <h2>Page Under Construction</h2>
+    <p>
+      <strong>Thank you</strong> for visiting! We're currently working on this page
+      to bring you more exciting content. Stay tuned for updates!
+    </p>
+    <p>
+      For the latest news and updates, follow Elisabeth Cuervo Lumbaque on 
+      <a
+        href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157/"
+        target="_blank">LinkedIn</a
+      >.
+    </p>
+    <button autofocus>
+      <Icon name="tabler:circle-x" class="sm" />
+    </button>
+  </div>
+</dialog>
+
+<style>
+  dialog {
+    position: fixed;
+    z-index: 1000;
+    display: hidden;
+    width: clamp(320px, 80vw, 720px);
+    margin: 0 auto;
+    flex-direction: column;
+    gap: var(--fs-s);
+    padding: var(--fs-s);
+    border-radius: var(--fs-s);
+    background-color: oklch(from white l c h / 0.5);
+    backdrop-filter: blur(5px);
+    text-align: center;
+  }
+  dialog[open] {
+    display: flex;
+  }
+  div {
+    position: relative;
+  }
+  .alert {
+    width: var(--fs-xl);
+    height: var(--fs-xl);
+    position: absolute;
+    color: red;
+    top: calc(-1 * var(--fs-xl) / 2);
+    left: calc(-1 * var(--fs-xl) / 2);
+  }
+  h2 {
+    padding-top: var(--fs-s);
+    gap: var(--fs-s);
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: var(--fs-m);
+    color: darkred;
+  }
+
+  strong {
+    font-weight: 400;
+    color: rebeccapurple;
+  }
+  a {
+    font-weight: 500;
+    text-decoration: underline;
+    color: rebeccapurple;
+  }
+
+  button {
+    position: absolute;
+    top: calc(-1 * var(--fs-xl) / 2);
+    right: calc(-1 * var(--fs-xl) / 2);
+    width: fit-content;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    svg {
+      height: 2.5rem;
+      width: 2.5rem;
+      color: red;
+    }
+  }
+</style>
+<script>
+  console.log("Under Construction");
+  const dialog: HTMLDialogElement | null = document.querySelector("dialog");
+  const closeButton: HTMLButtonElement | null =
+    (dialog?.querySelector("button") as HTMLButtonElement | null) ?? null;
+
+  closeButton?.addEventListener("click", () => {
+    console.log(dialog);
+    dialog?.close();
+  });
+
+  // // Close the dialog when the user clicks outside of it
+  dialog?.addEventListener("click", (event: MouseEvent) => {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+</script>

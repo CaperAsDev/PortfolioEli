@@ -21,11 +21,14 @@ import ProfileImageSRC from "@/assets/images/profile.jpeg";
         width={800}
       />
       <div class="contact">
+        <p>Elisabeth Cuervo Lumbaque</p>
         <a href="mailto:ecuervo@icra.cat">ecuervo@icra.cat</a>
         <div class="links-icons">
           <a
+            target="_blank"
             href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157/"
           >
+            Linkedin
             <Icon name="tabler:brand-linkedin" class={"sm"} />
           </a>
         </div>
@@ -57,9 +60,23 @@ import ProfileImageSRC from "@/assets/images/profile.jpeg";
   .contact {
     display: grid;
     place-items: center;
+    font-weight: lighter;
+
+    & > a {
+      text-decoration: underline;
+    }
+
+    p {
+      font-weight: 500;
+      text-align: center;
+    }
   }
   .links-icons {
     a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
       padding: 0;
     }
   }

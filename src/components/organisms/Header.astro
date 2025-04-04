@@ -17,6 +17,7 @@ interface Props {
 const { lang } = Astro.props;
 
 const { home, about } = navigation[lang];
+const languagesReady = false;
 ---
 
 <header>
@@ -24,16 +25,15 @@ const { home, about } = navigation[lang];
     <ul>
       <NavItem href={`${baseUrl}${home.link}`} text={home.label} />
       <NavItem href={`${baseUrl}${about.link}`} text={about.label} />
-      <NavItem
-        href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157"
-        text="LinkedIn"
-        target="_blank"
-      />
+
       {
-        changeLangOptions.map(
-          (op) =>
-            op.available && <ChangeLangAnchor langoptions={changeLangOptions} />
-        )
+        languagesReady &&
+          changeLangOptions.map(
+            (op) =>
+              op.available && (
+                <ChangeLangAnchor langoptions={changeLangOptions} />
+              )
+          )
       }
     </ul>
   </nav>

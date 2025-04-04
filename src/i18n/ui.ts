@@ -5,7 +5,7 @@ export const navigation = {
       link : ''
     },
     about: {
-      label: 'About',
+      label: 'Contact Information',
       link : 'about'
     },
   },
@@ -15,7 +15,7 @@ export const navigation = {
       link : 'es'
     },
     about: {
-      label: 'Sobre mi',
+      label: 'Información de contacto',
       link : 'es/about'
     },
   },

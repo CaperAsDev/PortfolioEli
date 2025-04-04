@@ -1,5 +1,7 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
 import Focus from "@/assets/images/FOCUS4PFAS.jpg";
 import ICRA from "@/assets/images/Logo-ICRA_2-1.svg";
 import EC from "@/assets/images/European-Commission.svg";
@@ -11,8 +13,15 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
     <div class="info">
       <Image src={Logo} alt={"Bridge to Science LOGO"} width={200} />
       <div class="contact">
-        <p class="name">By Elisabeth Cuervo Lumbaque</p>
-        <a href="mailto:Fake@mail.com">ecuervo@icra.cat</a>
+        <a href="ecuervo@icra.cat">ecuervo@icra.cat</a>
+        <a
+          target="_blank"
+          class="anchor_linkedin"
+          href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157/"
+        >
+          Linkedin
+          <Icon name="tabler:brand-linkedin" class={"sm"} />
+        </a>
       </div>
     </div>
     <div class="sponsor">
@@ -23,7 +32,7 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
       >
         <Image src={ICRA} alt={"ICRA LOGO"} />
       </a>
-      <Image src={Focus} alt={"Focus for PFAS LOGO"} />
+      <Image class="focus" src={Focus} alt={"Focus for PFAS LOGO"} />
       <Image src={EC} alt={"Flaf of European Union"} />
     </div>
   </div>
@@ -56,13 +65,16 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
     gap: 0.5rem;
     place-items: center;
   }
-  .name {
-    font-weight: 600;
-    font-size: var(--fs-s);
-  }
   a {
     font-weight: 200;
     text-decoration: underline;
+  }
+  .anchor_linkedin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
   }
   .sponsor {
     display: grid;
@@ -82,6 +94,9 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
     object-fit: contain;
 
     /* mix-blend-mode: multiply; */
+  }
+  .focus {
+    mix-blend-mode: multiply;
   }
   @media screen and (min-width: 768px) {
     .info-wrapper {
