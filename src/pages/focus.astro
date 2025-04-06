@@ -1,33 +1,115 @@
 ---
-import Image from "astro/components/Image.astro";
-import focusImg from "@/assets/images/focusImg.png";
+import { Image } from "astro:assets";
+
 import Layout from "@/layouts/Layout.astro";
+import ResearcherCard from "@/components/molecules/ResearcherCard.astro";
+
+import SpongeCartoon from "@/assets/images/focus/spongeCartoon.png";
+import FocusLogo from "@/assets/images/FOCUS4PFAS.jpg";
+import comic_01 from "@/assets/images/focus/v_01.png";
+import comic_02 from "@/assets/images/focus/v_02.png";
+
+import video_01 from "@/assets/videos/focus/video_01.mp4";
+import video_02 from "@/assets/videos/focus/video_02.mp4";
 ---
 
 <Layout>
-  <main>
-    <h2>FOCUS4PFAS</h2>
-    <p>
-      PFAS have been used since the 1940s and are known as “forever chemicals”
-      due to their extreme persistency to advanced water and wastewater
-      treatment strategies. Due to the strength of the C-F bond, each released
-      molecule of PFAS remains in the environment. This project aims at <strong
-        >developing graphene sponge anodes tailored for electrochemical
-        degradation of poly- and perfluoroalkyl substances (PFAS), including
-        long- (>C6) and highly polar shorter-chain (C2-C6) homologues, and newly
-        introduced PFAS,</strong
-      > and their complete defluorination and removal from the contaminated water
-      of different origin.
-    </p>
-    <figure>
-      <Image src={focusImg} alt="FOCUS4PFAS" />
-      <figcaption>
-        <strong>Figure 1.</strong> Functionalization of graphene for PFAS removal
-      </figcaption>
-    </figure>
-  </main>
+  <div class="container">
+    <ResearcherCard id={1} />
+    <main>
+      <header>
+        <Image class="focus" src={FocusLogo} alt={"Focus for PFAS LOGO"} />
+        <Image
+          class="spongeCartoon"
+          src={SpongeCartoon}
+          alt={"Cartoon of a Sponge"}
+        />
+      </header>
+      <section class="introduction">
+        <article>
+          <h2>What are PFAS and why are they a problem?</h2>
+          <p>
+            <strong>PFAS</strong> are man-made chemicals that have been used since
+            the 1940s in many everyday products. They're often called <strong
+              >"forever chemicals"</strong
+            > because they <strong>don’t break down easily</strong> and <strong
+              >can stay in the environment for a very long time.</strong
+            >
+          </p>
+          <p>
+            That’s because PFAS are made with a super-strong bond (between
+            carbon and fluorine) that makes them <strong
+              >extremely hard to remove</strong
+            >, even with advanced water treatment systems. Once PFAS are
+            released into the environment, <strong
+              >they stay there—sometimes forever.</strong
+            >
+          </p>
+        </article>
+        <article class="comic_container">
+          <figure>
+            <Image src={comic_01} alt={"una familia en la cocina"} />
+            <!-- <figcaption>Images description</figcaption> -->
+          </figure>
+          <figure>
+            <Image src={comic_02} alt={"una familia en la cocina"} />
+            <!-- <figcaption>Image description</figcaption> -->
+          </figure>
+        </article>
+      </section>
+      <section>
+        <article>
+          <h2>What is this project doing?</h2>
+          <p>
+            This project is focused on <strong
+              >finding a way to remove PFAS from contaminated water</strong
+            > using a special type of sponge made from <strong>graphene</strong
+            >, a powerful and modern material.
+          </p>
+          <p>
+            The idea is to use <strong>electricity and this sponge</strong> to break
+            down different types of PFAS and to <strong
+              >completely destroy the harmful parts</strong
+            > of these chemicals:
+            <ul>
+              <li>
+                Including the <strong>longer-lasting ones</strong>
+              </li>
+              <li>
+                The <strong>smaller and newer ones</strong>
+              </li>
+              <li>
+                And even the <strong>most difficult-to-remove kinds</strong>
+              </li>
+            </ul>
+          </p>
+        </article>
+        <article class="video_container">
+          <video controls src={video_01}></video>
+          <video controls src={video_02}></video>
+        </article>
+      </section>
+      <section>
+        <article>
+          <h2>Why does it matter?</h2>
+          <p>
+            Getting rid of PFAS from water is an important step to <strong
+              >protect our health and the environment</strong
+            >. With this new technology, we aim to clean up different kinds of
+            polluted water, making it safer for everyone.
+          </p>
+        </article>
+      </section>
+    </main>
+  </div>
 </Layout>
 <style>
+  .container {
+    display: flex;
+    padding: var(--fs-s);
+    gap: var(--fs-s);
+  }
+
   main {
     display: grid;
     place-items: center;
@@ -36,6 +118,64 @@ import Layout from "@/layouts/Layout.astro";
     width: clamp(300px, 80vw, 1280px);
     margin: 0 auto;
     justify-content: space-between;
+  }
+  header {
+    display: flex;
+    align-items: center;
+  }
+  .focus {
+    mix-blend-mode: multiply;
+    width: calc(300px + var(--fs-xl));
+    height: auto;
+  }
+  .spongeCartoon {
+    width: calc(200px + var(--fs-xl));
+    height: auto;
+  }
+
+  h1 {
+    font-size: var(--fs-l);
+    font-weight: 600;
+    text-align: center;
+  }
+  section {
+    padding: var(--fs-s);
+  }
+  p {
+    margin-inline: var(--fs-s);
+  }
+  ul {
+    margin-inline: var(--fs-l);
+    list-style: disc;
+  }
+  .introduction {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fs-s);
+  }
+  .video_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--fs-s);
+
+    video {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+  }
+
+  .comic_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
   }
   h2 {
     font-weight: 600;

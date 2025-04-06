@@ -7,3 +7,4 @@
 - en about poner nombre bajo foto---------> DONE
 - quitar link de linkedind en header ------------> DONE
 - quirtar links de cards ----> DONE
+- el tama;o de la pantalla hace que el icono de cerrar el modal de under construction se salga

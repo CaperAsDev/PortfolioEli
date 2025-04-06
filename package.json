@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
+    "@fontsource-variable/noto-sans-lao-looped": "^5.2.5",
     "astro": "^5.5.2",
     "astro-icon": "^1.1.5"
   },

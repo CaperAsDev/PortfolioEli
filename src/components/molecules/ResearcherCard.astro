@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+import authors from "@/data/authors.json";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  id: number;
+}
+
+const { id } = Astro.props;
+const author = authors.find((auth) => auth.id === id);
+---
+
+<aside>
+  {
+    author ? (
+      // <p>About the author</p>
+      <Image
+        src={author.avatar || "https://picsum.photos/300"}
+        alt={"profileImage of researcher"}
+        inferSize
+      />
+      <p>{author.name} {author.lastName}</p>
+      <p class="work">{author.occupation} at {author.workPlace}</p>
+      <p>{author.city}, {author.country}</p>
+      <a class="mail" href={`mailto:${author.email}`}>{author.email}</a>
+      <ul class="social">
+        {author.social.map((item)=> (
+          <li>
+            <a target="_blank" href={item.link} >
+              <Icon name={`tabler:${item.icon}`} />
+              <span>{item.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) :
+    (
+      <p>Author information not available</p>
+    )
+  }
+</aside>
+<style>
+  aside{
+    max-width: calc(300px + var(--fs-xl));
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--fs-s);
+    border-radius: var(--fs-xs);
+    gap: var(--fs-xs);
+    background-color: oklch(from var(--ligth) l c h);
+    
+    p, a, span {
+      margin: 0;
+    }
+  }
+  img{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+
+  }
+  .work {
+    text-align: center;
+  }
+  .mail{
+    text-decoration: underline;
+  }
+
+  ul{
+    display: flex;
+    gap: var(--fs-s);
+    list-style: none;
+
+    a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-weight: 300;
+      svg{
+        width: var(--fs-m);
+        height: var(--fs-m);
+      }
+    }
+  }
+  
+</style>

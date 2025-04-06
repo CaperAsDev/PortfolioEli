@@ -1,0 +1,107 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import video_01 from "@/assets/videos/social/video_01.mp4";
+---
+
+<Layout>
+  <div class="container">
+    <h1>Social Justice</h1>
+    <main>
+      <section>
+        <h2>
+          Evidence of Climate Change: How Shifting Weather Affects Farmers
+        </h2>
+        <article>
+          <p>
+            This video shows the real effects of climate change in <strong
+              >Boyacá, Colombia</strong
+            >, where <strong>extreme frosts</strong> were recorded at the beginning
+            of 2025.
+          </p>
+          <p>
+            This region, known for its agricultural activity, suffered such <strong
+              >low temperatures that the pastures dried out.</strong
+            >
+          </p>
+          <p>
+            Farmers are forced to work under extremely harsh conditions just to
+            grow crops and <strong>earn the money they need to survive.</strong>
+          </p>
+          <p>
+            In many Latin American countries, <strong
+              >small-scale farmers don’t have pensions or government-subsidized
+              wages when they’re unable to work. They depend entirely on what
+              the land provides.</strong
+            > And when the climate fails, <strong
+              >their entire lives are affected.</strong
+            >
+          </p>
+        </article>
+      </section>
+      <figure>
+        <video muted controls src={video_01}></video>
+      </figure>
+      <section>
+        <h2>What Can We Do About Climate Change?</h2>
+        <article>
+          <p>
+            First, <strong>raise awareness:</strong> climate change is already <strong
+              >affecting thousands of people</strong
+            >—it’s not a distant problem.
+          </p>
+          <p>
+            We need to <strong>change our lifestyles</strong> and act with more respect
+            for the planet and for the people who rely on it the most.
+          </p>
+          <p>
+            <strong>Small changes in our daily habits</strong> can make a big difference:
+          </p>
+          <ul>
+            <li>Consume less and do so more responsibly</li>
+            <li>Support local products</li>
+            <li>Save energy and water</li>
+            <li>Reduce plastic use</li>
+            <li>Share information and educate others</li>
+          </ul>
+        </article>
+      </section>
+      <strong>
+        <cite
+          >Caring for the planet means caring for those who live and work on it.
+          Change begins with us.</cite
+        >
+      </strong>
+    </main>
+  </div>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--fs-s);
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: var(--fs-l);
+      font-weight: 600;
+      text-align: center;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: var(--fs-m);
+    }
+    video {
+      width: calc(300px + var(--fs-xl));
+      height: auto;
+      margin: 0 auto;
+    }
+    p {
+      margin-inline: var(--fs-s);
+    }
+    ul {
+      margin-inline: var(--fs-l);
+      list-style: disc;
+    }
+  </style>
+</Layout>

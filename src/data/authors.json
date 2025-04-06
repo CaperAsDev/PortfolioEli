@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Elisabeth",
+    "lastName": "Cuervo Lumbaque",
+    "city": "Girona",
+    "country": "Spain",
+    "occupation": "Marie Curie Fellow Resercher",
+    "workPlace": "ICRA",
+    "email":"ecuervo@icra.cat",
+    "social" : [
+      {
+        "label" : "Twitter",
+        "icon": "brand-x",
+        "link": "#"
+      },
+      {
+        "label" : "Linkedin",
+        "icon": "brand-linkedin",
+        "link": "https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157/"
+      }
+    ],
+    "bio": null,
+    "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQFreTQsLokhVQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1699312548938?e=1749081600&v=beta&t=OLHPUKqQBowaTWV1KcYIsOzDpM75ADc1ttHlOQrjq8U",
+    "website": null
+  }
+]

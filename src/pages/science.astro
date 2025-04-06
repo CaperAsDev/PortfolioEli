@@ -1,0 +1,139 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import effect from "@/assets/images/science/pfasEffect.png";
+---
+
+<Layout>
+  <section class="pfas-section">
+    <article class="pfas-article">
+      <h2 class="pfas-title">Have You Heard of PFAS?</h2>
+      <p>
+        You’ve probably never heard that word before… but have you ever used
+        non-stick pans with Teflon? Well, you might be surprised to know that <strong
+          >“Teflon” contains some very dangerous chemicals called PFAS</strong
+        >, which <strong>don’t break down easily</strong> and can stay in the environment
+        <strong>forever</strong>.
+      </p>
+      <p>
+        But that’s not all — these substances <strong
+          >can get into our bodies</strong
+        > and cause serious health problems like:
+        <strong>cancer, infertility, high cholesterol, thyroid issues</strong>,
+        and more.
+      </p>
+      <p>
+        And it’s not just pots and pans. PFAS are found in all kinds of everyday
+        products, like:
+      </p>
+      <ul class="pfas-list">
+        <li>Waterproof clothing</li>
+        <li>Food packaging (like microwave popcorn bags)</li>
+        <li>Long-lasting makeup</li>
+        <li>Cleaning and personal care products</li>
+        <li>And many more!</li>
+      </ul>
+      <p>
+        <strong>So how do PFAS get into the environment?</strong> When industries
+        make these products, they often use PFAS — and <strong
+          >many don’t properly treat their wastewater</strong
+        >. That means these toxic substances end up in our rivers, soil, crops,
+        and even the air we breathe.
+      </p>
+      <p>
+        What’s worse is that <strong
+          >water treatment plants can’t remove PFAS</strong
+        >, because they’re so resistant.
+      </p>
+      <strong class="pfas-warning">PFAS pollution is growing every day.</strong>
+    </article>
+    <Image src={effect} alt="PFAS environment effects" />
+
+    <article class="pfas-article">
+      <h2 class="pfas-title">What am I doing about it?</h2>
+      <p>
+        In my research, I’m working on a solution to remove PFAS from water
+        using <strong>electricity</strong>
+        and <strong>special materials</strong> that help break these substances down.
+      </p>
+    </article>
+
+    <article class="pfas-article">
+      <h2 class="pfas-title">What can you do?</h2>
+      <ul class="pfas-list">
+        <li>
+          <strong>Learn more and change your consumption habits</strong>. Avoid
+          products with PFAS when you can.
+        </li>
+        <li>
+          Read labels — look for <strong>“PFAS-free”</strong> or more natural options.
+        </li>
+        <li>
+          Share this info with family and friends. <strong
+            >Together, we can make a difference.</strong
+          >
+        </li>
+      </ul>
+      <strong class="pfas-cta"
+        >Protecting our health and the planet is in our hands.</strong
+      >
+    </article>
+  </section>
+</Layout>
+<style>
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 800px;
+    margin-inline: auto;
+    margin-block: var(--fs-m);
+    border-radius: 1rem;
+  }
+  p {
+    margin-inline-start: var(--fs-s);
+  }
+  ul {
+    margin-inline-start: var(--fs-m);
+  }
+  strong {
+    font-weight: 600;
+    font-size: var(--fs-s);
+  }
+  .pfas-section {
+    display: flex;
+    flex-direction: column;
+    padding: var(--fs-m);
+    max-width: 1240px;
+    margin-inline: auto;
+  }
+
+  .pfas-title {
+    font-size: var(--fs-m);
+    font-weight: 600;
+    margin-bottom: var(--fs-s);
+  }
+
+  .pfas-list {
+    list-style-type: disc;
+    padding-left: 2rem;
+    margin-block: var(--fs-s);
+    line-height: 1.6;
+  }
+
+  .pfas-list li {
+    font-size: var(--fs-s);
+    margin-bottom: 0.5rem;
+  }
+
+  .pfas-warning {
+    font-weight: 600;
+  }
+
+  .pfas-cta {
+    display: block;
+    margin-top: var(--fs-s);
+    font-size: var(--fs-s);
+    font-weight: 600;
+  }
+</style>

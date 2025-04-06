@@ -1,0 +1,113 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import video_01 from "@/assets/videos/social/video_01.mp4";
+---
+
+<Layout>
+  <div class="container">
+    <h1>Justicia Social</h1>
+    <main>
+      <section>
+        <h2>
+          Evidencias del cambio climático: cómo afecta las mudanzas de clima a
+          los agricultores
+        </h2>
+        <article>
+          <p>
+            Este video muestra los efectos reales del cambio climático en <strong
+              >Boyacá, Colombia</strong
+            >, donde a comienzos de 2025 se registraron <strong
+              >heladas extremas</strong
+            >.
+          </p>
+          <p>
+            Esta región, conocida por su actividad agrícola, sufrió <strong
+              >temperaturas tan bajas que los pastos se secaron.</strong
+            >
+          </p>
+          <p>
+            Los agricultores se ven obligados a trabajar en condiciones muy
+            duras para poder cultivar y <strong>
+              así ganar el dinero que necesitan para vivir.</strong
+            >
+          </p>
+          <p>
+            En muchos países de Latinoamérica, <strong
+              >los campesinos no cuentan con pensión ni salario subsidiado por
+              el gobierno cuando no pueden trabajar. Dependen completamente de
+              lo que la tierra les da.</strong
+            > Y cuando el clima falla, <strong
+              >su vida entera se ve afectada.</strong
+            >
+          </p>
+        </article>
+      </section>
+      <figure>
+        <video muted controls src={video_01}></video>
+      </figure>
+      <section>
+        <h2>¿Qué podemos hacer frente al cambio climático?</h2>
+        <article>
+          <p>
+            Primero, <strong>tomar conciencia:</strong> el cambio climático ya está
+            <strong>afectando a miles de personas</strong>, no es un problema
+            lejano.
+          </p>
+          <p>
+            Tenemos que <strong>modificar nuestro estilo de vida</strong> y actuar
+            con más respeto por el planeta y por las personas que más dependen de
+            él.
+          </p>
+          <p>
+            <strong>Con pequeños cambios en nuestras rutinas</strong>, podemos
+            hacer una gran diferencia:
+          </p>
+          <ul>
+            <li>Consumir menos y de forma más responsable</li>
+            <li>Apoyar productos locales</li>
+            <li>Ahorrar energía y agua</li>
+            <li>Reducir el uso de plásticos</li>
+            <li>Compartir información y educar a otros</li>
+          </ul>
+        </article>
+      </section>
+      <strong>
+        <cite>
+          Cuidar el planeta es cuidar a quienes lo trabajan y viven de él. El
+          cambio empieza con nosotros.
+        </cite>
+      </strong>
+    </main>
+  </div>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--fs-s);
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: var(--fs-l);
+      font-weight: 600;
+      text-align: center;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: var(--fs-m);
+    }
+    video {
+      width: calc(300px + var(--fs-xl));
+      height: auto;
+      margin: 0 auto;
+    }
+    p {
+      margin-inline: var(--fs-s);
+    }
+    ul {
+      margin-inline: var(--fs-l);
+      list-style: disc;
+    }
+  </style>
+</Layout>

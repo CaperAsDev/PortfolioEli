@@ -18,13 +18,13 @@
     "name": "Science Without Borders",
     "description": "This project is under construction.",
     "image": "https://img.freepik.com/premium-photo/science-nature-concept_257123-14962.jpg",
-    "url": "#"
+    "url": "science/"
   },
   {
     "id": 4,
     "name": "Social justice",
     "description": "This project is under construction.",
     "image": "https://images.stockcake.com/public/f/c/9/fc9b1a82-ca19-4b8d-8c3f-76d9fd956fe8_large/farmer-in-field-stockcake.jpg",
-    "url": "#"
+    "url": "social/"
   }
 ]
