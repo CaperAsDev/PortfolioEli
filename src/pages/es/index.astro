@@ -4,18 +4,30 @@ import Projects from "@/components/organisms/Projects.astro";
 ---
 
 <Layout>
+  <h1>Bienvenido a Bridge to Science!</h1>
   <p>
-    <strong>Welcome!</strong> Here, you'll find insights into my current Marie Curie
-    project (FOCUS4PFAS), as well as updates on innovative studies and initiatives
-    from around the world. This platform serves as a space to share ideas, network
-    and generate debates on environmental and social issues of global importance.
+    Somos una plataforma dedicada a conectar el conocimiento científico con la
+    sociedad. Aquí encontrarás explicaciones claras y concisas de proyectos
+    científicos, debates sobre temas sociales y ambientales, y un fuerte enfoque
+    en el poder de la educación.
+  </p>
+  <p>
+    Únete a nuestra creciente comunidad y forma parte del movimiento para hacer
+    la ciencia más accesible, significativa e inclusiva.
   </p>
   <Projects />
 </Layout>
 
 <style>
+  h1 {
+    text-align: center;
+    font-weight: 600;
+    font-size: var(--fs-xl);
+  }
   p {
+    text-align: center;
     width: clamp(300px, 80vw, 1024px);
+    text-wrap: balance;
     margin: 2rem auto;
   }
 </style>

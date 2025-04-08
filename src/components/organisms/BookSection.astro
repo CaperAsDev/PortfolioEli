@@ -1,0 +1,43 @@
+---
+import BookCard from "../molecules/BookCard.astro";
+---
+
+<section>
+  <header>
+    <h2>Recommended book</h2>
+  </header>
+  <p>
+    One book a month to better understand ourselves: we explore how society
+    works, how we impact the planet, and what we can do for a more just
+    world—through the lens of sociology, psychology, and anthropology.
+  </p>
+  <BookCard />
+</section>
+<style>
+  section {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  header {
+    position: relative;
+  }
+  h2 {
+    width: fit-content;
+    text-align: center;
+    font-weight: 600;
+    padding-inline-end: var(--fs-xs);
+    font-size: var(--fs-xl);
+    background-color: var(--ligth);
+
+    &::after {
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      top: 60%;
+      content: "";
+      background-color: black;
+      width: 100%;
+      height: 2px;
+    }
+  }
+</style>

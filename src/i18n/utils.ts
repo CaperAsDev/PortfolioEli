@@ -1,8 +1,8 @@
-import { paths, Languages, defaultLang } from "./consts";
+import { paths, Languages, defaultLang } from '@/i18n/consts';
 import availableRoutes from "@/availableRoutes.js";
 
 type LangKey = keyof typeof Languages
-type PathKey = keyof typeof paths
+export type PathKey = keyof typeof paths
 export type LanguagesAnchorProps = {available: boolean, path: string, label: Languages, lang:LangKey}
 
 export function getLangFromUrl (url : URL)  {
@@ -38,8 +38,8 @@ export function shiftLang (url: URL) : LanguagesAnchorProps[] {
   return linksObj
 }
 
-export function parseURL(urlObject: URL): { url: PathKey; lang: LangKey } {
-  let pathname = urlObject.pathname;
+export function parseURL(urlObject: URL, pathmane: string= ""): { url: PathKey; lang: LangKey } {
+  let pathname = pathmane || urlObject.pathname ;
 
   if (pathname === '/') return { url: '/home', lang: defaultLang }
   
@@ -64,6 +64,15 @@ export function parseURL(urlObject: URL): { url: PathKey; lang: LangKey } {
     console.warn('Unexpected URL format');
     return { url: '/home', lang: defaultLang };
   }
+}
+
+export function getLink(path: PathKey, lang: LangKey) : string {
+  const isDefaultLang = defaultLang === lang
+
+  const link = isDefaultLang ? path : `/${lang}${path}`
+
+  return link
+
 }
 
 type MetaData = {

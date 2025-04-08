@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+---
+
+<article>
+  <Image
+    src={"https://libreriadelau.vtexassets.com/arquivos/ids/33974850-1200-auto?v=638342336203800000&width=1200&height=auto&aspect=true"}
+    alt={"Book cover"}
+    inferSize
+  />
+  <div>
+    <header>
+      <h3>La moda justa</h3>
+      <small>una invitación a vestir con ética</small>
+    </header>
+    <p>
+      Una reflexión sobre nuestras elecciones a la hora de vestir. Una propuesta
+      consciente e imaginativa ante la voracidad consumista. El título La moda
+      justa responde a una doble acepción. La primera se refiere a tener en el
+      armario la cantidad justa de ropa, la suficiente, la proporcionada. A huir
+      de la voracidad...
+    </p>
+    <a href={`${Astro.url.origin}/book`}> Read More</a>
+  </div>
+</article>
+<style>
+  article {
+    display: flex;
+    padding: var(--fs-s);
+    background-color: var(--secondary-1);
+    color: var(--primary-0);
+    border-radius: var(--fs-xs);
+  }
+  img {
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+  }
+  div {
+    padding: var(--fs-s);
+    display: grid;
+  }
+  h3 {
+    color: var(--light);
+    font-size: var(--fs-m);
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  p {
+    padding: var(--fs-s);
+  }
+  a {
+    place-self: end;
+    padding: var(--fs-xs);
+    background-color: oklch(from var(--secondary-0) l c h);
+    color: oklch(from var(--primary-0) l c h);
+
+    &:hover {
+      background-color: oklch(from var(--secondary-0) calc(l - 0.1) c h);
+      color: oklch(from var(--primary-0) l c h);
+    }
+  }
+</style>

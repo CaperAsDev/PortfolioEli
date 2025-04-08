@@ -1,12 +1,12 @@
 {
   "/home": {
     "en": {
-      "title": "Brifge to Science by Elisabeth",
-      "description": "Sitio web destinado a conectar la ciencia con la sociedad por medio de la divulgacion de proyectos cientificos."
+      "title": "Bridge to Science",
+      "description": "We break down complex scientific projects, explore the big issues that shape our world, and highlight how education drives change. Join our community and help bridge the gap."
     },
     "es": {
-      "title": "Brifge to Science por Elisabeth",
-      "description": "Sitio web destinado a conectar la ciencia con la sociedad por medio de la divulgacion de proyectos cientificos.."
+      "title": "Bridge to Science",
+      "description": "Simplificamos proyectos científicos complejos, exploramos los grandes problemas que configuran nuestro mundo y destacamos cómo la educación impulsa el cambio. Únete a nuestra comunidad y ayuda a cerrar la brecha."
     }
   },
   "/about": {
@@ -17,6 +17,46 @@
     "es": {
       "title": "Elisabeth | Sobre mi",
       "description": "Sitio web destinado a conectar la ciencia con la sociedad por medio de la divulgacion de proyectos cientificos.."
+    }
+  },
+  "/focus" :{
+    "en": {
+      "title": "FOCUS4PFAS",
+      "description": "Here you'll find key insights and progress from the FOCUS4PFAS project, a Marie Curie project that aims to ensure PFAS-free water."
+    },
+    "es": {
+      "title": "FOCUS4PFAS",
+      "description": "Aquí encontrarás información clave y avances del proyecto FOCUS4PFAS, un proyecto Marie Curie que tiene como objetivo garantizar agua libre de PFAS."
+    }
+  },
+  "/education": {
+    "en": {
+      "title": "Education in Science",
+      "description": "Education is the starting point for a more just society. Here, we highlight the work of teachers who are transforming the world from their classrooms."
+    },
+    "es": {
+      "title": "Educación en Ciencias",
+      "description": "La educación es la base de la equidad social. Aquí destacamos el trabajo de profesores y profesoras que están transformando el mundo desde sus clases."
+    }
+  },
+  "/science": {
+    "en": {
+      "title": "Science without borders",
+      "description": "In this section, discover scientific projects from around the world. We explain clearly and concisely what they aim to achieve, how they’re progressing, and why they matter to all of us as a society."
+    },
+    "es": {
+      "title": "Ciencia sin fronteras",
+      "description": "Descubre en esta sección proyectos científicos al rededor del mundo. Te contamos, de forma clara y breve, qué buscan, cómo avanzan y por qué nos conciernen a todos como sociedad."
+    }
+  },
+  "/social": {
+    "en": {
+      "title": "Social justice",
+      "description": "We reflect on how, as a society, we’re working toward social justice, equity, and gender equality."
+    },
+    "es": {
+      "title": "Justicia social",
+      "description": "Reflexionamos sobre lo que estamos haciendo como sociedad para avanzar hacia la justicia social, la equidad y la igualdad de género."
     }
   }
 }

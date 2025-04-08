@@ -31,21 +31,15 @@ const isDev = import.meta.env.DEV;
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap"
-      rel="stylesheet"
-    />
 
     <Seo
       title={title}
       description={description}
       image={{
-        alt: "un texto temporal",
-        src: "url.fake",
-        height: "600",
-        width: "800",
+        alt: "Bridge to science logo",
+        src: "/BTS_LogoC-V.svg",
+        height: "347",
+        width: "334",
       }}
     />
 
@@ -72,33 +66,32 @@ const isDev = import.meta.env.DEV;
     /* Colors */
 
     --primary-0: #ffecc8;
-    --primary-1: #ffd09b;
-    --primary-2: #fff7d1;
-    --primary-3: #f8c8c8;
-
-    /* --primary-0: #32c548;
-    --primary-1: #9ed058;
-    --primary-2: #a4eb81;
-    --primary-3: #b5ed9b; */
+    --primary-1: #bfbfb8;
+    --primary-2: #a3a69c;
+    --primary-3: #4d5950;
 
     --secondary-0: #798645;
-    --secondary-1: #626f47;
-    --secondary-2: #3c552d;
+    --secondary-1: #35403a;
+    --secondary-2: #232625;
 
-    --dark: #200752;
-    /* --dark: #3c552d; */
-    --ligth: #f2f2f2;
+    --terciary-0: #a7c6d9;
+    --terciary-1: #049dbf;
+    --terciary-2: #0378a6;
+    --terciary-3: #025373;
 
-    --terciary-0: #5917db;
+    --dark: #193140;
+    --light: #f2f2f2;
+    --ligth: var(--light);
+
+    /* --terciary-0: #5917db;
     --terciary-1: #a25bdf;
-    --terciary-2: #d280d3;
+    --terciary-2: #d280d3; */
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: var(--primary-1);
+    background-color: var(--ligth);
     color: var(--dark);
-    /* font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif; */
     font-family: "Noto Sans Lao Looped Variable", sans-serif;
   }
 
@@ -116,7 +109,6 @@ const isDev = import.meta.env.DEV;
 
     body {
       line-height: 1.5;
-      view-timeline-name: --scroll-in-body;
     }
 
     img,

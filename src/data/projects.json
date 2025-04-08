@@ -1,30 +1,58 @@
 [
   {
     "id": 1,
-    "name": "FOCUS4PFAS (Marie Curie Fellowship)",
-    "description": "PFAS have been used since the 1940s and are known as “forever chemicals” due to their extreme persistency to advanced water and wastewater treatment strategies.",
+    "name": {
+      "en": "FOCUS4PFAS (Marie Curie Fellowship)",
+      "es": "FOCUS4PFAS (Marie Curie Fellowship)"
+    },
+    "description": {
+      "en": "Here you'll find key insights and progress from the FOCUS4PFAS project, a Marie Curie project that aims to ensure PFAS-free water.",
+      "es": "Aquí encontrarás información clave y avances del proyecto FOCUS4PFAS, un proyecto Marie Curie que tiene como objetivo garantizar agua libre de PFAS."
+    },
     "image": "https://media.istockphoto.com/id/803155598/photo/close-up-the-pouring-purified-fresh-drink-water-from-the-bottle-on-table-in-living-room.jpg?s=612x612&w=0&k=20&c=SfoCBOTYa8E38ivCLXtWAxLBpSvJZrG0wB18n3qTG48=",
-    "url": "focus/"
+    "url": "/focus",
+    "pageReady": true
   },
   {
     "id": 2,
-    "name": "Education in science ",
-    "description": "This project is under construction.",
+    "name": {
+      "en": "Education in science",
+      "es": "Educación en Ciencias"
+    },
+    "description": {
+      "en": "Education is the starting point for a more just society. Here, we highlight the work of teachers who are transforming the world from their classrooms.",
+      "es": "La educación es la base de la equidad social. Aquí destacamos el trabajo de profesores y profesoras que están transformando el mundo desde sus clases."
+    },
     "image": "https://image.pbs.org/bento3-prod/pbs-education-blogs-bento-live-pbs/26461979c7_Inspire-Children-to-think-and-act-like-scientists.jpeg",
-    "url": "#"
+    "url": "/education",
+    "pageReady": true
   },
   {
     "id": 3,
-    "name": "Science Without Borders",
-    "description": "This project is under construction.",
+    "name": {
+      "en": "Science Without Borders",
+      "es": "Ciencia sin fronteras"
+    },
+    "description": {
+      "en": "In this section, discover scientific projects from around the world. We explain clearly and concisely what they aim to achieve, how they’re progressing, and why they matter to all of us as a society.",
+      "es": "Descubre en esta sección proyectos científicos al rededor del mundo. Te contamos, de forma clara y breve, qué buscan, cómo avanzan y por qué nos conciernen a todos como sociedad."
+    },
     "image": "https://img.freepik.com/premium-photo/science-nature-concept_257123-14962.jpg",
-    "url": "science/"
+    "url": "/science",
+    "pageReady": true
   },
   {
     "id": 4,
-    "name": "Social justice",
-    "description": "This project is under construction.",
+    "name": {
+      "en": "Social Justice",
+      "es": "Justicia social"
+    },
+    "description": {
+      "en": "We reflect on how, as a society, we’re working toward social justice, equity, and gender equality.",
+      "es": "Reflexionamos sobre lo que estamos haciendo como sociedad para avanzar hacia la justicia social, la equidad y la igualdad de género."
+    },
     "image": "https://images.stockcake.com/public/f/c/9/fc9b1a82-ca19-4b8d-8c3f-76d9fd956fe8_large/farmer-in-field-stockcake.jpg",
-    "url": "social/"
+    "url": "/social",
+    "pageReady": true
   }
 ]

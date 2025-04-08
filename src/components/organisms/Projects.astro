@@ -1,10 +1,15 @@
 ---
 import projects from "@/data/projects.json";
-import ProjectCard from "../molecules/ProjectCard2.astro";
+import ProjectCard from "../molecules/ProjectCard.astro";
+import type { PathKey } from "@/i18n/utils";
 ---
 
 <section>
-  {projects.map((project) => <ProjectCard {...project} />)}
+  {
+    projects.map(({ url, ...project }, index) => (
+      <ProjectCard {...project} url={url as PathKey} />
+    ))
+  }
 </section>
 <style>
   section {

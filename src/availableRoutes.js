@@ -2,6 +2,7 @@
 const availableRoutes = {
   "en": {
     "/about": "/about",
+    "/education": "/education",
     "/focus": "/focus",
     "/home": "/",
     "/science": "/science",
@@ -9,6 +10,7 @@ const availableRoutes = {
   },
   "es": {
     "/about": "/es/about",
+    "/education": "/es/education",
     "/focus": "/es/focus",
     "/home": "/es/",
     "/science": "/es/science",

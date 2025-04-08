@@ -1,0 +1,76 @@
+---
+import "@/css/education.css";
+
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import HeroImage from "@/assets/images/education/Expo_01.jpg";
+---
+
+<Layout>
+  <header class="education-header">
+    <h1 class="education-title">Education in science</h1>
+  </header>
+  <main class="education-main">
+    <h2 class="education-subtitle">Girls' Education</h2>
+
+    <Image
+      class="education-hero-image"
+      src={HeroImage}
+      alt={"Sharing knowledge with school girls and boys"}
+    />
+    <section class="education-section">
+      <p class="education-paragraph">
+        According to <strong
+          ><a
+            href="https://www.unicef.org/education/girls-education"
+            target="_blank"
+            class="education-link">UNICEF</a
+          ></strong
+        >, <strong>122 million girls worldwide are out of school</strong>. While
+        nearly half of countries (49%) have achieved gender <strong
+        ></strong>parity in primary education, the gap grows larger as girls get
+        older. Only <strong
+          >42% of countries have reached parity in lower secondary education</strong
+        >, and just <strong>24% at the upper secondary level.</strong>
+      </p>
+      <p class="education-paragraph">
+        The situation is especially severe in countries affected by fragility,
+        conflict, and violence. In these areas, <strong
+          >girls are 2.5 times more likely to be out of school than boys</strong
+        > and <strong>90% more likely to miss out on secondary education</strong
+        > compared to girls in more stable countries (<a
+          href="https://www.worldbank.org/"
+          target="_blank"
+          class="education-link">World Bank</a
+        >).
+      </p>
+      <p class="education-paragraph">
+        The <strong>COVID-19 pandemic has deepened these inequalities</strong>,
+        disrupting girls’ education, health, and well-being. Many girls have not
+        returned to school, and rising levels of <strong
+          >violence against women and girls</strong
+        > during the pandemic have further threatened their safety and future.
+      </p>
+      <p class="education-paragraph">
+        But girls’ education is about more than just access to school. It's
+        about <strong>safe, inclusive learning environments</strong> where girls
+        are supported in choosing subjects and careers they’re passionate about.
+      </p>
+      <p class="education-paragraph">
+        <strong>Gender-equitable education systems</strong> don’t just benefit girls—they
+        empower all students. They help young people develop essential life skills
+        like:
+      </p>
+      <ul class="education-list">
+        <li class="education-list-item"><strong>Communication </strong></li>
+        <li class="education-list-item"><strong>Self-management</strong></li>
+        <li class="education-list-item"><strong>Critical thinking</strong></li>
+        <li class="education-list-item"><strong>Negotiation</strong></li>
+      </ul>
+      <p class="education-paragraph">
+        Skills that are crucial not only for personal success but also for
+        building stronger, more prosperous societies.
+      </p>
+    </section>
+  </main>
+</Layout>

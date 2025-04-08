@@ -2,91 +2,124 @@
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import effect from "@/assets/images/science/pfasEffect.png";
+import ResearcherCard from "@/components/molecules/ResearcherCard.astro";
+import BlogHash from "@/components/atoms/blogHash.astro";
+
+const projectHasshes = ["#AguaContaminada", "#ElectroQuímica"];
 ---
 
 <Layout>
-  <section class="pfas-section">
-    <article class="pfas-article">
-      <h2 class="pfas-title">¿Has escuchado hablar de los PFAS?</h2>
-      <p>
-        Probablemente no te suene esa palabra… pero seguro has usado ollas
-        antiadherentes con teflón, ¿cierto? Pues te sorprenderá saber que ese <strong
-          >“teflón” contiene sustancias químicas muy peligrosas llamadas PFAS</strong
-        >, que <strong>no se descomponen fácilmente</strong> y pueden quedarse en
-        el ambiente <strong>para siempre</strong>.
-      </p>
-      <p>
-        Y eso no es todo: estas sustancias <strong
-          >pueden entrar en nuestro cuerpo</strong
-        > y causar problemas graves como: <strong
-          >cáncer, infertilidad, colesterol alto, problemas de tiroides</strong
-        >, entre otros.
-      </p>
-      <p>
-        Pero las ollas no son el único lugar donde están. Los PFAS están en
-        muchos productos que usamos todos los días:
-      </p>
-      <ul class="pfas-list">
-        <li>Ropa impermeable</li>
-        <li>
-          Empaques de comida (como las bolsas de crispetas para microondas)
-        </li>
-        <li>Maquillajes de larga duración</li>
-        <li>Productos de limpieza y cuidado personal</li>
-        <li>¡Y muchos más!</li>
-      </ul>
-      <p>
-        <strong>¿Y cómo llegan al ambiente?</strong> Al fabricar todos estos productos,
-        las industrias usan PFAS y <strong
-          >muchas veces no tratan bien sus aguas residuales</strong
-        >. Eso significa que estas sustancias tóxicas terminan en ríos, suelos,
-        cultivos y hasta en el aire que respiramos.
-      </p>
-      <p>
-        Y lo peor es que <strong
-          >las plantas de tratamiento no pueden eliminar los PFAS</strong
-        >, porque son muy resistentes.
-      </p>
-      <strong class="pfas-warning"
-        >Cada día hay más contaminación por PFAS.</strong
-      >
-    </article>
-    <Image src={effect} alt="Efectos ambientales de los PFAS" />
+  <div class="container">
+    <ResearcherCard id={1} />
 
-    <article class="pfas-article">
-      <h2 class="pfas-title">¿Qué estoy haciendo yo?</h2>
-      <p>
-        En mi investigación, estoy buscando una solución para eliminar los PFAS
-        del agua, usando <strong>electricidad</strong> y <strong
-          >materiales especiales</strong
-        > que ayudan a romper estas sustancias.
-      </p>
-    </article>
-
-    <article class="pfas-article">
-      <h2 class="pfas-title">¿Qué puedes hacer tú?</h2>
-      <ul class="pfas-list">
-        <li>
-          <strong>Infórmate y cambia tus hábitos de consumo</strong>. Evita
-          productos con PFAS si es posible.
-        </li>
-        <li>
-          Lee etiquetas, busca productos <strong>“libres de PFAS”</strong> o más
-          naturales.
-        </li>
-        <li>
-          Comparte esta información con tu familia y amigos. <strong
-            >Entre todos podemos generar un cambio.</strong
+    <main>
+      <div class="hashes">
+        {projectHasshes.map((hash) => <BlogHash hash={hash} />)}
+      </div>
+      <section class="pfas-section">
+        <article class="pfas-article">
+          <h2 class="pfas-title">¿Has escuchado hablar de los PFAS?</h2>
+          <p>
+            Probablemente no te suene esa palabra… pero seguro has usado ollas
+            antiadherentes con teflón, ¿cierto? Pues te sorprenderá saber que
+            ese <strong
+              >“teflón” contiene sustancias químicas muy peligrosas llamadas
+              PFAS</strong
+            >, que <strong>no se descomponen fácilmente</strong> y pueden quedarse
+            en el ambiente <strong>para siempre</strong>.
+          </p>
+          <p>
+            Y eso no es todo: estas sustancias <strong
+              >pueden entrar en nuestro cuerpo</strong
+            > y causar problemas graves como: <strong
+              >cáncer, infertilidad, colesterol alto, problemas de tiroides</strong
+            >, entre otros.
+          </p>
+          <p>
+            Pero las ollas no son el único lugar donde están. Los PFAS están en
+            muchos productos que usamos todos los días:
+          </p>
+          <ul class="pfas-list">
+            <li>Ropa impermeable</li>
+            <li>
+              Empaques de comida (como las bolsas de crispetas para microondas)
+            </li>
+            <li>Maquillajes de larga duración</li>
+            <li>Productos de limpieza y cuidado personal</li>
+            <li>¡Y muchos más!</li>
+          </ul>
+          <p>
+            <strong>¿Y cómo llegan al ambiente?</strong> Al fabricar todos estos
+            productos, las industrias usan PFAS y <strong
+              >muchas veces no tratan bien sus aguas residuales</strong
+            >. Eso significa que estas sustancias tóxicas terminan en ríos,
+            suelos, cultivos y hasta en el aire que respiramos.
+          </p>
+          <p>
+            Y lo peor es que <strong
+              >las plantas de tratamiento no pueden eliminar los PFAS</strong
+            >, porque son muy resistentes.
+          </p>
+          <strong class="pfas-warning"
+            >Cada día hay más contaminación por PFAS.</strong
           >
-        </li>
-      </ul>
-      <strong class="pfas-cta"
-        >Cuidar nuestra salud y el planeta está en nuestras manos.</strong
-      >
-    </article>
-  </section>
+        </article>
+        <Image src={effect} alt="Efectos ambientales de los PFAS" />
+
+        <article class="pfas-article">
+          <h2 class="pfas-title">¿Qué estoy haciendo yo?</h2>
+          <p>
+            En mi investigación, estoy buscando una solución para eliminar los
+            PFAS del agua, usando <strong>electricidad</strong> y <strong
+              >materiales especiales</strong
+            > que ayudan a romper estas sustancias.
+          </p>
+        </article>
+
+        <article class="pfas-article">
+          <h2 class="pfas-title">¿Qué puedes hacer tú?</h2>
+          <ul class="pfas-list">
+            <li>
+              <strong>Infórmate y cambia tus hábitos de consumo</strong>. Evita
+              productos con PFAS si es posible.
+            </li>
+            <li>
+              Lee etiquetas, busca productos <strong>“libres de PFAS”</strong> o
+              más naturales.
+            </li>
+            <li>
+              Comparte esta información con tu familia y amigos. <strong
+                >Entre todos podemos generar un cambio.</strong
+              >
+            </li>
+          </ul>
+          <strong class="pfas-cta"
+            >Cuidar nuestra salud y el planeta está en nuestras manos.</strong
+          >
+        </article>
+      </section>
+    </main>
+  </div>
 </Layout>
 <style>
+  .container {
+    display: flex;
+    padding: var(--fs-s);
+    gap: var(--fs-s);
+  }
+  .hashes {
+    display: flex;
+    gap: var(--fs-s);
+    place-self: flex-start;
+    flex-wrap: wrap;
+  }
+  main {
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+    width: clamp(300px, 80vw, 1280px);
+    margin: 0 auto;
+  }
   img {
     width: 100%;
     height: auto;

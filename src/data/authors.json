@@ -12,7 +12,7 @@
       {
         "label" : "Twitter",
         "icon": "brand-x",
-        "link": "#"
+        "link": null
       },
       {
         "label" : "Linkedin",

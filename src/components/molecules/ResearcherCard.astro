@@ -26,12 +26,13 @@ const author = authors.find((auth) => auth.id === id);
       <a class="mail" href={`mailto:${author.email}`}>{author.email}</a>
       <ul class="social">
         {author.social.map((item)=> (
+          item.link &&(
           <li>
             <a target="_blank" href={item.link} >
               <Icon name={`tabler:${item.icon}`} />
               <span>{item.label}</span>
             </a>
-          </li>
+          </li>)
         ))}
       </ul>
     ) :
@@ -51,7 +52,7 @@ const author = authors.find((auth) => auth.id === id);
     padding: var(--fs-s);
     border-radius: var(--fs-xs);
     gap: var(--fs-xs);
-    background-color: oklch(from var(--ligth) l c h);
+    border: 2px solid var(--secondary-1);
     
     p, a, span {
       margin: 0;

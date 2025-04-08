@@ -1,11 +1,13 @@
 ---
+import "@/css/about.css";
+
 import Layout from "@/layouts/Layout.astro";
 import ProfileImage from "@/components/atoms/ProfileImage.astro";
 import ProfileImageSRC from "@/assets/images/profile.jpeg";
 
 import { Icon } from "astro-icon/components";
 
-import { Content } from "@/data/about.md";
+import { Content } from "@/data/about-es.md";
 
 import { sizes } from "@/components/atoms/ProfileImage.astro";
 ---
@@ -21,12 +23,14 @@ import { sizes } from "@/components/atoms/ProfileImage.astro";
         width={800}
       />
       <div class="contact">
+        <h1>Elisabeth Cuervo Lumbaque</h1>
         <a href="mailto:ecuervo@icra.cat">ecuervo@icra.cat</a>
         <div class="links-icons">
           <a
             target="_blank"
             href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157/"
           >
+            Linkedin
             <Icon name="tabler:brand-linkedin" class={"sm"} />
           </a>
         </div>
@@ -37,38 +41,3 @@ import { sizes } from "@/components/atoms/ProfileImage.astro";
     </section>
   </main>
 </Layout>
-<style>
-  main {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    width: clamp(300px, 80vw, 1280px);
-    margin: 0 auto;
-    justify-content: space-between;
-  }
-  .profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    margin-block-start: clamp(1rem, 10vh, 3rem);
-  }
-
-  .contact {
-    display: grid;
-    place-items: center;
-  }
-  .links-icons {
-    a {
-      padding: 0;
-    }
-  }
-
-  section {
-    width: clamp(300px, 50vw, 720px);
-    p {
-      font-weight: 300;
-    }
-  }
-</style>

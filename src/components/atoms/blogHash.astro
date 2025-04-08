@@ -1,0 +1,27 @@
+---
+interface Props {
+  hash: string;
+}
+const { hash } = Astro.props as Props;
+---
+
+<!-- Este link deberia llevar a una pagina incial de /science donde mediante un query parameter o similar realizo un filtro de los articulos que contengan ese hash -->
+<a href="#">{hash}</a>
+
+<style>
+  a {
+    position: relative;
+    padding: calc(var(--fs-xs) * 0.7);
+    border: 1px solid var(--dark);
+  }
+  a::after {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    content: "";
+    width: var(--fs-xs);
+    height: var(--fs-xs);
+    background-color: var(--dark);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  }
+</style>

@@ -1,0 +1,87 @@
+---
+import "@/css/education.css";
+
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import HeroImage from "@/assets/images/education/Expo_01.jpg";
+---
+
+<Layout>
+  <header class="education-header">
+    <h1 class="education-title">Educación en ciencias</h1>
+  </header>
+  <main class="education-main">
+    <h2 class="education-subtitle">Situación de la educación para niñas</h2>
+
+    <Image
+      class="education-hero-image"
+      src={HeroImage}
+      alt={"Compartiendo conocimiento con niñas y niños en la escuela"}
+    />
+    <section class="education-section">
+      <p class="education-paragraph">
+        Según <strong
+          ><a
+            href="https://www.unicef.org/education/girls-education"
+            target="_blank"
+            class="education-link">UNICEF</a
+          ></strong
+        >, <strong
+          >122 millones de niñas en todo el mundo no asisten a la escuela</strong
+        >. Si bien casi la mitad de los países (49%) han logrado la paridad de
+        género en la educación primaria, la brecha se acentúa a medida que las
+        niñas crecen. Solo el
+        <strong
+          >42% de los países han alcanzado la paridad en la educación secundaria
+          inferior</strong
+        >
+        y solo el <strong>24% en la secundaria superior.</strong>
+      </p>
+      <p class="education-paragraph">
+        La situación es especialmente grave en los países afectados por la
+        fragilidad, los conflictos y la violencia. En estas zonas, <strong
+          >las niñas tienen 2,5 veces más probabilidades de no asistir a la
+          escuela que los niños</strong
+        > y un <strong
+          >90% más de probabilidades de no cursar la educación secundaria</strong
+        >
+        en comparación con las niñas de países más estables (<a
+          href="https://www.worldbank.org/"
+          target="_blank"
+          class="education-link">World Bank</a
+        >).
+      </p>
+      <p class="education-paragraph">
+        La <strong
+          >pandemia de COVID-19 ha profundizado estas desigualdades</strong
+        >, afectando la educación, la salud y el bienestar de las niñas. Muchas
+        niñas no han regresado a la escuela, y el aumento de los niveles de <strong
+          >violencia contra las mujeres y las niñas</strong
+        > durante la pandemia ha amenazado aún más su seguridad y su futuro.
+      </p>
+      <p class="education-paragraph">
+        Pero la educación de las niñas va más allá del simple acceso a la
+        escuela. Se trata de <strong
+          >entornos de aprendizaje seguros e inclusivos</strong
+        > donde las niñas reciben apoyo para elegir las carreras que les apasionan.
+      </p>
+      <p class="education-paragraph">
+        <strong>Los sistemas educativos con equidad de género</strong> no solo benefician
+        a las niñas, sino que empoderan a todo el alumnado. Ayudan a los jóvenes
+        a desarrollar habilidades esenciales para la vida, como:
+      </p>
+      <ul class="education-list">
+        <li class="education-list-item"><strong>Comunicación</strong></li>
+        <li class="education-list-item"><strong>Autogestión</strong></li>
+        <li class="education-list-item">
+          <strong>Pensamiento crítico</strong>
+        </li>
+        <li class="education-list-item"><strong>Negociación</strong></li>
+      </ul>
+      <p class="education-paragraph">
+        Habilidades cruciales no solo para el éxito personal, sino también para
+        construir sociedades más fuertes y prósperas.
+      </p>
+    </section>
+  </main>
+</Layout>

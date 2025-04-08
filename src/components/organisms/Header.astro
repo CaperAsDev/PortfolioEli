@@ -47,9 +47,14 @@ const languagesReady = true;
     initial-value: 0;
   }
   @property --hue {
-    syntax: "<angle>";
+    syntax: "<number>";
     inherits: false;
-    initial-value: 0deg;
+    initial-value: 0;
+  }
+  @property --ligthp {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
   }
 
   header {
@@ -62,22 +67,26 @@ const languagesReady = true;
     padding: 1rem;
     padding-bottom: 2rem;
     backdrop-filter: blur(10px);
-    background-color: oklch(from var(--primary-3) l c h / var(--opacity));
-    color: oklch(from var(--dark) l c calc(h + var(--hue)));
+    background-color: oklch(from var(--secondary-2) l c h / var(--opacity));
+    color: oklch(
+      from var(--dark) calc(l + var(--ligthp)) c calc(h + var(--hue))
+    );
     animation: opacityChange linear forwards;
-    animation-timeline: view(block);
-    animation-range: cover 0% cover 50%;
+    animation-timeline: scroll();
+    animation-range: 0 200px;
     z-index: 20;
   }
 
   @keyframes opacityChange {
-    80% {
+    0% {
       --opacity: 0;
-      --hue: 100deg;
+      --hue: 0;
+      --ligthp: 0;
     }
     100% {
       --opacity: 0.7;
-      --hue: 280deg;
+      --hue: 280;
+      --ligthp: 0.5;
     }
   }
 
