@@ -17,6 +17,7 @@ import BookCard from "../molecules/BookCard.astro";
   section {
     max-width: 1240px;
     margin: 0 auto;
+    padding: var(--fs-xs);
   }
   header {
     position: relative;
@@ -39,5 +40,13 @@ import BookCard from "../molecules/BookCard.astro";
       width: 100%;
       height: 2px;
     }
+  }
+
+  @media screen and (width >= 425px) {
+    section {
+      padding: var(--fs-s);
+    }
+  }
+  @media screen and (width >= 768px) {
   }
 </style>

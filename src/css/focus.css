@@ -7,9 +7,19 @@ main {
   margin: 0 auto;
   justify-content: space-between;
 }
-header {
+.main-container header {
+  max-width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  gap: var(--fs-s);
+
+  img {
+    max-width: 280px;
+    object-fit: cover;
+    height: auto;
+  }
 }
 .focus {
   mix-blend-mode: multiply;
@@ -21,18 +31,15 @@ header {
   height: auto;
 }
 
-h1 {
+.main-container h1 {
   font-size: var(--fs-l);
   font-weight: 600;
   text-align: center;
 }
-section {
-  padding: var(--fs-s);
-}
-p {
+.main-container p {
   margin-inline: var(--fs-s);
 }
-ul {
+.main-container ul {
   margin-inline: var(--fs-l);
   list-style: disc;
   li {
@@ -74,10 +81,10 @@ ul {
     object-fit: cover;
   }
 }
-h2 {
+.main-container h2 {
   font-weight: 600;
   font-size: var(--fs-m);
 }
-strong {
+.main-container strong {
   font-weight: 400;
 }

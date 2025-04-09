@@ -1,4 +1,6 @@
 ---
+import "@/css/science.css";
+
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import effect from "@/assets/images/science/pfasEffect.png";
@@ -9,7 +11,7 @@ const projectHasshes = ["#AguaContaminada", "#ElectroQuímica"];
 ---
 
 <Layout>
-  <div class="container">
+  <div class="science-container">
     <ResearcherCard id={1} />
 
     <main>
@@ -101,78 +103,3 @@ const projectHasshes = ["#AguaContaminada", "#ElectroQuímica"];
     </main>
   </div>
 </Layout>
-<style>
-  .container {
-    display: flex;
-    padding: var(--fs-s);
-    gap: var(--fs-s);
-  }
-  .hashes {
-    display: flex;
-    gap: var(--fs-s);
-    place-self: flex-start;
-    flex-wrap: wrap;
-  }
-  main {
-    display: grid;
-    place-items: center;
-    gap: 1rem;
-    width: clamp(300px, 80vw, 1280px);
-    margin: 0 auto;
-  }
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    max-width: 800px;
-    margin-inline: auto;
-    margin-block: var(--fs-m);
-    border-radius: 1rem;
-  }
-  p {
-    margin-inline-start: var(--fs-s);
-  }
-  ul {
-    margin-inline-start: var(--fs-m);
-  }
-  strong {
-    font-weight: 600;
-    font-size: var(--fs-s);
-  }
-  .pfas-section {
-    display: flex;
-    flex-direction: column;
-    padding: var(--fs-m);
-    max-width: 1240px;
-    margin-inline: auto;
-  }
-
-  .pfas-title {
-    font-size: var(--fs-m);
-    font-weight: 600;
-    margin-bottom: var(--fs-s);
-  }
-
-  .pfas-list {
-    list-style-type: disc;
-    padding-left: 2rem;
-    margin-block: var(--fs-s);
-    line-height: 1.6;
-  }
-
-  .pfas-list li {
-    font-size: var(--fs-s);
-    margin-bottom: 0.5rem;
-  }
-
-  .pfas-warning {
-    font-weight: 600;
-  }
-
-  .pfas-cta {
-    display: block;
-    margin-top: var(--fs-s);
-    font-size: var(--fs-s);
-    font-weight: 600;
-  }
-</style>

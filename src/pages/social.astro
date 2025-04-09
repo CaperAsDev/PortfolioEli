@@ -1,10 +1,12 @@
 ---
+import "@/css/social.css";
+
 import Layout from "@/layouts/Layout.astro";
 import video_01 from "@/assets/videos/social/video_01.mp4";
 ---
 
 <Layout>
-  <div class="container">
+  <div class="social-container">
     <h1>Social Justice</h1>
     <main>
       <section>
@@ -73,35 +75,4 @@ import video_01 from "@/assets/videos/social/video_01.mp4";
       </strong>
     </main>
   </div>
-  <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: var(--fs-s);
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: var(--fs-l);
-      font-weight: 600;
-      text-align: center;
-    }
-    h2 {
-      font-weight: 600;
-      font-size: var(--fs-m);
-    }
-    video {
-      width: calc(300px + var(--fs-xl));
-      height: auto;
-      margin: 0 auto;
-    }
-    p {
-      margin-inline: var(--fs-s);
-    }
-    ul {
-      margin-inline: var(--fs-l);
-      list-style: disc;
-    }
-  </style>
 </Layout>

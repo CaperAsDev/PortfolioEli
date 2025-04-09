@@ -17,7 +17,7 @@ const lang = getLangFromUrl(URL);
 const parsedURL = parseURL(URL);
 const layoutMetaManager = new MetaManager(metaData);
 const { title, description } = layoutMetaManager.getMetaData(parsedURL);
-const isDev = import.meta.env.DEV;
+const isDev = true;
 ---
 
 <!doctype html>

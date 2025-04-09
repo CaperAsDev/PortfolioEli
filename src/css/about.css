@@ -13,6 +13,7 @@ main {
   gap: 1rem;
   padding: 1rem;
   margin-block-start: clamp(1rem, 10vh, 3rem);
+  margin-inline: auto;
 }
 
 .contact {
@@ -40,8 +41,14 @@ main {
 }
 
 section {
-  width: clamp(300px, 50vw, 720px);
   p {
     font-weight: 300;
+  }
+}
+
+@media screen and (width >= 768px) {
+  section {
+    width: clamp(300px, 80vw, 720px);
+    margin-inline: auto;
   }
 }

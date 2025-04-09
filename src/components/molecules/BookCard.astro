@@ -26,13 +26,16 @@ import { Image } from "astro:assets";
 <style>
   article {
     display: flex;
+    flex-wrap: wrap;
     padding: var(--fs-s);
     background-color: var(--secondary-1);
     color: var(--primary-0);
     border-radius: var(--fs-xs);
+    box-shadow: 3px 10px 10px 2px var(--dark);
+    margin-block: var(--fs-s);
   }
   img {
-    max-width: 300px;
+    max-width: 100%;
     height: auto;
     object-fit: cover;
   }
@@ -47,7 +50,7 @@ import { Image } from "astro:assets";
     margin-bottom: 0;
   }
   p {
-    padding: var(--fs-s);
+    padding: var(--fs-xs);
   }
   a {
     place-self: end;
@@ -58,6 +61,17 @@ import { Image } from "astro:assets";
     &:hover {
       background-color: oklch(from var(--secondary-0) calc(l - 0.1) c h);
       color: oklch(from var(--primary-0) l c h);
+    }
+  }
+
+  @media screen and (width > 425px) {
+    img {
+      max-width: 300px;
+    }
+  }
+  @media screen and (width >= 768px) {
+    article {
+      flex-wrap: nowrap;
     }
   }
 </style>

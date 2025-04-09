@@ -1,0 +1,29 @@
+.social-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--fs-s);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.social-container h1 {
+  font-size: var(--fs-l);
+  font-weight: 600;
+  text-align: center;
+}
+.social-container h2 {
+  font-weight: 600;
+  font-size: var(--fs-m);
+}
+.social-container video {
+  width: calc(300px + var(--fs-xl));
+  height: auto;
+  margin: 0 auto;
+}
+.social-container p {
+  margin-inline: var(--fs-s);
+}
+.social-container ul {
+  margin-inline: var(--fs-l);
+  list-style: disc;
+}

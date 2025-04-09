@@ -43,15 +43,16 @@ const author = authors.find((auth) => auth.id === id);
 </aside>
 <style>
   aside{
-    max-width: calc(300px + var(--fs-xl));
-    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--fs-s);
-    border-radius: var(--fs-xs);
     gap: var(--fs-xs);
+    max-width: calc(280px + var(--fs-xl));
+    height: fit-content;
+    padding: var(--fs-s);
+    margin-inline: auto;
+    border-radius: var(--fs-xs);
     border: 2px solid var(--secondary-1);
     
     p, a, span {
