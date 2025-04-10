@@ -4,9 +4,14 @@
     "name": "Elisabeth",
     "lastName": "Cuervo Lumbaque",
     "city": "Girona",
-    "country": "Spain",
-    "occupation": "Marie Curie Fellow Resercher",
-    "workPlace": "ICRA",
+    "country": {
+      "es": "España",
+      "en": "Spain"
+    },
+    "occupation": {
+      "es": "Investigadora postdoctoral-Marie Curie en ICRA",
+      "en": "Marie Curie Fellow Resercher at ICRA"
+    },
     "email":"ecuervo@icra.cat",
     "social" : [
       {

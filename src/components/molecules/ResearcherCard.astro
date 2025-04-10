@@ -1,12 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import authors from "@/data/authors.json";
 import { Icon } from "astro-icon/components";
+
+import { getLangFromUrl } from "@/i18n/utils";
+
+import authors from "@/data/authors.json";
 
 interface Props {
   id: number;
 }
-
+const lang = getLangFromUrl(Astro.url);
 const { id } = Astro.props;
 const author = authors.find((auth) => auth.id === id);
 ---
@@ -21,8 +24,8 @@ const author = authors.find((auth) => auth.id === id);
         inferSize
       />
       <p>{author.name} {author.lastName}</p>
-      <p class="work">{author.occupation} at {author.workPlace}</p>
-      <p>{author.city}, {author.country}</p>
+      <p class="work">{author.occupation[lang]}</p>
+      <p>{author.city}, {author.country[lang]}</p>
       <a class="mail" href={`mailto:${author.email}`}>{author.email}</a>
       <ul class="social">
         {author.social.map((item)=> (

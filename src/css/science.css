@@ -30,7 +30,7 @@
   margin: 0;
   margin: var(--fs-xs);
 }
-.science-container ul {
+.science-container .pfas-list {
   margin-inline-start: var(--fs-m);
 }
 .science-container strong {
