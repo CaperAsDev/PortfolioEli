@@ -1,0 +1,51 @@
+---
+import { getLangFromUrl } from "@/i18n/utils";
+import type { MarkdownFile } from "@/types";
+
+import FocusHeader from "@/components/molecules/FocusHeader.astro";
+import FocusComic from "@/components/molecules/FocusComic.astro";
+import FocusVideos from "@/components/molecules/focusVideos.astro";
+
+const collection: Record<string, MarkdownFile> = import.meta.glob<MarkdownFile>(
+  "@/content/focus/*.md",
+  { eager: true }
+);
+
+const lang = getLangFromUrl(Astro.url);
+const collArray: MarkdownFile[] = Object.values(collection);
+const collInLang: MarkdownFile[] = collArray.filter(
+  (item) => item.frontmatter.lang === lang
+);
+
+const Intro = collInLang.find(
+  (item) => item.frontmatter.section === "intro"
+)?.Content;
+const What = collInLang.find(
+  (item) => item.frontmatter.section === "what"
+)?.Content;
+const Why = collInLang.find(
+  (item) => item.frontmatter.section === "why"
+)?.Content;
+---
+
+<main class="main-container">
+  <FocusHeader />
+
+  <section class="introduction">
+    <article>
+      <Intro />
+    </article>
+    <FocusComic />
+  </section>
+  <section>
+    <article>
+      <What />
+    </article>
+    <FocusVideos />
+  </section>
+  <section>
+    <article>
+      <Why />
+    </article>
+  </section>
+</main>

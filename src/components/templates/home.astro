@@ -1,0 +1,36 @@
+---
+import Projects from "@/components/organisms/Projects.astro";
+import BookSection from "@/components/organisms/BookSection.astro";
+import { getLangFromUrl } from "@/i18n/utils";
+import { getContentFromImport } from "@/js/utils.js";
+import type { MarkdownFile } from "@/types";
+
+const lang = getLangFromUrl(Astro.url);
+const mdFiles: MarkdownFile[] = Object.values(
+  import.meta.glob<MarkdownFile>(`@/content/home/*.md`, {
+    eager: true,
+  })
+);
+
+const Content = getContentFromImport({ mdFiles, lang });
+---
+
+<div class="home-intro">
+  <Content />
+</div>
+<Projects />
+<BookSection />
+
+<style is:inline>
+  .home-intro h1 {
+    text-align: center;
+    font-weight: 600;
+    font-size: var(--fs-xl);
+  }
+  .home-intro p {
+    text-align: center;
+    width: clamp(300px, 80vw, 1024px);
+    text-wrap: balance;
+    margin: 2rem auto;
+  }
+</style>

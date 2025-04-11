@@ -1,0 +1,37 @@
+---
+import video_01 from "@/assets/videos/focus/video_01.mp4";
+import video_02 from "@/assets/videos/focus/video_02.mp4";
+import { getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
+const captions = {
+  es: {
+    video_01:
+      "Modificar los poros del electrodo mejora la forma en que las PFAS se adhieren o reaccionan con el ánodo al atravesar el material, optimizando así la eficiencia del proceso.",
+    video_02:
+      "Este reactor funciona de forma continua y destruye los compuestos PFAS cuando se le aplica corriente eléctrica. Al pasar por el ánodo, las sustancias tóxicas se transforman en compuestos no tóxicos, lo que permite que el agua salga del reactor mucho más limpia.",
+  },
+  en: {
+    video_01:
+      "Modifying the electrode pores improves the way PFAS bind or react with the anode as they pass through the material, thus optimizing the process's efficiency.",
+    video_02:
+      "This reactor operates continuously and destroys PFAS compounds when an electric current is applied. As they pass through the anode, the toxic substances are transformed into non-toxic compounds, allowing the water to exit the reactor much cleaner.",
+  },
+};
+---
+
+<article class="video_container">
+  <figure>
+    <video controls src={video_01}></video>
+    <figcaption>
+      {captions[lang].video_01}
+    </figcaption>
+  </figure>
+  <figure>
+    <video controls src={video_02}></video>
+    <figcaption>
+      {captions[lang].video_02}
+    </figcaption>
+  </figure>
+</article>
