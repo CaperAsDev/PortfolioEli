@@ -4,28 +4,30 @@
   text-align: center;
   padding: var(--fs-s);
 }
-.education-subtitle {
-  font-size: var(--fs-m);
-  font-weight: 400;
-  text-align: start;
-  padding: var(--fs-s);
-  margin-inline-start: var(--fs-m);
-}
+
 .education-hero-image {
   width: 100%;
   height: 50vh;
   object-fit: cover;
   object-position: right;
 }
-.education-section {
+.education-main {
   width: clamp(300px, 80vw, 1240px);
   margin: 0 auto;
+
+  h2 {
+    font-size: var(--fs-m);
+    font-weight: 400;
+    text-align: start;
+    padding: var(--fs-s);
+  }
 
   a {
     text-decoration: underline;
   }
 
   p {
+    margin: 0;
     padding: var(--fs-s);
   }
 

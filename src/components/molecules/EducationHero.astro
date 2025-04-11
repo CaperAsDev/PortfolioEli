@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import HeroImage from "@/assets/images/education/Expo_01.jpg";
+import { getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
+const info = {
+  es: {
+    title: "Educación en ciencias",
+    alt: "Compartiendo conocimiento con niñas y niños en la escuela",
+  },
+  en: {
+    title: "Education in science",
+    alt: "Sharing knowledge with school girls and boys",
+  },
+};
+---
+
+<header class="education-header">
+  <h1 class="education-title">{info[lang].title}</h1>
+  <Image class="education-hero-image" src={HeroImage} alt={info[lang].alt} />
+</header>
