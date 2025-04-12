@@ -17,7 +17,7 @@
   width: clamp(300px, 80vw, 1280px);
   margin: 0 auto;
 }
-.science-container img {
+.science-container .pfas-section img {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -26,14 +26,14 @@
   margin-block: var(--fs-m);
   border-radius: 1rem;
 }
-.science-container p {
+.science-container .pfas-section p {
   margin: 0;
   margin: var(--fs-xs);
 }
-.science-container .pfas-list {
+.science-container .pfas-section ul {
   margin-inline-start: var(--fs-m);
 }
-.science-container strong {
+.science-container .pfas-section strong {
   font-weight: 600;
   font-size: var(--fs-s);
 }
@@ -44,33 +44,15 @@
   margin-inline: auto;
 }
 
-.science-container .pfas-title {
+.science-container h2 {
   font-size: var(--fs-m);
   font-weight: 600;
   margin-bottom: var(--fs-s);
 }
 
-.science-container .pfas-list {
-  list-style-type: disc;
-  padding-left: 2rem;
-  margin-block: var(--fs-s);
-  line-height: 1.6;
-}
-
-.science-container .pfas-list li {
+.science-container .pfas-section ul li {
   font-size: var(--fs-s);
   margin-bottom: 0.5rem;
-}
-
-.science-container .pfas-warning {
-  font-weight: 600;
-}
-
-.science-container .pfas-cta {
-  display: block;
-  margin-top: var(--fs-s);
-  font-size: var(--fs-s);
-  font-weight: 600;
 }
 
 @media screen and (width >= 1024px) {

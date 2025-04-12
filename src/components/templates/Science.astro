@@ -1,0 +1,45 @@
+---
+import ResearcherCard from "@/components/molecules/ResearcherCard.astro";
+import BlogHash from "@/components/atoms/blogHash.astro";
+import { Image } from "astro:assets";
+import effect from "@/assets/images/science/pfasEffect.png";
+
+import { getLangFromUrl } from "@/i18n/utils";
+import type { MarkdownFile } from "@/types";
+
+const collection: Record<string, MarkdownFile> = import.meta.glob<MarkdownFile>(
+  "@/content/science/*.md",
+  { eager: true }
+);
+
+const lang = getLangFromUrl(Astro.url);
+const collArray: MarkdownFile[] = Object.values(collection);
+const collInLang: MarkdownFile[] = collArray.filter(
+  (item) => item.frontmatter.lang === lang
+);
+
+const Intro = collInLang.find(
+  (item) => item.frontmatter.section === "intro"
+)?.Content;
+
+const hashes: [string] = collInLang[0].frontmatter.hashes;
+const authorID: number = collInLang[0].frontmatter.authorId;
+
+const What = collInLang.find(
+  (item) => item.frontmatter.section === "what"
+)?.Content;
+---
+
+<div class="science-container">
+  <ResearcherCard id={authorID} />
+  <main>
+    <div class="hashes">
+      {hashes.map((hash) => <BlogHash hash={hash} />)}
+    </div>
+    <section class="pfas-section">
+      <Intro />
+      <Image src={effect} alt="PFAS environment effects" />
+      <What />
+    </section>
+  </main>
+</div>
