@@ -64,8 +64,7 @@ const isDev = true;
     --fs-xs: clamp(0.7rem + 0.15vw, 0.7vw + 0.3rem, 1rem + 0.1vw);
 
     /* Colors */
-
-    --primary-0: #ffecc8;
+    --primary-0: #f2f2f2;
     --primary-1: #bfbfb8;
     --primary-2: #a3a69c;
     --primary-3: #4d5950;
@@ -77,22 +76,59 @@ const isDev = true;
     --terciary-0: #a7c6d9;
     --terciary-1: #049dbf;
     --terciary-2: #0378a6;
-    --terciary-3: #025373;
+    --terciary-3: #193140;
 
-    --dark: #193140;
-    --light: #f2f2f2;
+    --dark-orange: #993e1d;
+    /* --dark: #193140; */
+    /* --dark: #1b1b1b; */
+    /* --dark: #010118; */
+    --dark: #222;
+    --light: #fef7e0;
     --ligth: var(--light);
 
     /* --terciary-0: #5917db;
     --terciary-1: #a25bdf;
     --terciary-2: #d280d3; */
+
+    /* Themes */
+    --h-text-clr: light-dark(var(--dark), var(--primary-0));
+
+    --bg-clr: light-dark(var(--light), var(--dark));
+    --text-clr: light-dark(var(--dark), var(--light));
+
+    --inverse-bg-clr: light-dark(var(--dark), var(--light));
+    --inverse-text-clr: light-dark(var(--light), var(--dark));
+
+    --dark-bg-clr: light-dark(var(--terciary-3), var(--dark-orange));
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: var(--ligth);
-    color: var(--dark);
+    background-color: var(--bg-clr);
+    color: var(--text-clr);
     font-family: "Noto Sans Lao Looped Variable", sans-serif;
+  }
+  /* Light Mode */
+  [data-theme="light"] {
+    color-scheme: light;
+  }
+
+  /* Dark Mode - forcing this, not advised to do this normally except you want to give your users the option to do so */
+  [data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  [data-theme="dark"] img.image.dark {
+    display: block;
+  }
+  [data-theme="dark"] img.image.light {
+    display: none;
+  }
+  [data-theme="light"] img.image.light {
+    display: block;
+  }
+  [data-theme="light"] img.image.dark {
+    display: none;
   }
 
   @layer reset {

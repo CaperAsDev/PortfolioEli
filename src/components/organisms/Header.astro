@@ -6,6 +6,7 @@ import ChangeLangAnchor from "@/components/atoms/ChangeLangAnchor.astro";
 import { navigation } from "@/i18n/ui";
 import type { Languages } from "@/i18n/consts";
 import { shiftLang } from "@/i18n/utils";
+import ClrThemeButton from "../atoms/ClrThemeButton.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 const changeLangOptions = shiftLang(Astro.url);
@@ -35,6 +36,7 @@ const languagesReady = true;
               )
           )
       }
+      <ClrThemeButton />
     </ul>
   </nav>
 </header>
@@ -69,7 +71,7 @@ const languagesReady = true;
     backdrop-filter: blur(10px);
     background-color: oklch(from var(--secondary-2) l c h / var(--opacity));
     color: oklch(
-      from var(--dark) calc(l + var(--ligthp)) c calc(h + var(--hue))
+      from var(--text-clr) calc(l + var(--ligthp)) c calc(h + var(--hue))
     );
     animation: opacityChange linear forwards;
     animation-timeline: scroll();
@@ -86,7 +88,7 @@ const languagesReady = true;
     100% {
       --opacity: 0.7;
       --hue: 280;
-      --ligthp: 0.5;
+      --ligthp: 0.7;
     }
   }
 

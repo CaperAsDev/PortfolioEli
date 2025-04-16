@@ -51,24 +51,6 @@ main {
   flex-direction: column;
   gap: var(--fs-s);
 }
-.video_container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--fs-s);
-
-  video {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-
-  figcaption {
-    padding: var(--fs-xs);
-    border: 1px solid var(--dark);
-    border-radius: 0 0 var(--fs-s) var(--fs-s);
-  }
-}
 
 .comic_container {
   display: grid;

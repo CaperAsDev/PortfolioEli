@@ -13,4 +13,4 @@ In my research, I’m working on a solution to remove PFAS from water using **el
 - Read labels — look for **“PFAS-free”** or more natural options.
 - Share this info with family and friends. **Together, we can make a difference.**
 
-**💧 Protecting our health and the planet is in our hands.**
+**Protecting our health and the planet is in our hands.**

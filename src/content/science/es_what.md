@@ -13,4 +13,4 @@ En mi investigación, estoy buscando una solución para eliminar los PFAS del ag
 - Lee etiquetas, busca productos **“libres de PFAS”** o más naturales.
 - Comparte esta información con tu familia y amigos. **Entre todos podemos generar un cambio.**
 
-**💧 Cuidar nuestra salud y el planeta está en nuestras manos.**
+**Cuidar nuestra salud y el planeta está en nuestras manos.**

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "La moda justa",
+    "subtitle": "Una invitación a vestir con ética",
+    "author": "Marta D. Riezu",
+    "image": "https://example.com/to-kill-a-mockingbird.jpg",
+    "review": "Una reflexión sobre nuestras elecciones a la hora de vestir propuesta consciente e imaginativa ante la voracidad consumista. El título La moda justa responde a una doble acepción. La primera se refiere a tener en el armario la cantidad justa de ropa, la suficiente, la proporcionada. A huir de la voracidad...",
+    "rating": 4.5,
+    "genre": "Reflexión",
+    "tags": ["Moda", "Ética", "Sostenibilidad"],
+    "published": "2021-11-10"
+  }
+]

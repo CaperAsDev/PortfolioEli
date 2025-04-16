@@ -17,6 +17,4 @@ We need to **change our lifestyles** and act with more respect for the planet an
 - Reduce plastic use
 - Share information and educate others
 
----
-
 **_“Caring for the planet means caring for those who live and work on it. Change begins with us.”_**

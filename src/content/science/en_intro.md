@@ -25,4 +25,4 @@ And it’s not just pots and pans. PFAS are found in all kinds of everyday produ
 
 What’s worse is that **water treatment plants can’t remove PFAS**, because they’re so resistant.
 
-**⚠️ PFAS pollution is growing every day.**
+**PFAS pollution is growing every day.**

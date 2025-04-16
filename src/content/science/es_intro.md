@@ -25,4 +25,4 @@ Pero las ollas no son el único lugar donde están. Los PFAS están en muchos pr
 
 Y lo peor es que **las plantas de tratamiento no pueden eliminar los PFAS**, porque son muy resistentes.
 
-**⚠️ Cada día hay más contaminación por PFAS.**
+**Cada día hay más contaminación por PFAS.**

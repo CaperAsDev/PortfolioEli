@@ -1,11 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import { footer } from "@/i18n/ui";
 
 import Focus from "@/assets/images/FOCUS4PFAS.jpg";
 import ICRA from "@/assets/images/Logo-ICRA_2-1.svg";
 import EC from "@/assets/images/European-Commission.svg";
 import Logo from "@/assets/images/BTS_LogoC-V.svg";
+
+import { getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <footer>
@@ -36,7 +41,7 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
       <Image src={EC} alt={"Flaf of European Union"} />
     </div>
   </div>
-  <p>© 2025, All rights reserved.</p>
+  <p>{footer[lang].label}</p>
 </footer>
 
 <style>
@@ -46,7 +51,8 @@ import Logo from "@/assets/images/BTS_LogoC-V.svg";
     margin-top: calc(var(--fs-xl) * 2);
     border-top: 1px solid oklch(from var(--primary-2) l c h / 1);
     place-items: center;
-    background-color: oklch(from var(--primary-2) l c h / 0.2);
+    color: var(--dark);
+    background-color: oklch(from var(--primary-0) calc(l + 0.1) c h / 0.8);
   }
   .info-wrapper {
     width: 100%;

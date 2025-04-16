@@ -12,7 +12,7 @@ const { hash } = Astro.props as Props;
   a {
     position: relative;
     padding: calc(var(--fs-xs) * 0.7);
-    border: 1px solid var(--dark);
+    border: 1px solid var(--inverse-bg-clr);
   }
   a::after {
     position: absolute;
@@ -21,7 +21,7 @@ const { hash } = Astro.props as Props;
     content: "";
     width: var(--fs-xs);
     height: var(--fs-xs);
-    background-color: var(--dark);
+    background-color: var(--inverse-bg-clr);
     clip-path: polygon(0 100%, 100% 100%, 100% 0);
   }
 </style>

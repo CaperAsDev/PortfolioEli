@@ -1,15 +1,36 @@
 ---
-import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
-import comic_01 from "@/assets/images/focus/v_01.png";
-import comic_02 from "@/assets/images/focus/v_02.png";
+import { Image } from "astro:assets";
+import { getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
+const esImgages = import.meta.glob<{ default: ImageMetadata }>(
+  "@/assets/images/focus/es-v_*.png",
+  {
+    eager: true,
+  }
+);
+const enImgages = import.meta.glob<{ default: ImageMetadata }>(
+  "@/assets/images/focus/en-v_*.png",
+  {
+    eager: true,
+  }
+);
+
+const images = {
+  es: Object.values(esImgages),
+  en: Object.values(enImgages),
+};
 ---
 
 <article class="comic_container">
-  <figure>
-    <Image src={comic_01} alt={"una familia en la cocina"} />
-  </figure>
-  <figure>
-    <Image src={comic_02} alt={"una familia en la cocina"} />
-  </figure>
+  {
+    images[lang].map((image) => (
+      <figure>
+        <Image src={image.default} alt={"una familia en la cocina"} />
+      </figure>
+    ))
+  }
 </article>
