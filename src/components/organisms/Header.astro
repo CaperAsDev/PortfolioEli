@@ -66,7 +66,7 @@ const languagesReady = true;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding-block: 1rem;
     padding-bottom: 2rem;
     backdrop-filter: blur(10px);
     background-color: oklch(from var(--secondary-2) l c h / var(--opacity));
@@ -91,19 +91,32 @@ const languagesReady = true;
       --ligthp: 0.7;
     }
   }
+  nav {
+    width: 100%;
+  }
 
   nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: 0;
     align-items: center;
-    gap: var(--fs-xs);
+
+    a {
+      padding: 0;
+    }
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (width >= 768px) {
     header {
       padding: 1rem;
       align-items: end;
+    }
+    nav {
+      width: fit-content;
+
+      ul {
+        gap: var(--fs-s);
+      }
     }
   }
 </style>

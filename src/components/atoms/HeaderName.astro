@@ -1,13 +1,13 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import Logo from "@/assets/images/BTS_LogoC-H.svg";
 import LogoDark from "@/assets/images/BTS_LogoC-H-dark.svg";
 ---
 
-<picture class="sticky-wrapper">
+<div class="sticky-wrapper">
   <Image class="image light" src={Logo} alt={"un bello logo"} height={70} />
   <Image class="image dark" src={LogoDark} alt={"un bello logo"} height={70} />
-</picture>
+</div>
 <style>
   .sticky-wrapper {
     display: grid;

@@ -4,13 +4,21 @@ interface Props {
   text: string;
   target?: string;
 }
+
+function normalizeString(str: string): string {
+  if (str === "/") return str;
+  return str.toLowerCase().replace(/^[^a-z0-9]+|[^a-z0-9]+$/gi, "");
+}
+
 const { href, text, target = "_self" } = Astro.props;
-const currentPage = Astro.url.pathname;
+
+const currentPage = normalizeString(Astro.url.pathname);
+const normalizedHref = normalizeString(href);
 ---
 
 <a
   href={href}
-  aria-current={currentPage == href}
+  aria-current={currentPage == normalizedHref}
   target={target}
   rel="noopener noreferrer">{text}</a
 >

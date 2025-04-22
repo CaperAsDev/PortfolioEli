@@ -2,7 +2,8 @@ main {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  width: clamp(300px, 80vw, 1280px);
+  max-width: 1240px;
+  padding: var(--fs-s);
   margin: 0 auto;
   justify-content: space-between;
 }

@@ -31,17 +31,26 @@ const lang = getLangFromUrl(Astro.url);
     </div>
     <div class="sponsor">
       <a
-        href="https://icra.cat/wp-content/uploads/2023/09/Logo-ICRA-e1695802767909.png"
+        href="https://icra.cat/"
         target="_blank"
         aria-label="Go to ICRA web site"
       >
         <Image src={ICRA} alt={"ICRA LOGO"} />
       </a>
       <Image class="focus" src={Focus} alt={"Focus for PFAS LOGO"} />
-      <Image src={EC} alt={"Flaf of European Union"} />
+      <a
+        href="https://marie-sklodowska-curie-actions.ec.europa.eu/"
+        target="_blank"
+        aria-label="Go to European Commission web site"
+      >
+        <Image src={EC} alt={"Flaf of European Union"} />
+      </a>
     </div>
   </div>
-  <p>{footer[lang].label}</p>
+  <p>
+    {footer[lang].label}
+    <a href="https://caperasdev.com/">♑CaperAsDev♑</a>
+  </p>
 </footer>
 
 <style>
@@ -91,6 +100,7 @@ const lang = getLangFromUrl(Astro.url);
 
     a {
       width: 100%;
+      cursor: pointer;
     }
   }
 

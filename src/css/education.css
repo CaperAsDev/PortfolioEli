@@ -12,14 +12,14 @@
   object-position: right;
 }
 .education-main {
-  width: clamp(300px, 80vw, 1240px);
+  max-width: 1240px;
+  padding: var(--fs-s);
   margin: 0 auto;
 
   h2 {
     font-size: var(--fs-m);
     font-weight: 400;
     text-align: start;
-    padding: var(--fs-s);
   }
 
   a {
@@ -28,7 +28,7 @@
 
   p {
     margin: 0;
-    padding: var(--fs-s);
+    padding: var(--fs-xs);
   }
 
   ul {

@@ -15,7 +15,7 @@ export const navigation = {
       link : 'es'
     },
     about: {
-      label: 'Información de contacto',
+      label: 'Información contacto',
       link : 'es/about'
     },
   },
@@ -23,9 +23,9 @@ export const navigation = {
 
 export const footer = {
   en :{
-    label: 'All rights reserved',
+    label: 'Design and development by',
   },
   es :{
-    label: 'Todos los derechos reservados',
+    label: 'Diseño y desarrollo por',
   }
 }
