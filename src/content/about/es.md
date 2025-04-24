@@ -1,3 +1,7 @@
+---
+lang: es
+---
+
 Desde muy joven, me impulsó una profunda curiosidad científica. Ya fuera experimentando con los cosméticos de mi madre o explorando las plantas de mi abuela, siempre me gustaba entender cómo funcionaban las cosas. Esta pasión me llevó a estudiar química en la Universidad Distrital Francisco José de Caldas en Bogotá (Colombia). Durante mis estudios, no solo investigué los fundamentos de la química, sino que también participé en debates sobre formas innovadoras de enseñar ciencias en escuelas y diversas comunidades de Colombia.
 
 Desde entonces, mi trayectoria científica me ha llevado por todo el mundo. En Brasil, completé mi maestría y doctorado, centrándome en tecnologías avanzadas de tratamiento de aguas. En la Universidade Estadual de Ponta Grossa (UEPG), me especialicé en procesos de oxidación-reducción para la degradación de colorantes en agua. Posteriormente, en la Universidade Federal do Rio Grande do Sul (UFRGS) en Porto Alegre, mi investigación doctoral se centró en la degradación de fármacos en aguas residuales hospitalarias reales mediante procesos solares, complementados con la identificación de productos de transformación mediante espectrometría de masas de alta resolución (HRMS). Estos estudios culminaron con la obtención del título de "Doctorado Internacional en Procesos Avanzados de Oxidación".

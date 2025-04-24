@@ -15,6 +15,14 @@ const availableRoutes = {
     "/home": "/es/",
     "/science": "/es/science",
     "/social": "/es/social"
+  },
+  "pt": {
+    "/about": "/pt/about",
+    "/education": "/pt/education",
+    "/focus": "/pt/focus",
+    "/home": "/pt/",
+    "/science": "/pt/science",
+    "/social": "/pt/social"
   }
 }; 
 export default availableRoutes

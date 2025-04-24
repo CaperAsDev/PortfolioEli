@@ -1,21 +1,20 @@
 ---
 import { Icon } from "astro-icon/components";
-import type { LanguagesAnchorProps } from "@/i18n/utils";
+import { shiftLang } from "@/i18n/utils";
 
-type Props = {
-  langoptions: LanguagesAnchorProps[];
-};
-
-const { langoptions } = Astro.props;
+const changeLangOptions = shiftLang(Astro.url);
 ---
 
 {
-  langoptions.map(({ path, label, lang }) => (
-    <a href={path} title={label}>
-      <Icon name="tabler:language-hiragana" />
-      <span>{lang}</span>
-    </a>
-  ))
+  changeLangOptions.map(
+    ({ path, label, lang, available }) =>
+      available && (
+        <a href={path} title={label}>
+          <Icon name="tabler:language-hiragana" />
+          <span>{lang}</span>
+        </a>
+      )
+  )
 }
 
 <style>

@@ -1,22 +1,30 @@
 {
   "/home": {
     "en": {
-      "title": "Bridge to Science",
+      "title": "Bridge to Science — where science meets society",
       "description": "We break down complex scientific projects, explore the big issues that shape our world, and highlight how education drives change. Join our community and help bridge the gap."
     },
     "es": {
-      "title": "Bridge to Science",
+      "title": "Bridge to Science — donde la ciencia se conecta con la sociedad",
       "description": "Simplificamos proyectos científicos complejos, exploramos los grandes problemas que configuran nuestro mundo y destacamos cómo la educación impulsa el cambio. Únete a nuestra comunidad y ayuda a cerrar la brecha."
+    },
+    "pt": {
+      "title": "Bridge to Science — onde a ciência se conecta com a sociedade",
+      "description": "Tornamos projetos científicos complexos mais acessíveis, exploramos as grandes questões que moldam o nosso mundo e mostramos como a educação é uma força poderosa de transformação. Junte-se à nossa comunidade e ajude a transformar essa realidade."
     }
   },
   "/about": {
     "en": {
       "title": "Elisabeth | About me",
-      "description": "Sitio web destinado a conectar la ciencia con la sociedad por medio de la divulgacion de proyectos cientificos."
+      "description": "Website aimed at connecting science with society through the dissemination of scientific projects."
     },
     "es": {
       "title": "Elisabeth | Sobre mi",
       "description": "Sitio web destinado a conectar la ciencia con la sociedad por medio de la divulgacion de proyectos cientificos."
+    },
+    "pt": {
+      "title": "Elisabeth | Sobre mim",
+      "description": "Site destinado a conectar a ciência com a sociedade por meio da divulgação de projetos científicos."
     }
   },
   "/focus" :{
@@ -27,6 +35,10 @@
     "es": {
       "title": "FOCUS4PFAS",
       "description": "Aquí encontrarás información clave y avances del proyecto FOCUS4PFAS, un proyecto Marie Curie que tiene como objetivo garantizar agua libre de PFAS."
+    },
+    "pt": {
+      "title": "FOCUS4PFAS",
+      "description": "Aqui você encontrará informações importantes e o progresso do projeto FOCUS4PFAS, um projeto Marie Curie que visa garantir água livre de PFAS."
     }
   },
   "/education": {
@@ -37,6 +49,10 @@
     "es": {
       "title": "Educación en Ciencias",
       "description": "La educación es la base de la equidad social. Aquí destacamos el trabajo de profesores y profesoras que están transformando el mundo desde sus clases."
+    },
+    "pt": {
+      "title": "Educação em Ciências",
+      "description": "Acreditamos que a educação é a chave para um futuro mais justo. Aqui, damos voz a professores que, com dedicação e ciência, estão mudando realidades dentro e fora da sala de aula."
     }
   },
   "/science": {
@@ -47,6 +63,10 @@
     "es": {
       "title": "Ciencia sin fronteras",
       "description": "Descubre en esta sección proyectos científicos al rededor del mundo. Te contamos, de forma clara y breve, qué buscan, cómo avanzan y por qué nos conciernen a todos como sociedad."
+    },
+    "pt": {
+      "title": "Ciência sem fronteiras",
+      "description": "Explore projetos científicos em andamento ao redor do mundo. Nesta seção, apresentamos de forma clara e direta o que esses estudos buscam, como estão avançando e por que são essenciais para o futuro da nossa sociedade."
     }
   },
   "/social": {
@@ -57,6 +77,10 @@
     "es": {
       "title": "Justicia social",
       "description": "Reflexionamos sobre lo que estamos haciendo como sociedad para avanzar hacia la justicia social, la equidad y la igualdad de género."
+    },
+    "pt": {
+      "title": "Justiça social",
+      "description": "Refletimos sobre o que estamos fazendo como sociedade para promover a justiça social, a equidade e a igualdade de gênero."
     }
   }
 }

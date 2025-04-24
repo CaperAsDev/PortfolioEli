@@ -1,13 +1,28 @@
 ---
+import type { ImageMetadata } from "astro";
+
 import projects from "@/data/projects.json";
 import ProjectCard from "../molecules/ProjectCard.astro";
-import type { PathKey } from "@/i18n/utils";
+import type { PathKey } from "@/i18n/types";
+
+const thumbnails = Object.entries(
+  import.meta.glob<{ default: ImageMetadata }>(
+    "@/assets/images/Thumbnails/*.{jpg,jpeg}",
+    {
+      eager: true,
+    }
+  )
+);
 ---
 
 <section>
   {
-    projects.map(({ url, ...project }, index) => (
-      <ProjectCard {...project} url={url as PathKey} />
+    projects.map(({ url, ...project }) => (
+      <ProjectCard
+        {...project}
+        url={url as PathKey}
+        image={thumbnails[project.id][1].default}
+      />
     ))
   }
 </section>

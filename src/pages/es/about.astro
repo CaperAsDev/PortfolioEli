@@ -2,42 +2,10 @@
 import "@/css/about.css";
 
 import Layout from "@/layouts/Layout.astro";
-import ProfileImage from "@/components/atoms/ProfileImage.astro";
-import ProfileImageSRC from "@/assets/images/profile.jpeg";
 
-import { Icon } from "astro-icon/components";
-
-import { Content } from "@/data/about-es.md";
-
-import { sizes } from "@/components/atoms/ProfileImage.astro";
+import AboutTempplate from "@/components/templates/about.astro";
 ---
 
 <Layout>
-  <main>
-    <div class="profile">
-      <ProfileImage
-        alt="Elisabeth Cuervo Lumbaque"
-        size={sizes.lg}
-        src={ProfileImageSRC}
-        height={800}
-        width={800}
-      />
-      <div class="contact">
-        <h1>Elisabeth Cuervo Lumbaque</h1>
-        <a href="mailto:ecuervo@icra.cat">ecuervo@icra.cat</a>
-        <div class="links-icons">
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157/"
-          >
-            Linkedin
-            <Icon name="tabler:brand-linkedin" class={"sm"} />
-          </a>
-        </div>
-      </div>
-    </div>
-    <section>
-      <Content />
-    </section>
-  </main>
+  <AboutTempplate />
 </Layout>

@@ -1,0 +1,9 @@
+---
+lang: pt
+---
+
+Desde jovem, fui movida por uma profunda curiosidade científica. Seja experimentando os cosméticos da minha mãe ou explorando as plantas da minha avó, sempre tive vontade de entender como as coisas funcionavam. Essa paixão me levou a cursar licenciatura em química na Universidade Distrital Francisco José de Caldas, em Bogotá (Colômbia). Durante meus estudos, não apenas pesquisei os fundamentos da química, mas também participei de discussões sobre maneiras inovadoras de ensinar ciências em escolas e comunidades diversas por toda a Colômbia.
+
+Minha jornada científica me levou a viajar pelo mundo. No Brasil, concluí meu mestrado e doutorado, com foco em tecnologias avançadas de tratamento de água. Na Universidade Estadual de Ponta Grossa (UEPG), especializei-me em processos avançados de oxidação/redução para degradação de corantes em água. Posteriormente, na Universidade Federal do Rio Grande do Sul (UFRGS), em Porto Alegre, minha pesquisa de doutorado concentrou-se na degradação de compostos farmacêuticos em efluentes hospitalares reais, utilizando processos solares, complementada pela identificação de produtos de transformação por espectrometria de massas de alta resolução (HRMS). Esses estudos culminaram na obtenção do "Doutorado Internacional em Processos Avançados de Oxidação".
+
+Em meu pós-doutorado, avancei na pesquisa em eletroquímica para a degradação de poluentes persistentes, particularmente PFAS, enquanto desenvolvi eletrodos inovadores para aprimorar os processos de eletrooxidação. Minha dedicação a essa área foi reconhecida com bolsas de estudo de prestígio, incluindo a Bolsa Juan de la Cierva na Espanha e a Bolsa Marie Curie em nível europeu. Essas oportunidades me permitiram expandir minha expertise em tecnologias de ponta para tratamento de água.

@@ -4,11 +4,13 @@ export const paths = {
   '/focus' : '/focus',
   '/science' : '/science',
   '/social' : '/social',
+  '/education' : '/education',
 }
 
 export enum Languages {
   es = "Español",
   en = "English",
+  pt = "Português",
 }
 
 export type LangKey = keyof typeof Languages

@@ -1,0 +1,49 @@
+---
+import { getLangFromUrl } from "@/i18n/utils";
+import type { MarkdownFile } from "@/types";
+import ProfileImage from "@/components/atoms/ProfileImage.astro";
+
+import { Icon } from "astro-icon/components";
+
+import { sizes } from "@/components/atoms/ProfileImage.astro";
+import ProfileImageSRC from "@/assets/images/profile.jpeg";
+
+const collection: Record<string, MarkdownFile> = import.meta.glob<MarkdownFile>(
+  "@/content/about/*.md",
+  { eager: true }
+);
+const lang = getLangFromUrl(Astro.url);
+const collArray: MarkdownFile[] = Object.values(collection);
+const collInLang: MarkdownFile[] = collArray.filter(
+  (item) => item.frontmatter.lang === lang
+);
+const Content = collInLang[0]?.Content;
+---
+
+<main>
+  <div class="profile">
+    <ProfileImage
+      size={sizes.lg}
+      alt="Elisabeth Cuervo Lumbaque"
+      src={ProfileImageSRC}
+      height={800}
+      width={800}
+    />
+    <div class="contact">
+      <h1>Elisabeth Cuervo Lumbaque</h1>
+      <a href="mailto:ecuervo@icra.cat">ecuervo@icra.cat</a>
+      <div class="links-icons">
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157/"
+        >
+          Linkedin
+          <Icon name="tabler:brand-linkedin" class={"sm"} />
+        </a>
+      </div>
+    </div>
+  </div>
+  <section>
+    <Content />
+  </section>
+</main>

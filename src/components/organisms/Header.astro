@@ -3,39 +3,32 @@ import NavItem from "@/components/atoms/NavItem.astro";
 import HeaderName from "@/components/atoms/HeaderName.astro";
 import ChangeLangAnchor from "@/components/atoms/ChangeLangAnchor.astro";
 
-import { navigation } from "@/i18n/ui";
-import type { Languages } from "@/i18n/consts";
-import { shiftLang } from "@/i18n/utils";
-import ClrThemeButton from "../atoms/ClrThemeButton.astro";
+import type { LangKey } from "@/i18n/types";
 
-const baseUrl = import.meta.env.BASE_URL;
-const changeLangOptions = shiftLang(Astro.url);
+import { navigation } from "@/i18n/ui";
+import ClrThemeButton from "../atoms/ClrThemeButton.astro";
+import { getLink } from "@/i18n/utils";
+
+const baseUrl = Astro.url.origin;
 
 interface Props {
-  lang: keyof typeof Languages;
+  lang: LangKey;
 }
 
 const { lang } = Astro.props;
 
+const homePath = getLink("/home", lang);
+const abouthPath = getLink("/about", lang);
+
 const { home, about } = navigation[lang];
-const languagesReady = true;
 ---
 
 <header>
   <nav>
     <ul>
-      <NavItem href={`${baseUrl}${home.link}`} text={home.label} />
-      <NavItem href={`${baseUrl}${about.link}`} text={about.label} />
-
-      {
-        languagesReady &&
-          changeLangOptions.map(
-            (op) =>
-              op.available && (
-                <ChangeLangAnchor langoptions={changeLangOptions} />
-              )
-          )
-      }
+      <NavItem href={`${baseUrl}${homePath}`} text={home.label} />
+      <NavItem href={`${baseUrl}${abouthPath}`} text={about.label} />
+      <ChangeLangAnchor />
       <ClrThemeButton />
     </ul>
   </nav>

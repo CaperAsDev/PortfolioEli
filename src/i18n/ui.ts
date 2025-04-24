@@ -19,6 +19,16 @@ export const navigation = {
       link : 'es/about'
     },
   },
+  pt : {
+    home: {
+      label: 'Início',
+      link : 'pt'
+    },
+    about: {
+      label: 'Fale conosco',
+      link : 'pt/about'
+    },
+  }
 }
 
 export const footer = {
@@ -27,5 +37,8 @@ export const footer = {
   },
   es :{
     label: 'Diseño y desarrollo por',
+  },
+  pt :{
+    label: 'Desenvolvido por',
   }
 }

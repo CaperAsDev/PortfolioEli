@@ -1,4 +1,6 @@
 ---
+import { defaultLang } from "@/i18n/consts";
+
 import video_01 from "@/assets/videos/focus/video_01.mp4";
 import video_02 from "@/assets/videos/focus/video_02.mp4";
 import { getLangFromUrl } from "@/i18n/utils";
@@ -18,20 +20,30 @@ const captions = {
     video_02:
       "This reactor operates continuously and destroys PFAS compounds when an electric current is applied. As they pass through the anode, the toxic substances are transformed into non-toxic compounds, allowing the water to exit the reactor much cleaner.",
   },
+  pt: {
+    video_01:
+      "A modificação dos poros do eletrodo melhora a forma como os PFASs aderem ou reagem com o ânodo à medida que passam pelo material, otimizando assim a eficiência do processo.",
+    video_02:
+      "Este reator opera continuamente e destrói os compostos de PFAS quando uma corrente elétrica é aplicada. Ao passarem pelo ânodo, as substâncias tóxicas são transformadas em compostos não tóxicos, permitindo que a água saia do reator muito mais limpa.",
+  },
 };
+
+const langAvailable = Object.hasOwn(captions, lang);
+
+const langToUse = langAvailable ? lang : defaultLang;
 ---
 
 <article class="video_container">
   <figure>
     <video controls src={video_01}></video>
     <figcaption>
-      {captions[lang].video_01}
+      {captions[langToUse].video_01}
     </figcaption>
   </figure>
   <figure>
     <video controls src={video_02}></video>
     <figcaption>
-      {captions[lang].video_02}
+      {captions[langToUse].video_02}
     </figcaption>
   </figure>
 </article>

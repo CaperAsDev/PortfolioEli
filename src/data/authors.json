@@ -6,11 +6,13 @@
     "city": "Girona",
     "country": {
       "es": "España",
-      "en": "Spain"
+      "en": "Spain",
+      "pt": "Espanha"
     },
     "occupation": {
-      "es": "Investigadora postdoctoral-Marie Curie en ICRA",
-      "en": "Marie Curie Fellow Resercher at ICRA"
+      "es": "Investigadora postdoctoral-Marie Curie en ICRA",
+      "en": "Marie Curie Fellow Resercher at ICRA",
+      "pt": "Pesquisadora Marie Curie no ICRA"
     },
     "email":"ecuervo@icra.cat",
     "social" : [

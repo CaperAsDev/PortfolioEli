@@ -1,9 +1,7 @@
-import { paths, Languages, defaultLang } from '@/i18n/consts';
+import { Languages, defaultLang } from '@/i18n/consts';
 import availableRoutes from "@/availableRoutes.js";
+import type { LangKey, PathKey, LanguagesAnchorProps } from "@/i18n/types";
 
-type LangKey = keyof typeof Languages
-export type PathKey = keyof typeof paths
-export type LanguagesAnchorProps = {available: boolean, path: string, label: Languages, lang:LangKey}
 
 export function getLangFromUrl (url : URL)  {
   const pathArray = url.pathname.split('/');
@@ -18,24 +16,40 @@ export function shiftLang (url: URL) : LanguagesAnchorProps[] {
   const {url: path, lang } = parseURL(url);
 
   const LanguagesArray = Object.entries(Languages) as [LangKey, Languages][];
-  const reminderLangs = LanguagesArray.filter((Languages) => Languages[0] !== lang);
+  const toShiftLangs = LanguagesArray.filter((Languages) => Languages[0] !== lang);
 
-  const linksObj = reminderLangs.reduce<LanguagesAnchorProps[]>((acc, lang ) => {
+  const linksObj = toShiftLangs.reduce<LanguagesAnchorProps[]>((acc, lang ) => {
 
-    const isAvailable = Boolean(availableRoutes[lang[0]][path])
-    const link = isAvailable ? availableRoutes[lang[0]][path] : '/'
+    const pathAvailable = isPathAvailable(path, lang[0])
+
+    const link = getLink(path, lang[0])
 
     const linkObj = {
-      available: isAvailable,
+      available: pathAvailable,
       path: link,
       lang: lang[0],
       label: lang[1]
     }
+
     acc.push(linkObj)
     return acc
   }, [])
 
   return linksObj
+}
+
+export function isPathAvailable(path: PathKey, lang: LangKey) : boolean {
+  const langAvailable = Object.hasOwn(availableRoutes, lang)
+  if (!langAvailable) {
+    console.warn(`Language ${lang} is not available in availableRoutes`);
+    return false;
+  }
+  const pathAvailableInLang = Object.hasOwn(availableRoutes[lang], path)
+  if (!pathAvailableInLang) {
+    console.warn(`Path ${path} is not available in availableRoutes for language ${lang}`);
+    return false;
+  }
+  return true
 }
 
 export function parseURL(urlObject: URL, pathmane: string= ""): { url: PathKey; lang: LangKey } {
@@ -67,12 +81,15 @@ export function parseURL(urlObject: URL, pathmane: string= ""): { url: PathKey; 
 }
 
 export function getLink(path: PathKey, lang: LangKey) : string {
-  const isDefaultLang = defaultLang === lang
+  let link = null
 
-  const link = isDefaultLang ? path : `/${lang}${path}`
+  if (!isPathAvailable(path, lang)) {
+    link = (availableRoutes[defaultLang] as Record<PathKey, string>)[path]
+    return link
+  }
+  link = (availableRoutes[lang] as Record<PathKey, string>)[path]
 
   return link
-
 }
 
 type MetaData = {
