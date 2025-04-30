@@ -1,0 +1,73 @@
+---
+import { Image } from "astro:assets";
+import { getBookInfo } from "@/js/utils.js";
+import { bookSection } from "@/i18n/ui";
+import { getLangFromUrl } from "@/i18n/utils";
+
+interface Props {
+  isbn: number;
+}
+const lang = getLangFromUrl(Astro.url);
+const { isbn } = Astro.props;
+
+const bookData = await getBookInfo({ isbn });
+---
+
+<header>
+  <h1>{bookSection[lang].title}</h1>
+  <p>{bookSection[lang].description}</p>
+</header>
+<article>
+  <Image
+    src={bookData?.cover?.large}
+    alt={bookData?.title}
+    inferSize
+    class="book-cover"
+  />
+  <div class="book-info">
+    <h2>{bookData?.title}</h2>
+    <h3>{bookData?.authors?.[0]?.name}</h3>
+    <p>{bookData?.publish_date}</p>
+    <p>{bookData?.publishers?.[0]?.name}</p>
+    <p>{bookData?.number_of_pages} pages</p>
+  </div>
+</article>
+<style>
+  header {
+    margin-bottom: var(--fs-m);
+    p {
+      text-align: center;
+      font-weight: 400;
+    }
+  }
+  article {
+    display: grid;
+    place-items: center;
+    padding: var(--fs-s);
+    gap: var(--fs-s);
+    background-color: var(--dark-bg-clr);
+    color: var(--light);
+  }
+  .book-cover {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 5px 5px 3px 2px oklch(from var(--dark) l c h / 0.5);
+  }
+  .book-info {
+    display: grid;
+    place-items: center;
+    gap: var(--fs-xs);
+
+    p {
+      padding: 0;
+    }
+  }
+
+  @media screen and (width >= 768px) {
+    article {
+      grid-template-columns: 1fr 2fr;
+      gap: var(--fs-m);
+    }
+  }
+</style>

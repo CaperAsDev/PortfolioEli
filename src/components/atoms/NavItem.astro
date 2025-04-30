@@ -14,9 +14,6 @@ const { href, text, target = "_self" } = Astro.props;
 
 const currentPage = normalizeString(Astro.url.href);
 const normalizedHref = normalizeString(href);
-
-console.log("currentPage", currentPage);
-console.log("normalizedHref", normalizedHref);
 ---
 
 <a

@@ -8,13 +8,10 @@ main {
   justify-content: space-between;
 }
 .profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  display: grid;
+  place-items: center;
   gap: 1rem;
-  padding: 1rem;
-  margin-block-start: clamp(1rem, 10vh, 3rem);
-  margin-inline: auto;
 }
 
 .contact {
@@ -51,5 +48,21 @@ section {
   section {
     width: clamp(300px, 80vw, 720px);
     margin-inline: auto;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: calc(var(--fs-xl) * 2);
+    padding: var(--fs-l);
+  }
+  section {
+    width: 100%;
+    text-wrap: pretty;
+  }
+  .profile {
+    height: fit-content;
   }
 }

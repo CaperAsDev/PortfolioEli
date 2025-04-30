@@ -5,6 +5,7 @@ export const paths = {
   '/science' : '/science',
   '/social' : '/social',
   '/education' : '/education',
+  '/book': '/book',
 }
 
 export enum Languages {

@@ -1,14 +1,40 @@
 [
   {
-    "id": 1,
+    "url": "https://openlibrary.org/books/OL36634888M/La_moda_justa",
+    "key": "/books/OL36634888M",
     "title": "La moda justa",
     "subtitle": "Una invitación a vestir con ética",
-    "author": "Marta D. Riezu",
-    "image": "https://example.com/to-kill-a-mockingbird.jpg",
-    "review": "Una reflexión sobre nuestras elecciones a la hora de vestir propuesta consciente e imaginativa ante la voracidad consumista. El título La moda justa responde a una doble acepción. La primera se refiere a tener en el armario la cantidad justa de ropa, la suficiente, la proporcionada. A huir de la voracidad...",
-    "rating": 4.5,
-    "genre": "Reflexión",
-    "tags": ["Moda", "Ética", "Sostenibilidad"],
-    "published": "2021-11-10"
+    "authors": [
+      {
+        "url": "https://openlibrary.org/authors/OL10133365A/Marta_D._Riezu",
+        "name": "Marta D. Riezu"
+      }
+    ],
+    "number_of_pages": 96,
+    "identifiers": {
+      "isbn_10": [
+        "8433916572"
+      ],
+      "isbn_13": [
+        "9788433916570"
+      ],
+      "openlibrary": [
+        "OL36634888M"
+      ]
+    },
+    "publishers": [
+      {
+        "name": "Editorial Anagrama"
+      }
+    ],
+    "publish_date": "Nov 10, 2021",
+    "notes": "Source title: La moda justa: Una invitación a vestir con ética (Spanish Edition)",
+    "cover": {
+      "small": "https://covers.openlibrary.org/b/id/12528369-S.jpg",
+      "medium": "https://covers.openlibrary.org/b/id/12528369-M.jpg",
+      "large": "https://covers.openlibrary.org/b/id/12528369-L.jpg"
+    },
+    "isbn": "9788433916570",
+    "id": 0
   }
 ]

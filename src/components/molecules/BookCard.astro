@@ -1,26 +1,41 @@
 ---
+import type { MarkdownFile, BookData } from "@/types";
+
 import { Image } from "astro:assets";
+
+import { getLangFromUrl, getLink } from "@/i18n/utils";
+import { getContentFromImport, getBookInfo } from "@/js/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+
+const mdFiles: MarkdownFile[] = Object.values(
+  import.meta.glob<MarkdownFile>(`@/content/book/*.md`, {
+    eager: true,
+  })
+);
+
+const { frontmatter } = getContentFromImport({ mdFiles, lang });
+const path = getLink("/book", lang);
+const bookData: BookData = await getBookInfo({ isbn: frontmatter?.isbn });
+
+const buttonText = {
+  en: "Read More",
+  es: "Leer más",
+  pt: "Leia mais",
+};
 ---
 
 <article>
-  <Image
-    src={"https://libreriadelau.vtexassets.com/arquivos/ids/33974850-1200-auto?v=638342336203800000&width=1200&height=auto&aspect=true"}
-    alt={"Book cover"}
-    inferSize
-  />
+  <Image src={bookData?.cover?.large} alt={`${bookData?.title}`} inferSize />
   <div>
     <header>
-      <h3>La moda justa</h3>
-      <small>una invitación a vestir con ética</small>
+      <h3>{bookData.title}</h3>
+      <small>{bookData.subtitle}</small>
     </header>
     <p>
-      Una reflexión sobre nuestras elecciones a la hora de vestir. Una propuesta
-      consciente e imaginativa ante la voracidad consumista. El título La moda
-      justa responde a una doble acepción. La primera se refiere a tener en el
-      armario la cantidad justa de ropa, la suficiente, la proporcionada. A huir
-      de la voracidad...
+      {frontmatter?.intro}.
     </p>
-    <a href={`${Astro.url.origin}/book`}> Read More</a>
+    <a href={`${Astro.url.origin}${path}`}>{buttonText[lang]}</a>
   </div>
 </article>
 <style>

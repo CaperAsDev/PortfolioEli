@@ -1,33 +1,16 @@
 ---
 import { getLangFromUrl } from "@/i18n/utils";
 import BookCard from "../molecules/BookCard.astro";
+import { bookSection } from "@/i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
-
-const text = {
-  en: {
-    title: "Recommended book",
-    description:
-      "One book a month to better understand ourselves: we explore how society works, how we impact the planet, and what we can do for a more just world—through the lens of sociology, psychology, and anthropology.",
-  },
-  es: {
-    title: "Libro recomendado",
-    description:
-      "Un libro al mes para entendernos mejor: exploramos cómo funciona la sociedad, cómo influimos en el planeta y qué podemos hacer por un mundo más justo, a través de la mirada de la sociología, psicología y antropología.",
-  },
-  pt: {
-    title: "Livro recomendado",
-    description:
-      "Um livro por mês para nos entendermos melhor: exploramos como a sociedade funciona, como influenciamos o planeta e o que podemos fazer por um mundo mais justo, através das lentes da sociologia, psicologia e antropologia.",
-  },
-};
 ---
 
 <section>
   <header>
-    <h2>{text[lang].title}</h2>
+    <h2>{bookSection[lang].title}</h2>
   </header>
-  <p>{text[lang].description}</p>
+  <p>{bookSection[lang].description}</p>
   <BookCard />
 </section>
 <style>

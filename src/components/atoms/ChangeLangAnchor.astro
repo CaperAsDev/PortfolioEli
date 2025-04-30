@@ -1,29 +1,88 @@
 ---
 import { Icon } from "astro-icon/components";
-import { shiftLang } from "@/i18n/utils";
+import { getLangFromUrl, shiftLang } from "@/i18n/utils";
 
 const changeLangOptions = shiftLang(Astro.url);
+const lang = getLangFromUrl(Astro.url);
 ---
 
-{
-  changeLangOptions.map(
-    ({ path, label, lang, available }) =>
-      available && (
-        <a href={path} title={label}>
-          <Icon name="tabler:language-hiragana" />
-          <span>{lang}</span>
-        </a>
+<details>
+  <summary>
+    <Icon name="tabler:language-hiragana" />
+    <span>
+      {lang}
+    </span>
+  </summary>
+  <ul>
+    {
+      changeLangOptions.map(
+        ({ path, label, lang, available }) =>
+          available && (
+            <li>
+              {/* <span>{label}</span> */}
+              <a href={path} title={label}>
+                <Icon name="tabler:language-hiragana" />
+                <span>{lang}</span>
+              </a>
+            </li>
+          )
       )
-  )
-}
+    }
+  </ul>
+</details>
 
 <style>
+  details::details-content {
+    scale: 0;
+    transition:
+      content-visibility 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+        allow-discrete,
+      scale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: absolute;
+    background-color: oklch(from var(--inverse-bg-clr) l c h);
+    color: oklch(from var(--inverse-text-clr) l c h);
+    border-radius: var(--fs-xs);
+
+    @starting-style {
+      scale: 0;
+      content-visibility: hidden;
+    }
+  }
+
+  details summary::marker,
+  :is(::-webkit-details-marker) {
+    content: "";
+  }
+
+  details summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs-s);
+    cursor: pointer;
+  }
+  details[open]::details-content {
+    scale: 1;
+  }
+
+  details ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    place-items: center;
+    padding: var(--fs-xs);
+    gap: var(--fs-xs);
+
+    li {
+      margin: 0;
+    }
+  }
   a {
     display: flex;
     padding-inline: var(--fs-xs);
     justify-content: center;
     align-items: center;
-    border-radius: var(--fs-xs);
     color: var(--flipped-text-clr);
     background: oklch(from var(--flipped-bg-clr) l c h / 80%);
     transition: background 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -33,3 +92,16 @@ const changeLangOptions = shiftLang(Astro.url);
     }
   }
 </style>
+
+<script>
+  const summary = document.querySelector("details summary");
+
+  summary?.addEventListener("blur", (e) => {
+    const details = summary.parentElement;
+    setTimeout(() => {
+      if (details?.hasAttribute("open")) {
+        details.removeAttribute("open");
+      }
+    }, 200);
+  });
+</script>

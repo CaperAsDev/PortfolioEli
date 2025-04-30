@@ -2,6 +2,7 @@
 const availableRoutes = {
   "en": {
     "/about": "/about",
+    "/book": "/book",
     "/education": "/education",
     "/focus": "/focus",
     "/home": "/",
@@ -10,6 +11,7 @@ const availableRoutes = {
   },
   "es": {
     "/about": "/es/about",
+    "/book": "/es/book",
     "/education": "/es/education",
     "/focus": "/es/focus",
     "/home": "/es/",
@@ -18,6 +20,7 @@ const availableRoutes = {
   },
   "pt": {
     "/about": "/pt/about",
+    "/book": "/pt/book",
     "/education": "/pt/education",
     "/focus": "/pt/focus",
     "/home": "/pt/",

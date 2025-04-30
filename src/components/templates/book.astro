@@ -1,0 +1,21 @@
+---
+import BookHero from "../molecules/bookHero.astro";
+
+import { getLangFromUrl } from "@/i18n/utils";
+import { getContentFromImport } from "@/js/utils.js";
+import type { MarkdownFile } from "@/types";
+
+const lang = getLangFromUrl(Astro.url);
+const mdFiles: MarkdownFile[] = Object.values(
+  import.meta.glob<MarkdownFile>(`@/content/book/*.md`, {
+    eager: true,
+  })
+);
+
+const { Content, frontmatter } = getContentFromImport({ mdFiles, lang });
+---
+
+<main class="book-container">
+  <BookHero isbn={frontmatter?.isbn} />
+  <Content />
+</main>

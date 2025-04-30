@@ -12,7 +12,7 @@ const mdFiles: MarkdownFile[] = Object.values(
   })
 );
 
-const Content = getContentFromImport({ mdFiles, lang });
+const { Content } = getContentFromImport({ mdFiles, lang });
 ---
 
 <div class="home-intro">

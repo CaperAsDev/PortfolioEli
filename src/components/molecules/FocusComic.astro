@@ -19,10 +19,17 @@ const enImgages = import.meta.glob<{ default: ImageMetadata }>(
     eager: true,
   }
 );
+const ptImgages = import.meta.glob<{ default: ImageMetadata }>(
+  "@/assets/images/focus/pt-v_*.png",
+  {
+    eager: true,
+  }
+);
 
 const images = {
   es: Object.values(esImgages),
   en: Object.values(enImgages),
+  pt: Object.values(ptImgages),
 };
 
 const langAvailable = Object.hasOwn(images, lang);

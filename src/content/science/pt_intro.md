@@ -3,8 +3,8 @@ lang: pt
 section: intro
 authorId: 1
 hashes:
-  - WaterPollution
-  - Electrochemistry
+  - PoluicaoDaAgua
+  - Eletroquimica
 ---
 
 ## Você já ouviu falar em PFAS?
