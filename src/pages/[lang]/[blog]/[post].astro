@@ -1,0 +1,12 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { post: "climate-change", lang: "jp", blog: "social" } },
+    { params: { post: "girls-education", lang: "jp", blog: "education" } },
+    { params: { post: "pfas", lang: "jp", blog: "science" } },
+  ];
+}
+const { post, lang, blog } = Astro.params;
+---
+
+<h1>in the post: {post} from the blog {blog}, in the idiom {lang}</h1>
