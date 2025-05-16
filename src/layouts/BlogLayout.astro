@@ -1,0 +1,17 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout>
+  <slot name="hero" />
+  <main>
+    <slot />
+  </main>
+</Layout>
+<style>
+  main {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: var(--fs-s);
+  }
+</style>

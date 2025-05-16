@@ -1,37 +1,53 @@
 ---
-import SocialVideo from "@/components/atoms/SocialVideo.astro";
-
+import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
-import type { MarkdownFile } from "@/types";
+import PostCard from "@/components/molecules/PostCard.astro";
 
 const lang = getLangFromUrl(Astro.url);
+const allSocialPosts = await getCollection("social");
 
-const socialcollection: MarkdownFile[] = Object.values(
-  import.meta.glob("@/content/social/*.md", { eager: true })
-) as MarkdownFile[];
+const socialPosts = allSocialPosts.filter((post) => lang === post.data.lang);
 
-const collInLang: MarkdownFile[] = socialcollection.filter(
-  (item) => item.frontmatter.lang === lang
-);
-
-const Evidence = collInLang.find(
-  (item) => item.frontmatter.section === "evidence"
-)?.Content;
-console.log("collInLang", collInLang);
-
-const What = collInLang.find(
-  (item) => item.frontmatter.section === "what"
-)?.Content;
-
-const title = {
+const categoryName = {
   en: "Social Justice",
   es: "Justicia Social",
+  pt: "Justiça Social",
 };
 ---
 
-<main class="social-container">
-  <h1>{title[lang]}</h1>
-  <Evidence />
-  <SocialVideo />
-  <What />
-</main>
+<section class="social-container">
+  <h2>Social Posts</h2>
+
+  <div class="cards-container">
+    {
+      socialPosts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          tags={post.data.tags}
+          link={post.id}
+          author={post.data.author},
+          publishedDate={post.data.publishDate}
+          category={categoryName[lang]}
+          blogName="social"
+          cover={post.data.cover}
+        />
+      ))
+    }
+  </div>
+</section>
+<style>
+  h2 {
+    font-size: var(--fs-l);
+    font-weight: 600;
+    text-align: center;
+    padding: var(--fs-s);
+  }
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--fs-s);
+    padding: var(--fs-s);
+  }
+</style>

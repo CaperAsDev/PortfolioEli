@@ -1,0 +1,84 @@
+---
+import Layout from "./Layout.astro";
+---
+
+<Layout>
+  <main class="blog-layout">
+    <slot />
+  </main>
+</Layout>
+
+<style>
+  .blog-layout {
+    max-width: 1240px;
+    padding: var(--fs-s);
+    margin: 0 auto;
+
+    h1 {
+      font-size: var(--fs-xl);
+      font-weight: 600;
+      text-align: center;
+      padding: var(--fs-s);
+    }
+
+    h2 {
+      font-size: var(--fs-l);
+      font-weight: 400;
+      text-align: start;
+    }
+    h3 {
+      font-size: var(--fs-m);
+      font-weight: 400;
+      text-align: start;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    p {
+      margin: 0;
+      padding: var(--fs-xs);
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-inline-start: calc(var(--fs-m));
+
+      li {
+        padding-inline-start: var(--fs-s);
+        font-size: var(--fs-s);
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: var(--fs-xs) 0;
+    }
+
+    figure {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: var(--fs-xs);
+      gap: var(--fs-xs);
+
+      & > :is(img, video) {
+        width: clamp(300px, 90%, 1200px);
+        height: auto;
+        max-height: 90dvh;
+        object-fit: cover;
+      }
+
+      figcaption {
+        display: block;
+        width: 100%;
+        font-size: var(--fs-xs);
+        text-align: center;
+      }
+    }
+  }
+</style>

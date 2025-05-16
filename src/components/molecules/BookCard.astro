@@ -15,7 +15,7 @@ const mdFiles: MarkdownFile[] = Object.values(
 );
 
 const { frontmatter } = getContentFromImport({ mdFiles, lang });
-const path = getLink("/book", lang);
+const path = getLink("/books", lang);
 const bookData: BookData = await getBookInfo({ isbn: frontmatter?.isbn });
 
 const buttonText = {

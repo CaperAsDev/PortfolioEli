@@ -1,0 +1,162 @@
+---
+import { getEntry, type ReferenceDataEntry } from "astro:content";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { getLangFromUrl, getLink } from "@/i18n/utils";
+
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  link: string;
+  author: ReferenceDataEntry<"authors", string>;
+  publishedDate: Date;
+  category: string;
+  cover: ImageMetadata;
+  blogName: "education" | "social" | "science";
+}
+
+const {
+  title,
+  description,
+  tags,
+  link,
+  author,
+  publishedDate,
+  category,
+  cover,
+  blogName,
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const originUrl = Astro.url.origin;
+const baseLink = getLink(`/${blogName}`, lang);
+const postLink = `${originUrl}${baseLink}${link}`;
+const postAuthor = await getEntry(author);
+---
+
+<article>
+  <header>
+    <span>{category}</span>
+    <Image src={cover} alt={"representative image of the post content"} />
+  </header>
+  <Image
+    src={postAuthor.data.avatar}
+    alt={"author image"}
+    class="author-image"
+  />
+  <div class="info-container">
+    <p class="tags">
+      {tags.map((tag) => <span># {tag}</span>)}
+    </p>
+    <h3 title={title}>{title}</h3>
+    <p>
+      {description}
+    </p>
+    <a href={postLink}>Read more</a>
+  </div>
+  <hr />
+  <footer>
+    <p>{postAuthor?.data.name || "BridgeToScience"}</p>
+    <p>
+      {
+        new Intl.DateTimeFormat(lang, {
+          weekday: "short",
+          month: "short",
+          day: "2-digit",
+          year: "2-digit",
+        }).format(publishedDate)
+      }
+    </p>
+  </footer>
+</article>
+<style>
+  article {
+    width: calc(300px + 10vw);
+    overflow: hidden;
+    border: 1px solid var(--text-clr);
+    border-radius: var(--fs-s);
+  }
+  header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    span {
+      position: absolute;
+      top: var(--fs-xs);
+      right: var(--fs-xs);
+      background-color: var(--bg-clr);
+      color: var(--text-clr);
+      padding: calc(var(--fs-xs) / 2) var(--fs-s);
+      font-size: var(--fs-xs);
+      border-radius: var(--fs-s);
+    }
+  }
+  .author-image {
+    --imgWidth: 80px;
+
+    position: relative;
+    top: calc(-1 * var(--imgWidth) / 2);
+    margin-inline-start: var(--fs-s);
+    width: var(--imgWidth);
+    height: var(--imgWidth);
+    border-radius: 50%;
+    border: 2px solid var(--bg-clr);
+    object-fit: cover;
+  }
+
+  .info-container {
+    position: relative;
+    padding: var(--fs-s);
+
+    .tags {
+      position: absolute;
+      top: -70px;
+      right: var(--fs-s);
+      display: flex;
+      gap: var(--fs-xs);
+
+      span {
+        font-size: var(--fs-xs);
+      }
+    }
+
+    h3 {
+      font-size: var(--fs-m);
+      font-weight: 600;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    a {
+      display: inline-block;
+      border-radius: var(--fs-s);
+      box-shadow: -2px 2px 5px 1px var(--text-clr);
+      padding: var(--fs-s);
+      margin-block: var(--fs-xs);
+      color: var(--light);
+      background-color: var(--dark-bg-clr);
+      font-weight: 600;
+    }
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--fs-s);
+
+    p {
+      font-size: var(--fs-xs);
+      margin: 0;
+    }
+  }
+</style>

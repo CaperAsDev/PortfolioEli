@@ -1,22 +1,55 @@
 ---
+import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
-import EducationHero from "../molecules/EducationHero.astro";
-import type { MarkdownFile } from "@/types";
+import PostCard from "@/components/molecules/PostCard.astro";
 
-const educollection: MarkdownFile[] = Object.values(
-  import.meta.glob("@/content/education/*.md", { eager: true })
-) as MarkdownFile[];
+const allEducationPosts = await getCollection("education");
+
 const lang = getLangFromUrl(Astro.url);
 
-const [collInLang]: MarkdownFile[] = educollection.filter(
-  (item) => item.frontmatter.lang === lang
-);
 
-const Content = collInLang.Content;
+const educationPosts = allEducationPosts.filter((post) => lang === post.data.lang);
+
+const categoryName = {
+  en: "Education",
+  es: "Educación",
+  pt: "Educação",
+}
 ---
 
-<EducationHero />
+<section>
+  <h2>Education Posts</h2>
+  <div class="cards-container">
+    {
+      educationPosts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          tags={post.data.tags}
+          link={post.id}
+          author={post.data.author},
+          publishedDate={post.data.publishDate}
+          category={categoryName[lang]}
+          blogName="education"
+          cover={post.data.cover}
+        />
+      ))
+    }
+  </div>
+</section>
 
-<main class="education-main">
-  <Content />
-</main>
+<style>
+  h2 {
+    font-size: var(--fs-l);
+    font-weight: 600;
+    text-align: center;
+    padding: var(--fs-s);
+  }
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--fs-s);
+    padding: var(--fs-s);
+  }
+</style>

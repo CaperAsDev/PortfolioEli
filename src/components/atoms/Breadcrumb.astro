@@ -1,0 +1,16 @@
+---
+const path = Astro.url.pathname;
+const paths = path.split("/").filter((p) => p !== "");
+---
+
+<a href={`${Astro.url.origin}`}>Home</a>
+{
+  paths.map((path, i) => (
+    <span>
+      <span> / </span>
+      <a href={`${Astro.url.origin}/${i == 1 ? paths.join("/") : path}`}>
+        {path}
+      </a>
+    </span>
+  ))
+}

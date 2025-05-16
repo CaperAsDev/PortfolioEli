@@ -40,7 +40,7 @@ export function shiftLang (url: URL) : LanguagesAnchorProps[] {
 
 export function isPathAvailable(path: PathKey, lang: LangKey) : boolean {
   const langAvailable = Object.hasOwn(availableRoutes, lang)
-  if (!langAvailable) {
+  if (!langAvailable) { // Check if the language is available in availableRoutes
     console.warn(`Language ${lang} is not available in availableRoutes`);
     return false;
   }
@@ -81,15 +81,19 @@ export function parseURL(urlObject: URL, pathmane: string= ""): { url: PathKey; 
 }
 
 export function getLink(path: PathKey, lang: LangKey) : string {
-  let link = null
+  let pathAvailable = isPathAvailable(path, lang)
 
-  if (!isPathAvailable(path, lang)) {
-    link = (availableRoutes[defaultLang] as Record<PathKey, string>)[path]
-    return link
-  }
-  link = (availableRoutes[lang] as Record<PathKey, string>)[path]
-
-  return link
+  // Check if the path is available in the specified language
+  // If not, fall back to the default language
+  let link = !pathAvailable ? 
+    (availableRoutes[defaultLang] as Record<PathKey, string | {"/index" : string}>)[path] :
+    (availableRoutes[lang] as Record<PathKey, string | {"/index" : string}>)[path]
+  
+  // Check if the link is an object and return the "/index" property if it is
+  // Otherwise, return the link as is
+  if (typeof link === 'object') return link["/index"];
+  else return link;
+  
 }
 
 type MetaData = {

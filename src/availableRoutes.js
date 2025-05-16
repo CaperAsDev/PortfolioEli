@@ -2,12 +2,24 @@
 const availableRoutes = {
   "en": {
     "/about": "/about",
-    "/book": "/book",
-    "/education": "/education",
+    "/books": {
+      "/[id]": "/books/[id]",
+      "/index": "/books/"
+    },
+    "/education": {
+      "/[id]": "/education/[id]",
+      "/index": "/education/"
+    },
     "/focus": "/focus",
     "/home": "/",
-    "/science": "/science",
-    "/social": "/social"
+    "/science": {
+      "/[id]": "/science/[id]",
+      "/index": "/science/"
+    },
+    "/social": {
+      "/[id]": "/social/[id]",
+      "/index": "/social/"
+    }
   },
   "es": {
     "/about": "/es/about",

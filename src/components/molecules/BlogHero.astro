@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+
+import { getLangFromUrl } from "@/i18n/utils";
+import { blogsHero } from "@/i18n/ui";
+import { Blogs } from "@/i18n/types";
+
+import EducationHero from "@/assets/images/blogs/heroes/education.jpg";
+import SocialHero from "@/assets/images/blogs/heroes/education.jpg";
+import ScienceHero from "@/assets/images/blogs/heroes/education.jpg";
+
+interface Props {
+  blog: Blogs;
+}
+
+const { blog } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+
+const info = blogsHero[blog][lang];
+
+const heroImages = {
+  [Blogs.Education]: {
+    image: EducationHero,
+  },
+  [Blogs.Science]: {
+    image: SocialHero,
+  },
+  [Blogs.Social]: {
+    image: ScienceHero,
+  },
+};
+---
+
+<header class="education-header">
+  <h1>{info.title}</h1>
+  <p>{info.description}</p>
+  <Image src={heroImages[blog].image} alt={`${info.title}`} />
+</header>
+<style>
+  h1 {
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    text-align: center;
+    padding: var(--fs-s);
+  }
+  img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    object-position: right;
+  }
+  p {
+    max-width: 1240px;
+    text-align: center;
+    font-size: var(--fs-m);
+    font-weight: 400;
+    margin: 0 auto;
+    padding: var(--fs-s);
+  }
+</style>

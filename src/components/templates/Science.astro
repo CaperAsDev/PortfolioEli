@@ -1,45 +1,52 @@
 ---
-import ResearcherCard from "@/components/molecules/ResearcherCard.astro";
-import BlogHash from "@/components/atoms/blogHash.astro";
-import { Image } from "astro:assets";
-import effect from "@/assets/images/science/Pfas.png";
-
+import { getCollection } from "astro:content";
+import PostCard from "@/components/molecules/PostCard.astro";
 import { getLangFromUrl } from "@/i18n/utils";
-import type { MarkdownFile } from "@/types";
-
-const collection: Record<string, MarkdownFile> = import.meta.glob<MarkdownFile>(
-  "@/content/science/*.md",
-  { eager: true }
-);
 
 const lang = getLangFromUrl(Astro.url);
-const collArray: MarkdownFile[] = Object.values(collection);
-const collInLang: MarkdownFile[] = collArray.filter(
-  (item) => item.frontmatter.lang === lang
-);
+const allSciencePosts = await getCollection("science");
+const sciencePosts = allSciencePosts.filter((post) => lang === post.data.lang);
 
-const Intro = collInLang.find(
-  (item) => item.frontmatter.section === "intro"
-)?.Content;
-
-const hashes: [string] = collInLang[0].frontmatter.hashes;
-const authorID: number = collInLang[0].frontmatter.authorId;
-
-const What = collInLang.find(
-  (item) => item.frontmatter.section === "what"
-)?.Content;
+const categoryName = {
+  en: "Science",
+  es: "Ciencia",
+  pt: "Ciência",
+};
 ---
 
-<div class="science-container">
-  <ResearcherCard id={authorID} />
-  <main>
-    <div class="hashes">
-      {hashes.map((hash) => <BlogHash hash={hash} />)}
-    </div>
-    <section class="pfas-section">
-      <Intro />
-      <Image src={effect} alt="PFAS environment effects" />
-      <What />
-    </section>
-  </main>
-</div>
+<section>
+  <h2>Science Posts</h2>
+  <div class="cards-container">
+    {
+      sciencePosts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          tags={post.data.tags}
+          link={post.id}
+          author={post.data.author},
+          publishedDate={post.data.publishDate}
+          category={categoryName[lang]}
+          blogName="science"
+          cover={post.data.cover}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  h2 {
+    font-size: var(--fs-l);
+    font-weight: 600;
+    text-align: center;
+    padding: var(--fs-s);
+  }
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--fs-s);
+    padding: var(--fs-s);
+  }
+</style>

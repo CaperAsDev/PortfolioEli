@@ -1,0 +1,98 @@
+[
+  {
+    "id": "elisabeth-cuervo-lumbaque",
+    "name": "Elisabeth",
+    "lastName": "Cuervo Lumbaque",
+    "city": "Girona",
+    "country": {
+      "es": "España",
+      "en": "Spain",
+      "pt": "Espanha"
+    },
+    "occupation": {
+      "es": "Investigadora postdoctoral-Marie Curie en ICRA",
+      "en": "Marie Curie Fellow Resercher at ICRA",
+      "pt": "Pesquisadora Marie Curie no ICRA"
+    },
+    "email":"ecuervo@icra.cat",
+    "social" : [
+      {
+        "label" : "Twitter",
+        "icon": "brand-x",
+        "link": null
+      },
+      {
+        "label" : "Linkedin",
+        "icon": "brand-linkedin",
+        "link": "https://www.linkedin.com/in/elisabeth-cuervo-lumbaque-0149b157/"
+      }
+    ],
+    "bio": null,
+    "avatar": "./photos/elisabeth-cuervo-lumbaque.jpg",
+    "website": null
+  },
+  {
+    "id": "ana-Maria-Romero-Noguera",
+    "name": "Ana María",
+    "lastName": "Romero Noguera",
+    "city": "Bogota",
+    "country": {
+      "es": "Colombia",
+      "en": "Colombia",
+      "pt": "Colômbia"
+    },
+    "occupation": {
+      "es": "Docente de Ciencias Naturales y Educación Ambiental",
+      "en": "Natural Sciences and Environmental Education Teacher",
+      "pt": "Professor de Ciências Naturais e Educação Ambiental"
+    },
+    "email":" amromeron@educacionbogota.edu.co",
+    "social" : [
+      {
+        "label" : "Twitter",
+        "icon": "brand-x",
+        "link": null
+      },
+      {
+        "label" : "Linkedin",
+        "icon": "brand-linkedin",
+        "link": null
+      }
+    ],
+    "bio": null,
+    "avatar": "./photos/ana-Maria-Romero-Noguera.jpeg",
+    "website": null
+  },
+  {
+    "id": "juan-pablo-heredia-martin",
+    "name": "Juan Pablo",
+    "lastName": "Heredia Martín",
+    "city": "Cuyo",
+    "country": {
+      "es": "Argentina",
+      "en": "Argentina",
+      "pt": "Argentina"
+    },
+    "occupation": {
+      "es": "Candidato a doctor en Ciencia y Tecnología por la Universidad Nacional de Cuyo",
+      "en": "PhD candidate in Science and Technology from the Universidad Nacional de Cuyo",
+      "pt": "Doutorando em Ciência e Tecnologia pela Universidade Nacional de Cuyo"
+    },
+    "email":"tpalqjp@hotmail.com",
+    "social" : [
+      {
+        "label" : "Twitter",
+        "icon": "brand-x",
+        "link": null
+      },
+      {
+        "label" : "Linkedin",
+        "icon": "brand-linkedin",
+        "link": "https://www.linkedin.com/in/juan-pablo-heredia-martín-17857b38"
+      }
+    ],
+    "bio": null,
+    "avatar": "./photos/juan-pablo-heredia-martin.png",
+    "website": null
+  }
+]
