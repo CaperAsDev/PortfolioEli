@@ -1,0 +1,63 @@
+---
+import Layout from "@/layouts/PostLayout.astro";
+import Breadcrumb from "@/components/atoms/Breadcrumb.astro";
+import { Blogs } from "@/i18n/types";
+
+import {
+  getCollection,
+  render,
+  type InferEntrySchema,
+  type RenderedContent,
+} from "astro:content";
+
+interface props {
+  post: {
+    id: string;
+    body?: string;
+    collection: Blogs;
+    data: InferEntrySchema<Blogs>;
+    rendered?: RenderedContent;
+    filePath?: string;
+  };
+}
+export async function getStaticPaths() {
+  const blogs: Array<Blogs> = [Blogs.Social, Blogs.Education, Blogs.Science];
+  const languages = ["pt", "es", "en"];
+
+  // 1. Generate a new path for every blog and language
+  const paths: Array<{
+    params: { blog: Blogs; lang?: string; post: string };
+    props: props;
+  }> = [];
+  for (const lang of languages) {
+    for (const blog of blogs) {
+      const allPosts = await getCollection(blog);
+      const posts = allPosts.filter((post) => lang === post.data.lang);
+
+      for (const post of posts) {
+        const postPath = post.id.split("/");
+        const postId = postPath.at(-1) || postPath[0];
+        paths.push({
+          params: {
+            post: postId,
+            blog,
+            lang: lang === "en" ? undefined : lang,
+          },
+          props: { post: { ...post, collection: blog } },
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout>
+  <Breadcrumb />
+  <h1>{post.data.title}</h1>
+  <Content />
+</Layout>

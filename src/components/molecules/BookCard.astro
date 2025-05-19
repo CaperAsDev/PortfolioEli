@@ -1,22 +1,18 @@
 ---
+import { getCollection } from "astro:content";
 import type { MarkdownFile, BookData } from "@/types";
-
 import { Image } from "astro:assets";
 
 import { getLangFromUrl, getLink } from "@/i18n/utils";
 import { getContentFromImport, getBookInfo } from "@/js/utils.js";
 
+const bookCollection = await getCollection("books");
 const lang = getLangFromUrl(Astro.url);
+const bookSelection = bookCollection.find((book) => book.data.lang === lang);
 
-const mdFiles: MarkdownFile[] = Object.values(
-  import.meta.glob<MarkdownFile>(`@/content/book/*.md`, {
-    eager: true,
-  })
-);
-
-const { frontmatter } = getContentFromImport({ mdFiles, lang });
 const path = getLink("/books", lang);
-const bookData: BookData = await getBookInfo({ isbn: frontmatter?.isbn });
+const bookData: BookData | undefined =
+  bookSelection && (await getBookInfo({ isbn: bookSelection?.data.isbn }));
 
 const buttonText = {
   en: "Read More",
@@ -25,19 +21,25 @@ const buttonText = {
 };
 ---
 
-<article>
-  <Image src={bookData?.cover?.large} alt={`${bookData?.title}`} inferSize />
-  <div>
-    <header>
-      <h3>{bookData.title}</h3>
-      <small>{bookData.subtitle}</small>
-    </header>
-    <p>
-      {frontmatter?.intro}.
-    </p>
-    <a href={`${Astro.url.origin}${path}`}>{buttonText[lang]}</a>
-  </div>
-</article>
+{
+  bookData && (
+    <article>
+      <Image
+        src={bookData?.cover?.large}
+        alt={`${bookData?.title}`}
+        inferSize
+      />
+      <div>
+        <header>
+          <h3>{bookData.title}</h3>
+          <small>{bookData.subtitle}</small>
+        </header>
+        <p>{bookSelection?.data.intro}.</p>
+        <a href={`${Astro.url.origin}${path}`}>{buttonText[lang]}</a>
+      </div>
+    </article>
+  )
+}
 <style>
   article {
     display: flex;

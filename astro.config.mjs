@@ -12,4 +12,11 @@ export default defineConfig({
   site: "https://bridgetoscience.com",
   integrations: [icon(), sitemap(), mdx()],
   base: process.env.SERVER === 'development' ? `/${process.env.REPO}/` : '/',
+  vite: {
+    resolve: {
+      alias: {
+        '@': new URL('./src', import.meta.url).pathname,
+      },
+    },
+  },
 });

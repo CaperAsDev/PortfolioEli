@@ -5,9 +5,9 @@ export type PathKey = keyof typeof paths
 export type LanguagesAnchorProps = {available: boolean, path: string, label: Languages, lang:LangKey}
 
 export enum Blogs {
-  Education = 'Education',
-  Social = 'Social',
-  Science = 'Science',
+  Education = 'education',
+  Social = 'social',
+  Science = 'science',
 }
 
 export enum Langs {

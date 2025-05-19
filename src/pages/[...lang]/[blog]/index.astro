@@ -1,0 +1,92 @@
+---
+import Layout from "@/layouts/BlogLayout.astro";
+import BlogHero from "@/components/molecules/BlogHero.astro";
+import { Blogs } from "@/i18n/types";
+import { getCollection } from "astro:content";
+import { getLangFromUrl } from "@/i18n/utils";
+import PostCard from "@/components/molecules/PostCard.astro";
+
+const lang = getLangFromUrl(Astro.url);
+
+export function getStaticPaths() {
+  const blogs: Array<Blogs> = [Blogs.Social, Blogs.Education, Blogs.Science];
+  const languages = ["pt", "es", "en"];
+  // 1. Generate a new path for every blog and language
+  const paths: Array<{ params: { blog: Blogs; lang?: string } }> = [];
+  for (const blog of blogs) {
+    for (const lang of languages) {
+      paths.push({ params: { blog, lang: lang === "en" ? undefined : lang } });
+    }
+  }
+  
+  return paths;
+}
+
+const { blog } = Astro.params;
+
+const allBlogPosts = await getCollection(blog);
+const blogPosts = allBlogPosts.filter((post) => lang === post.data.lang);
+
+
+
+const categoryName = {
+  [Blogs.Social]: {
+    en: "Social Justice",
+    es: "Justicia Social",
+    pt: "Justiça Social",
+  },
+  [Blogs.Education]: {
+    en: "Education",
+    es: "Educación",
+    pt: "Educação",
+  },
+  [Blogs.Science]: {
+    en: "Science",
+    es: "Ciencia",
+    pt: "Ciência",
+  },
+};
+
+const postPath = (pathWithLang: string) => {
+  const path = pathWithLang.split("/");
+  const blogIndex = "/" + path.at(-1);
+  return blogIndex;
+};
+---
+<Layout>
+  <BlogHero slot={"hero"} blog={blog} />
+  <section>
+  <h2>{blog.charAt(0).toUpperCase() + blog.slice(1)} Posts</h2>
+  <div class="cards-container">
+    {
+      blogPosts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          tags={post.data.tags}
+          link={postPath(post.id)}
+          author={post.data.author},
+          publishedDate={post.data.publishDate}
+          category={categoryName[blog][lang]}
+          cover={post.data.cover}
+        />
+      ))
+    }
+  </div>
+</section>
+</Layout>
+<style>
+  h2 {
+    font-size: var(--fs-l);
+    font-weight: 600;
+    text-align: center;
+    padding: var(--fs-s);
+  }
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--fs-s);
+    padding: var(--fs-s);
+  }
+</style>
