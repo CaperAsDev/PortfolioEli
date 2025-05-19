@@ -13,27 +13,37 @@ export function getLangFromUrl (url : URL)  {
 
 
 export function shiftLang (url: URL) : LanguagesAnchorProps[] {
-  const {url: path, lang } = parseURL(url);
+  //Get the pathname from the URL to manipulate it changing the language
 
-  const LanguagesArray = Object.entries(Languages) as [LangKey, Languages][];
-  const toShiftLangs = LanguagesArray.filter((Languages) => Languages[0] !== lang);
+  // Pathname can be "/" for home in english or "/es/education/girls-education" for education post in spanish
 
-  const linksObj = toShiftLangs.reduce<LanguagesAnchorProps[]>((acc, lang ) => {
+  const lang = getLangFromUrl(url)
 
-    const pathAvailable = isPathAvailable(path, lang[0])
+  // take the languages and exclude the current one
+  const toShiftLangs = Object.entries(Languages).filter((Languages) => Languages[0] !== lang) as [LangKey, Languages][];
 
-    const link = getLink(path, lang[0])
+  // for each language change the current lang inthe path and replace it with the new one, keep in mind the special case of defaultLang
 
-    const linkObj = {
-      available: pathAvailable,
-      path: link,
-      lang: lang[0],
-      label: lang[1]
+  const linksObj = toShiftLangs.map((langEntry) => {
+    let link;
+    if (lang === defaultLang) {
+      // If the current language is the default language, we need to add the new lang prefix at the beginning
+      link = `/${langEntry[0]}${url.pathname}`;
+    }else if (langEntry[0] === defaultLang) {
+      // If the new language is the default language, we need to remove the current lang prefix from the path
+      link = url.pathname.replace(`/${lang}`, '') || '/';
+    } else {
+      // For all other cases, we just replace the current lang prefix with the new one
+      link = url.pathname.replace(`/${lang}`, `/${langEntry[0]}`);
     }
 
-    acc.push(linkObj)
-    return acc
-  }, [])
+    return {
+      available: true,
+      path: link,
+      lang: langEntry[0],
+      label: langEntry[1]
+    }
+  })
 
   return linksObj
 }

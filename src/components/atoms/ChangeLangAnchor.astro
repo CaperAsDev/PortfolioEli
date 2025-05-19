@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import { getLangFromUrl, shiftLang } from "@/i18n/utils";
 
 const changeLangOptions = shiftLang(Astro.url);
+
 const lang = getLangFromUrl(Astro.url);
 ---
 
@@ -19,7 +20,6 @@ const lang = getLangFromUrl(Astro.url);
         ({ path, label, lang, available }) =>
           available && (
             <li>
-              {/* <span>{label}</span> */}
               <a href={path} title={label}>
                 <Icon name="tabler:language-hiragana" />
                 <span>{lang}</span>
