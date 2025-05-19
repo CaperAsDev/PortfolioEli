@@ -90,20 +90,18 @@ export function parseURL(urlObject: URL, pathmane: string= ""): { url: PathKey; 
   }
 }
 
-export function getLink(path: PathKey, lang: LangKey) : string {
-  let pathAvailable = isPathAvailable(path, lang)
+export function getLink(path: "/home" | "/about", lang: LangKey) : string {
+  let link;
+  if (lang === defaultLang) {
+    // If the current lang is the default language, just add the path "/" for path: "/home" and the path for the rest
+    link = path === '/home' ? '/' : path;
+  } else {
+    // If the current lang is not the default language, add the lang prefix to the path
+    // for the path "/home" we need to add the lang prefix and for the rest we need to add the lang prefix and the path
+    link = path === '/home' ? `/${lang}` : `/${lang}${path}`;
+  }
 
-  // Check if the path is available in the specified language
-  // If not, fall back to the default language
-  let link = !pathAvailable ? 
-    (availableRoutes[defaultLang] as Record<PathKey, string | {"/index" : string}>)[path] :
-    (availableRoutes[lang] as Record<PathKey, string | {"/index" : string}>)[path]
-  
-  // Check if the link is an object and return the "/index" property if it is
-  // Otherwise, return the link as is
-  if (typeof link === 'object') return link["/index"];
-  else return link;
-  
+  return link
 }
 
 type MetaData = {
