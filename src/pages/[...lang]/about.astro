@@ -1,0 +1,19 @@
+---
+import "@/css/about.css";
+import Layout from "@/layouts/Layout.astro";
+import AboutTempplate from "@/components/templates/about.astro";
+
+export function getStaticPaths() {
+  const languages = ["pt", "es", "en"];
+  // 1. Generate a new path for every language
+  // 2. The default language is "en", so we don't need to include it in the path
+  // 3. The "lang" parameter is optional, so we can use "undefined" for the default language
+  return languages.map((lang) => ({
+    params: { lang: lang === "en" ? undefined : lang },
+  }));
+}
+---
+
+<Layout>
+  <AboutTempplate />
+</Layout>
