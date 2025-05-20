@@ -1,5 +1,23 @@
 import { Blogs, Langs } from "@/i18n/types";
 
+export const blogsNames = {
+  [Blogs.Education]: {
+    en: "Education",
+    es: "Educación",
+    pt: "Educação",
+  },
+  [Blogs.Science]: {
+    en: "Science",
+    es: "Ciencia",
+    pt: "Ciência",
+  },
+  [Blogs.Social]: {
+    en: "Social Justice",
+    es: "Justicia Social",
+    pt: "Justiça Social",
+  }
+}
+
 export const navigation = {
   en : {
     home: {

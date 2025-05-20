@@ -1,16 +1,38 @@
 ---
-const path = Astro.url.pathname;
-const paths = path.split("/").filter((p) => p !== "");
+import { defaultLang } from "@/i18n/consts";
+import { getLangFromUrl } from "@/i18n/utils";
+import { getBreadcrumbs } from "@/js/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const inDefaultLang = lang === defaultLang;
+
+const breadcrumbs = getBreadcrumbs({ url: Astro.url });
+const linksArray = breadcrumbs.map(({ link }) => link);
+console.log("link: ", linksArray.slice(0, 1).join(""));
 ---
 
-<a href={`${Astro.url.origin}`}>Home</a>
-{
-  paths.map((path, i) => (
-    <span>
-      <span> / </span>
-      <a href={`${Astro.url.origin}/${i == 1 ? paths.join("/") : path}`}>
-        {path}
-      </a>
-    </span>
-  ))
-}
+<ul>
+  {
+    breadcrumbs.map(({ label, index }) => {
+      let link;
+      if (inDefaultLang) {
+        if (index === 1) {
+          link = "/";
+        } else {
+          link = linksArray
+            .slice(0, index)
+            .join("")
+            .replace(`/${lang}/`, "/")
+            .trim();
+        }
+      } else {
+        link = linksArray.slice(0, index).join("").trim();
+      }
+      return (
+        <li>
+          <a href={link}>{label}</a>
+        </li>
+      );
+    })
+  }
+</ul>
