@@ -10,7 +10,7 @@ const breadcrumbs = getBreadcrumbs({ url: Astro.url });
 const linksArray = breadcrumbs.map(({ link }) => link);
 ---
 
-<ul>
+<ul class="container">
   {
     breadcrumbs.map(({ label, index }) => {
       let link;
@@ -29,9 +29,68 @@ const linksArray = breadcrumbs.map(({ link }) => link);
       }
       return (
         <li>
-          <a href={link}>{label}</a>
+          <a href={link}>
+            <span>{label}</span>
+          </a>
         </li>
       );
     })
   }
 </ul>
+<style>
+  ul.container {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    background-color: oklch(from var(--text-clr) l c h / 0.5);
+    padding: var(--fs-s);
+    border-radius: calc(var(--fs-xs) / 2);
+    gap: var(--fs-xs);
+    margin: 0 auto;
+
+    li {
+      list-style: "\276F";
+      padding: 0;
+      margin: 0;
+      padding-inline-start: var(--fs-xs);
+      margin-inline-start: var(--fs-m);
+
+      &:first-of-type {
+        list-style: "\1F3E1";
+      }
+      &:last-of-type {
+        pointer-events: none;
+
+        &::marker {
+          color: oklch(
+            from var(--text-clr) calc(l - 0.1) calc(c + 0.1) calc(h + 20)
+          );
+        }
+        a {
+          color: oklch(
+            from var(--text-clr) calc(l - 0.1) calc(c + 0.1) calc(h + 20)
+          );
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+      color: var(--light);
+
+      &:hover,
+      &:focus-visible {
+        color: oklch(
+          from var(--text-clr) calc(l - 0.1) calc(c + 0.1) calc(h + 20)
+        );
+      }
+    }
+  }
+
+  @media screen and (width >= 700px) {
+    ul.container {
+      flex-direction: row;
+      margin: 0;
+      gap: 0;
+    }
+  }
+</style>

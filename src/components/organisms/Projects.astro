@@ -8,7 +8,7 @@ import type { PathKey } from "@/i18n/types";
 
 const thumbnails = Object.entries(
   import.meta.glob<{ default: ImageMetadata }>(
-    "@/assets/images/Thumbnails/*.{jpg,jpeg,png}",
+    "@/assets/images/blogs/thumbnails/*.{jpg,jpeg,png}",
     {
       eager: true,
     }

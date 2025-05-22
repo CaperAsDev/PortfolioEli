@@ -12,9 +12,6 @@ import { bookSection } from "@/i18n/ui";
 
 export async function getStaticPaths() {
   const languages = ["pt", "es", "en"];
-  // 1. Generate a new path for every language
-  // 2. The default language is "en", so we don't need to include it in the path
-  // 3. The "lang" parameter is optional, so we can use "undefined" for the default language
   const bookCollection = await getCollection("books");
 
   const path = [];
@@ -34,6 +31,18 @@ export async function getStaticPaths() {
 
 const lang = Astro.params.lang || "en";
 const { books } = Astro.props;
+
+const buttonLabel = {
+  es: "Leer reseña",
+  en: "Read review",
+  pt: "Leia a crítica",
+};
+
+const sectionHeader = {
+  es: "Lecturas Recomendadas",
+  pt: "Leituras Recomendadas",
+  en: "Recommended Readings",
+};
 ---
 
 <Layout>
@@ -43,8 +52,35 @@ const { books } = Astro.props;
     banner={BookBanner}
     slot="hero"
   />
-  <div>
-    {books.map((book) => <BookPostCard {...book.data} id={book.id} />)}
-  </div>
+  <section>
+    <h2>{sectionHeader[lang as "en" | "es" | "pt"]}</h2>
+    <div class="bookCards-container">
+      {
+        books.map((book) => (
+          <BookPostCard
+            {...book.data}
+            id={book.id}
+            buttonLabel={buttonLabel[lang as "en" | "es" | "pt"]}
+          />
+        ))
+      }
+    </div>
+  </section>
 </Layout>
-<style></style>
+<style>
+  section {
+    display: grid;
+    place-items: center;
+
+    h2 {
+      font-size: var(--fs-l);
+    }
+  }
+  .bookCards-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+</style>

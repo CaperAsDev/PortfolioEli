@@ -8,22 +8,22 @@ interface Props {
   author: string;
   cover: ImageMetadata;
   id: string;
+  buttonLabel: string;
 }
-const { title, intro, author, cover, id } = Astro.props;
+const { title, intro, author, cover, id, buttonLabel } = Astro.props;
 
 const bookPath = id.split("/");
 const bookId = bookPath.at(-1) || bookPath[0];
-console.log("bookId", bookId);
 ---
 
 <article>
-  <Image src={cover} alt={title} />
   <div>
-    <h2>{title}</h2>
+    <h3>{title}</h3>
     <strong>{author}</strong>
   </div>
+  <Image src={cover} alt={title} />
   <p>{intro}</p>
-  <a href={`${Astro.url.href}/${bookId}`}>read</a>
+  <a href={`${Astro.url.href}/${bookId}`}>{buttonLabel}</a>
 </article>
 <style>
   article {
@@ -38,11 +38,33 @@ console.log("bookId", bookId);
     max-width: 100%;
     height: auto;
     object-fit: cover;
+    margin-block: var(--fs-xs);
   }
-  h2 {
-    text-align: center;
+  div {
+    display: grid;
+    place-items: center;
+  }
+  h3 {
+    font-size: var(--fs-m);
+    font-weight: 500;
+  }
+  strong {
+    font-size: var(--fs-s);
+    font-weight: 400;
   }
   p {
     text-align: center;
+  }
+  a {
+    background-color: var(--dark-bg-clr);
+    color: var(--light);
+    padding-block: var(--fs-xs);
+    padding-inline: var(--fs-s);
+    border-radius: var(--fs-xs);
+
+    &:hover,
+    &:focus-visible {
+      background-color: oklch(from var(--dark-bg-clr) calc(l - 0.1) c h);
+    }
   }
 </style>
