@@ -1,41 +1,21 @@
 ---
 import { Image } from "astro:assets";
 
-import { getLangFromUrl } from "@/i18n/utils";
-import { blogsHero } from "@/i18n/ui";
-import { Blogs } from "@/i18n/types";
-
-import EducationHero from "@/assets/images/blogs/heroes/education.jpg";
-import SocialHero from "@/assets/images/blogs/heroes/education.jpg";
-import ScienceHero from "@/assets/images/blogs/heroes/education.jpg";
+import type { ImageMetadata } from "astro";
 
 interface Props {
-  blog: Blogs;
+  title: string;
+  description: string;
+  banner: ImageMetadata;
 }
 
-const { blog } = Astro.props;
-
-const lang = getLangFromUrl(Astro.url);
-
-const info = blogsHero[blog][lang];
-
-const heroImages = {
-  [Blogs.Education]: {
-    image: EducationHero,
-  },
-  [Blogs.Science]: {
-    image: SocialHero,
-  },
-  [Blogs.Social]: {
-    image: ScienceHero,
-  },
-};
+const { title, description, banner } = Astro.props;
 ---
 
 <header class="education-header">
-  <h1>{info.title}</h1>
-  <p>{info.description}</p>
-  <Image src={heroImages[blog].image} alt={`${info.title}`} />
+  <h1>{title}</h1>
+  <p>{description}</p>
+  <Image src={banner} alt={`${title}`} />
 </header>
 <style>
   h1 {

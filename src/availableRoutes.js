@@ -6,27 +6,15 @@ const availableRoutes = {
         "/[post]": "/[...lang]/[blog]/[post]",
         "/index": "/[...lang]/[blog]/"
       },
+      "/about": "/[...lang]/about",
+      "/focus": "/[...lang]/focus",
       "/index": "/[...lang]/"
     },
-    "/about": "/about",
     "/books": {
       "/[id]": "/books/[id]",
       "/index": "/books/"
     },
-    "/education": {
-      "/[id]": "/education/[id]",
-      "/index": "/education/"
-    },
-    "/focus": "/focus",
-    "/home": "/",
-    "/science": {
-      "/[id]": "/science/[id]",
-      "/index": "/science/"
-    },
-    "/social": {
-      "/[id]": "/social/[id]",
-      "/index": "/social/"
-    }
+    "/home": "/"
   }
 }; 
 export default availableRoutes

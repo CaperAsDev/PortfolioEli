@@ -31,10 +31,14 @@ const social = defineCollection({
 // Books
 const books = defineCollection({
   loader: glob({pattern: "**/*.{mdx,md}", base: "src/blogs/books"}),
-  schema: z.object({
+  schema: ({image}) => z.object({
     lang: z.enum(["es", "en", "pt"]),
     isbn: z.number(),
     intro: z.string(),
+    cover: image(),
+    title: z.string(),
+    author: z.string(),
+    sort: z.number()
   }),
 });
 

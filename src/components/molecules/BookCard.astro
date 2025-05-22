@@ -1,18 +1,22 @@
 ---
 import { getCollection } from "astro:content";
-import type { MarkdownFile, BookData } from "@/types";
+import type { BookData } from "@/types";
 import { Image } from "astro:assets";
+import books from "@/data/books.json";
 
-import { getLangFromUrl, getLink } from "@/i18n/utils";
-import { getContentFromImport, getBookInfo } from "@/js/utils.js";
+import { getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
 
 const bookCollection = await getCollection("books");
-const lang = getLangFromUrl(Astro.url);
-const bookSelection = bookCollection.find((book) => book.data.lang === lang);
+const bookSelection = bookCollection.filter((book) => book.data.lang === lang);
+const sortedBooks = bookSelection.sort((a, b) => a.data.sort - b.data.sort);
+const lastBook = sortedBooks.at(-1) || sortedBooks[0];
 
-const path = getLink("/books", lang);
-const bookData: BookData | undefined =
-  bookSelection && (await getBookInfo({ isbn: bookSelection?.data.isbn }));
+const path = "/books";
+const bookData: BookData | undefined = books.find(
+  (book) => Number(book.isbn) === lastBook?.data.isbn
+);
 
 const buttonText = {
   en: "Read More",
@@ -24,18 +28,14 @@ const buttonText = {
 {
   bookData && (
     <article>
-      <Image
-        src={bookData?.cover?.large}
-        alt={`${bookData?.title}`}
-        inferSize
-      />
+      <Image src={lastBook?.data.cover} alt={`${bookData?.title}`} />
       <div>
         <header>
           <h3>{bookData.title}</h3>
           <small>{bookData.subtitle}</small>
         </header>
-        <p>{bookSelection?.data.intro}.</p>
-        <a href={`${Astro.url.origin}${path}`}>{buttonText[lang]}</a>
+        <p>{lastBook?.data.intro}.</p>
+        <a href={path}>{buttonText[lang]}</a>
       </div>
     </article>
   )

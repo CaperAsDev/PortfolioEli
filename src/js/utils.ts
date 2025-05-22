@@ -1,8 +1,5 @@
-import path from 'path';
-import fs from 'fs/promises';
-import type { MarkdownFile, ApiResponse, BookData } from '@/types';
+import type { MarkdownFile } from '@/types';
 import { Languages, defaultLang } from '@/i18n/consts';
-import { Blogs } from '@/i18n/types';
 import { blogsNames } from '@/i18n/ui';
 import { getLangFromUrl } from '@/i18n/utils';
 
@@ -53,60 +50,36 @@ export const getBreadcrumbs = ({ url }: { url: URL }) => {
   return breadcrumbs;
 };
 
+export const selectImage = ({title, images}: {title:string, images: [string, {
+    default: ImageMetadata;
+}][] }) : ImageMetadata => {
+  // espera una entrada en images obtenida por un codigo como el siguiente: 
+  /*
+  Object.entries(
+  import.meta.glob<{ default: ImageMetadata }>(
+    "@/assets/images/Thumbnails/*.{jpg,jpeg,png}",
+    {
+      eager: true,
+    }
+  )
+);
+  */
+  const image = images.filter(imgData => {
+    //dividimos el path de la imagen que usualmente llega como '/src/assets/images/blogs/heroes/books.jpeg' y seleccionamos la ultima seccion que es el nombre del archivo
+    const filePathLastPosition = imgData[0].split("/").at(-1)?.toLowerCase()
+
+    // si el archivo contiene en nombre de la imagen devuelve true
+    return filePathLastPosition?.includes(title.toLowerCase())
+  });
+  // si el filtrado devuelve alguna imagen selecciona la primera del filtrado y devuelve el default de la segunda posicion que seria el imageMetaData
+  if (image.length > 0) return image[0][1].default;
+
+  // Si no hubieron coincidencias devuelve la primera imagen del import asi que procuremos que exista la imagen, tener en cuenta que el import tiene en cuenta los tipos de imagen, si no se importa la imagen puede que se requiera agregar el tipo de imagen para que aparezca.
+  return images[0][1].default;
+}
+
 export const getContentFromImport = ({ mdFiles, lang }: { mdFiles: MarkdownFile[]; lang: string }) => {
   const md = mdFiles.find((file) => file.frontmatter.lang === lang
   );
   return {Content: md?.Content, frontmatter: md?.frontmatter};
-}
-
-export const getBookInfo = async ({isbn}: {isbn: number}) =>  {
-  const bookInfoAvailable = await isBookInDatabase(isbn);
-  if (bookInfoAvailable) {
-    return bookInfoAvailable;
-  } else {
-    console.log(`Book with ISBN ${isbn} not found in local database. Fetching from API...`);
-    
-    const BaseApiUrl = `https://openlibrary.org/api/books?bibkeys=ISBN%3A${isbn}&format=json&jscmd=data`;
-
-    const newBook = await fetch(BaseApiUrl)
-    .then((response) => response.json() as Promise<ApiResponse>)
-    .then((data) => {
-
-      const book = data[`ISBN:${isbn}`];
-      saveBookToDatabase({book: book})
-
-      return book;  })
-    .catch((error) => console.error("Error fetching book data:", error));
-    
-    return newBook;
-  }
-
-}
-
-const isBookInDatabase = async (isbn: number) => {
-  try {
-    const dataBasePath = path.resolve("src", './data/books.json');
-    const localDataBase = JSON.parse(await fs.readFile(dataBasePath, 'utf-8'));
-    const book = localDataBase.find((book: { isbn: string }) => {
-      return Number(book.isbn) === Number(isbn);
-    });
-
-    return book;
-  } catch (error) {
-    console.error("Error reading local database:", error);
-    return null;
-  }
-};
-
-const saveBookToDatabase = async ({ book }: {book:BookData}) => {
-  try {
-    const dataBasePath = path.resolve("src", './data/books.json');
-    const localDataBase = JSON.parse(await fs.readFile(dataBasePath, 'utf-8'));
-    const newBook = {...book, isbn: book.identifiers.isbn_13[0], id: localDataBase.length}
-    const newDataBase = [...localDataBase, newBook ];
-    await fs.writeFile(dataBasePath, JSON.stringify(newDataBase, null, 2));
-
-  } catch (error) {
-    console.error("Error saving book to database:", error);
-  }
 }

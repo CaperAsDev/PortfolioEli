@@ -2,8 +2,10 @@
 import Layout from "@/layouts/BlogLayout.astro";
 import BlogHero from "@/components/molecules/BlogHero.astro";
 import { Blogs } from "@/i18n/types";
+import { blogsHero } from "@/i18n/ui"
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
+import { selectImage } from "@/js/utils"
 import PostCard from "@/components/molecules/PostCard.astro";
 
 const lang = getLangFromUrl(Astro.url);
@@ -27,25 +29,14 @@ const { blog } = Astro.params;
 const allBlogPosts = await getCollection(blog);
 const blogPosts = allBlogPosts.filter((post) => lang === post.data.lang);
 
-
-
-const categoryName = {
-  [Blogs.Social]: {
-    en: "Social Justice",
-    es: "Justicia Social",
-    pt: "Justiça Social",
-  },
-  [Blogs.Education]: {
-    en: "Education",
-    es: "Educación",
-    pt: "Educação",
-  },
-  [Blogs.Science]: {
-    en: "Science",
-    es: "Ciencia",
-    pt: "Ciência",
-  },
-};
+const banners = Object.entries(
+  import.meta.glob<{ default: ImageMetadata }>(
+    "@/assets/images/blogs/heroes/*.{jpg,jpeg,png}",
+    {
+      eager: true,
+    }
+  )
+);
 
 const postPath = (pathWithLang: string) => {
   const path = pathWithLang.split("/");
@@ -54,7 +45,7 @@ const postPath = (pathWithLang: string) => {
 };
 ---
 <Layout>
-  <BlogHero slot={"hero"} blog={blog} />
+  <BlogHero slot={"hero"} title={blogsHero[blog][lang].title} description={blogsHero[blog][lang].description} banner={selectImage({title: blog, images: banners})} />
   <section>
   <h2>{blog.charAt(0).toUpperCase() + blog.slice(1)} Posts</h2>
   <div class="cards-container">
@@ -67,7 +58,7 @@ const postPath = (pathWithLang: string) => {
           link={postPath(post.id)}
           author={post.data.author},
           publishedDate={post.data.publishDate}
-          category={categoryName[blog][lang]}
+          category={blogsHero[blog][lang].category}
           cover={post.data.cover}
         />
       ))

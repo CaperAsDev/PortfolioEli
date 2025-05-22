@@ -15,12 +15,12 @@ interface Props {
   };
   image: ImageMetadata;
   url: PathKey;
-  id: number;
+  id: string;
   pageReady: boolean;
 }
 const lang = getLangFromUrl(Astro.url);
 
-const { name, description, image, url, pageReady } = Astro.props;
+const { name, description, image, url } = Astro.props;
 
 const callsToAction = {
   en: "View Project",

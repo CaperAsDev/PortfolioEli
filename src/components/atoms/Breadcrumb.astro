@@ -8,7 +8,6 @@ const inDefaultLang = lang === defaultLang;
 
 const breadcrumbs = getBreadcrumbs({ url: Astro.url });
 const linksArray = breadcrumbs.map(({ link }) => link);
-console.log("link: ", linksArray.slice(0, 1).join(""));
 ---
 
 <ul>

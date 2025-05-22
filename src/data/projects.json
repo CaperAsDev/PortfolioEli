@@ -1,6 +1,6 @@
 [
   {
-    "id": 0,
+    "id": "focus",
     "name": {
       "en": "FOCUS4PFAS (Marie Curie Fellowship)",
       "es": "FOCUS4PFAS (Marie Curie Fellowship)",
@@ -15,7 +15,7 @@
     "pageReady": true
   },
   {
-    "id": 1,
+    "id": "education",
     "name": {
       "en": "Education in science",
       "es": "Educación en Ciencias",
@@ -30,7 +30,7 @@
     "pageReady": true
   },
   {
-    "id": 2,
+    "id": "science",
     "name": {
       "en": "Science Without Borders",
       "es": "Ciencia sin fronteras",
@@ -45,7 +45,7 @@
     "pageReady": true
   },
   {
-    "id": 3,
+    "id": "social",
     "name": {
       "en": "Social Justice",
       "es": "Justicia social",

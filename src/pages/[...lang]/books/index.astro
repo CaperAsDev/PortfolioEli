@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/BlogLayout.astro";
+
+import BlogHero from "@/components/molecules/BlogHero.astro";
+import BookPostCard from "@/components/molecules/BookPostCard.astro";
+
+import BookBanner from "@/assets/images/blogs/heroes/books.jpeg";
+
+import { bookSection } from "@/i18n/ui";
+
+export async function getStaticPaths() {
+  const languages = ["pt", "es", "en"];
+  // 1. Generate a new path for every language
+  // 2. The default language is "en", so we don't need to include it in the path
+  // 3. The "lang" parameter is optional, so we can use "undefined" for the default language
+  const bookCollection = await getCollection("books");
+
+  const path = [];
+  for (const lang of languages) {
+    const bookSelection = bookCollection.filter(
+      (book) => book.data.lang === lang
+    );
+    path.push({
+      params: { lang: lang === "en" ? undefined : lang },
+      props: {
+        books: bookSelection,
+      },
+    });
+  }
+  return path;
+}
+
+const lang = Astro.params.lang || "en";
+const { books } = Astro.props;
+---
+
+<Layout>
+  <BlogHero
+    title={bookSection[lang as "en" | "es" | "pt"].title}
+    description={bookSection[lang as "en" | "es" | "pt"].description}
+    banner={BookBanner}
+    slot="hero"
+  />
+  <div>
+    {books.map((book) => <BookPostCard {...book.data} id={book.id} />)}
+  </div>
+</Layout>
+<style></style>

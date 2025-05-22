@@ -1,37 +1,41 @@
 ---
 import { Image } from "astro:assets";
-import { getBookInfo } from "@/js/utils.js";
 import { bookSection } from "@/i18n/ui";
 import { getLangFromUrl } from "@/i18n/utils";
-
+import books from "@/data/books.json";
+import type { ImageMetadata } from "astro";
 interface Props {
   isbn: number;
+  cover: ImageMetadata;
+  title: string;
+  author: string;
 }
 const lang = getLangFromUrl(Astro.url);
-const { isbn } = Astro.props;
+const { isbn, cover, title, author } = Astro.props;
 
-const bookData = await getBookInfo({ isbn });
+const bookData = books.find((book) => Number(book.isbn) === isbn);
 ---
 
+{bookData && (
 <header>
   <h1>{bookSection[lang].title}</h1>
   <p>{bookSection[lang].description}</p>
 </header>
-<article>
-  <Image
-    src={bookData?.cover?.large}
-    alt={bookData?.title}
-    inferSize
-    class="book-cover"
-  />
-  <div class="book-info">
-    <h2>{bookData?.title}</h2>
-    <h3>{bookData?.authors?.[0]?.name}</h3>
-    <p>{bookData?.publish_date}</p>
-    <p>{bookData?.publishers?.[0]?.name}</p>
-    <p>{bookData?.number_of_pages} pages</p>
-  </div>
-</article>
+  <article>
+    <Image
+      src={cover}
+      alt={title}
+      class="book-cover"
+    />
+    <div class="book-info">
+      <h2>{title}</h2>
+      <h3>{author}</h3>
+      <p>{bookData?.publish_date}</p>
+      <p>{bookData?.publishers?.[0]?.name}</p>
+      <p>{bookData?.number_of_pages} pages</p>
+    </div>
+  </article>
+  )}
 <style>
   header {
     margin-bottom: var(--fs-m);

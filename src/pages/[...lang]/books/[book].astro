@@ -1,0 +1,38 @@
+---
+import Breadcrumb from "@/components/atoms/Breadcrumb.astro";
+import BookHero from "@/components/molecules/bookHero.astro";
+import PostLayout from "@/layouts/PostLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const languages = ["pt", "es", "en"];
+
+  const bookCollection = await getCollection("books");
+
+  const paths = [];
+  for (const lang of languages) {
+    const bookSelection = bookCollection.filter(
+      (book) => book.data.lang === lang
+    );
+    for (const book of bookSelection) {
+      const bookPath = book.id.split("/");
+      const bookId = bookPath.at(-1) || bookPath[0];
+      paths.push({
+        params: { lang: lang === "en" ? undefined : lang, book: bookId },
+        props: { book },
+      });
+    }
+  }
+  return paths;
+}
+
+const { book } = Astro.props;
+const { Content } = await render(book);
+const { title, cover, author, isbn } = book.data;
+---
+
+<PostLayout>
+  <Breadcrumb />
+  <BookHero isbn={isbn} cover={cover} title={title} author={author} />
+  <Content />
+</PostLayout>

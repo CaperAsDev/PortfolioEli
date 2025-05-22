@@ -1,0 +1,48 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  intro: string;
+  author: string;
+  cover: ImageMetadata;
+  id: string;
+}
+const { title, intro, author, cover, id } = Astro.props;
+
+const bookPath = id.split("/");
+const bookId = bookPath.at(-1) || bookPath[0];
+console.log("bookId", bookId);
+---
+
+<article>
+  <Image src={cover} alt={title} />
+  <div>
+    <h2>{title}</h2>
+    <strong>{author}</strong>
+  </div>
+  <p>{intro}</p>
+  <a href={`${Astro.url.href}/${bookId}`}>read</a>
+</article>
+<style>
+  article {
+    display: grid;
+    place-items: center;
+    max-width: calc(300px + 10vw);
+    padding: var(--fs-s);
+    border: 2px solid var(--text-clr);
+    border-radius: var(--fs-xs);
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  h2 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+</style>

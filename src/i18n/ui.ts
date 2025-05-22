@@ -84,6 +84,7 @@ export const bookSection = {
 type heroprops = {
   [key in Blogs]: {
     [key in Langs]: {
+      category: string;
       title: string;
       description: string;
     };
@@ -92,42 +93,51 @@ type heroprops = {
 export const blogsHero: heroprops = {
   [Blogs.Education]: {
     [Langs.es]: {
+      category: "Educación",
       title: "Educación en ciencias",
       description: "La educación es la base de la equidad social. Aquí destacamos el trabajo de profesores y profesoras que están transformando el mundo desde sus clases.",
     },
     [Langs.en]: {
+      category: "Education",
       title: "Education in science",
       description: "Education is the basis of social equity. Here we highlight the work of teachers who are transforming the world from their classrooms.",
     },
     [Langs.pt]: {
+      category: "Educação",
       title: "Educação em ciências",
       description: "A educação é a base da equidade social. Aqui destacamos o trabalho de professores que estão transformando o mundo a partir de suas salas de aula.",
     },
   },
   [Blogs.Science]: {
     [Langs.es]: {
+      category: "Ciencia",
       title: "Ciencia sin fronteras",
       description: "Descubre en esta sección proyectos científicos al rededor del mundo. Te contamos, de forma clara y breve, qué buscan, cómo avanzan y por qué nos conciernen a todos como sociedad.",
     },
     [Langs.en]: {
+      category: "Science",
       title: "Science without borders",
       description: "Discover in this section scientific projects around the world. We tell you, clearly and briefly, what they are looking for, how they are progressing, and why they concern us all as a society.",
     },
     [Langs.pt]: {
+      category: "Ciência",
       title: "Ciência sem fronteiras",
       description: "Descubra nesta seção projetos científicos ao redor do mundo. Contamos a você, de forma clara e breve, o que eles estão buscando, como estão progredindo e por que nos dizem respeito como sociedade.",
     },
   },
   [Blogs.Social]: {
     [Langs.es]: {
+      category: "Social",
       title: "Justicia social",
       description: "Reflexionamos sobre lo que estamos haciendo como sociedad para avanzar hacia la justicia social, la equidad y la igualdad de género.",
     },
     [Langs.en]: {
+      category: "Social",
       title: "Social justice",
       description: "We reflect on how, as a society, we’re working toward social justice, equity, and gender equality.",
     },
     [Langs.pt]: {
+      category: "Social",
       title: "Justiça social",
       description: "Refletimos sobre o que estamos fazendo como sociedade para promover a justiça social, a equidade e a igualdade de gênero.",
     },
