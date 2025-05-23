@@ -13,6 +13,7 @@ interface Props {
   publishedDate: Date;
   category: string;
   cover: ImageMetadata;
+  color: string;
 }
 
 const {
@@ -24,12 +25,19 @@ const {
   publishedDate,
   category,
   cover,
+  color,
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const originUrl = Astro.url.href;
 const postLink = `${originUrl}${link}`;
 const postAuthor = await getEntry(author);
+
+const linkLabel = {
+  es: "Leer articulo",
+  en: "Read post",
+  pt: "Leia o artigo",
+};
 ---
 
 <article>
@@ -50,7 +58,7 @@ const postAuthor = await getEntry(author);
     <p>
       {description}
     </p>
-    <a href={postLink}>Read more</a>
+    <a href={postLink}>{linkLabel[lang]}</a>
   </div>
   <footer>
     <p>{postAuthor?.data.name || "BridgeToScience"}</p>
@@ -66,7 +74,7 @@ const postAuthor = await getEntry(author);
     </p>
   </footer>
 </article>
-<style>
+<style define:vars={{ "category-clr": color }}>
   article {
     width: calc(300px + 10vw);
     overflow: hidden;
@@ -89,7 +97,7 @@ const postAuthor = await getEntry(author);
       position: absolute;
       top: var(--fs-xs);
       right: var(--fs-xs);
-      background-color: var(--bg-clr);
+      background-color: var(--category-clr);
       color: var(--text-clr);
       padding: calc(var(--fs-xs) / 2) var(--fs-s);
       font-size: var(--fs-xs);
@@ -143,6 +151,13 @@ const postAuthor = await getEntry(author);
       color: var(--light);
       background-color: var(--dark-bg-clr);
       font-weight: 600;
+
+      &:hover,
+      &:focus-visible {
+        background-color: oklch(
+          from var(--dark-bg-clr) calc(l - 0.1) calc(c - 0.05) calc(h + 70)
+        );
+      }
     }
   }
   footer {

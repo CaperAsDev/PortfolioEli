@@ -18,7 +18,7 @@ const bookData = books.find((book) => Number(book.isbn) === isbn);
 
 {bookData && (
 <header>
-  <h1>{bookSection[lang].title}</h1>
+  <strong>{bookSection[lang].title}</strong>
   <p>{bookSection[lang].description}</p>
 </header>
   <article>
@@ -37,6 +37,13 @@ const bookData = books.find((book) => Number(book.isbn) === isbn);
   </article>
   )}
 <style>
+  strong {
+    font-size: var(--fs-l);
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: var(--fs-m);
+  }
   header {
     margin-bottom: var(--fs-m);
     p {

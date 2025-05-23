@@ -39,9 +39,9 @@ const buttonLabel = {
 };
 
 const sectionHeader = {
-  es: "Lecturas Recomendadas",
-  pt: "Leituras Recomendadas",
-  en: "Recommended Readings",
+  es: "Donde la lectura transforma la mirada",
+  en: "Where reading transforms how we see the world",
+  pt: "Onde a leitura transforma o nosso olhar",
 };
 ---
 
@@ -51,6 +51,7 @@ const sectionHeader = {
     description={bookSection[lang as "en" | "es" | "pt"].description}
     banner={BookBanner}
     slot="hero"
+    iconName="book"
   />
   <section>
     <h2>{sectionHeader[lang as "en" | "es" | "pt"]}</h2>
@@ -74,6 +75,8 @@ const sectionHeader = {
 
     h2 {
       font-size: var(--fs-l);
+      font-weight: 600;
+      padding: var(--fs-s);
     }
   }
   .bookCards-container {

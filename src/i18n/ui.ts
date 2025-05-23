@@ -81,16 +81,33 @@ export const bookSection = {
   },
 };
 
-type heroprops = {
+type heroMapped = {
   [key in Blogs]: {
     [key in Langs]: {
       category: string;
       title: string;
       description: string;
     };
-  };
+  }
 };
+type heroprops = heroMapped & {
+  iconName:{
+    [key in Blogs]: string
+  },
+  color: {
+    [key in Blogs]: string
+  }
+}
 export const blogsHero: heroprops = {
+  iconName:{
+    [Blogs.Education]: "school",
+    [Blogs.Science]: "microscope",
+    [Blogs.Social]: "empathize"},
+    color: {
+      [Blogs.Education]: "#2A4D8C",
+      [Blogs.Science]: "#2F7D6D",
+      [Blogs.Social]: "#8C2A4D",
+    },
   [Blogs.Education]: {
     [Langs.es]: {
       category: "Educación",

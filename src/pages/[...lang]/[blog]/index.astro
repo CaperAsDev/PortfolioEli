@@ -43,11 +43,30 @@ const postPath = (pathWithLang: string) => {
   const blogIndex = "/" + path.at(-1);
   return blogIndex;
 };
+
+const sectionHeader = {
+  [Blogs.Education]: {
+    es: "Donde ciencia y educación inspiran el cambio",
+    en: "Where science and education inspire change",
+    pt: "Onde ciência e educação inspiram a mudança"
+  },
+  [Blogs.Science]: {
+    es: "Donde la ciencia se conecta con la realidad",
+    en: "Where science connects with reality",
+    pt: "Onde a ciência se conecta com a realidade"
+  },
+  [Blogs.Social]: {
+    es: "Donde ciencia y sociedad se unen con perspectiva",
+    en: "Where science and society unite with perspective",
+    pt: "Onde ciência e sociedade se unem com perspectiva"
+  }
+  }
+
 ---
 <Layout>
-  <BlogHero slot={"hero"} title={blogsHero[blog][lang].title} description={blogsHero[blog][lang].description} banner={selectImage({title: blog, images: banners})} />
+  <BlogHero slot={"hero"} title={blogsHero[blog][lang].title} description={blogsHero[blog][lang].description} banner={selectImage({title: blog, images: banners})} iconName={blogsHero.iconName[blog]} />
   <section>
-  <h2>{blog.charAt(0).toUpperCase() + blog.slice(1)} Posts</h2>
+  <h2>{sectionHeader[blog][lang]}</h2>
   <div class="cards-container">
     {
       blogPosts.map((post) => (
@@ -60,6 +79,7 @@ const postPath = (pathWithLang: string) => {
           publishedDate={post.data.publishDate}
           category={blogsHero[blog][lang].category}
           cover={post.data.cover}
+          color={blogsHero.color[blog]}
         />
       ))
     }
