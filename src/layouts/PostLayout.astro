@@ -3,14 +3,34 @@ import Layout from "./Layout.astro";
 ---
 
 <Layout>
-  <main class="blog-layout">
-    <slot />
-  </main>
+  <div class="container">
+    <slot name="breadcrumb" />
+    <slot name="aside" />
+    <main class="blog-layout">
+      <slot />
+    </main>
+  </div>
 </Layout>
 
 <style>
+  .container {
+    display: grid;
+    place-items: center;
+
+    .hashes {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    nav {
+    }
+    aside {
+      margin: var(--fs-xs);
+    }
+    main {
+    }
+  }
   .blog-layout {
-    max-width: 1240px;
     padding: var(--fs-s);
     margin: 0 auto;
 
@@ -41,14 +61,14 @@ import Layout from "./Layout.astro";
       padding: var(--fs-xs);
     }
 
-    ul {
+    ul:not([class]) {
       list-style-type: disc;
       margin-inline-start: calc(var(--fs-m));
+    }
 
-      li {
-        padding-inline-start: var(--fs-s);
-        font-size: var(--fs-s);
-      }
+    li {
+      padding-inline-start: var(--fs-s);
+      font-size: var(--fs-s);
     }
 
     img {
@@ -78,6 +98,49 @@ import Layout from "./Layout.astro";
         width: 100%;
         font-size: var(--fs-xs);
         text-align: center;
+      }
+    }
+  }
+  @media screen and (width >= 768px) {
+    .container {
+      nav {
+        justify-self: start;
+        margin-inline-start: var(--fs-xl);
+      }
+
+      .hashes {
+        justify-content: center;
+        gap: var(--fs-m);
+      }
+    }
+  }
+  @media screen and (width >= 1024px) {
+    .container {
+      main {
+        max-width: 90%;
+      }
+    }
+  }
+  @media screen and (width >= 1440px) {
+    .container {
+      grid-template-columns: auto 1fr;
+
+      nav {
+        grid-column: span 2;
+      }
+
+      .hashes {
+        justify-content: flex-end;
+      }
+
+      aside {
+        align-self: flex-start;
+        margin: var(--fs-xl);
+        margin-top: calc(var(--fs-xl) * 2);
+      }
+
+      main {
+        max-width: 1440px;
       }
     }
   }

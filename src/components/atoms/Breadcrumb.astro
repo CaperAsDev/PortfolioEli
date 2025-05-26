@@ -10,33 +10,36 @@ const breadcrumbs = getBreadcrumbs({ url: Astro.url });
 const linksArray = breadcrumbs.map(({ link }) => link);
 ---
 
-<ul class="container">
-  {
-    breadcrumbs.map(({ label, index }) => {
-      let link;
-      if (inDefaultLang) {
-        if (index === 1) {
-          link = "/";
+<nav>
+  <ul class="container">
+    {
+      breadcrumbs.map(({ label, index }) => {
+        let link;
+        if (inDefaultLang) {
+          if (index === 1) {
+            link = "/";
+          } else {
+            link = linksArray
+              .slice(0, index)
+              .join("")
+              .replace(`/${lang}/`, "/")
+              .trim();
+          }
         } else {
-          link = linksArray
-            .slice(0, index)
-            .join("")
-            .replace(`/${lang}/`, "/")
-            .trim();
+          link = linksArray.slice(0, index).join("").trim();
         }
-      } else {
-        link = linksArray.slice(0, index).join("").trim();
-      }
-      return (
-        <li>
-          <a href={link}>
-            <span>{label}</span>
-          </a>
-        </li>
-      );
-    })
-  }
-</ul>
+        return (
+          <li>
+            <a href={link}>
+              <span>{label}</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
 <style>
   ul.container {
     width: fit-content;

@@ -3,49 +3,45 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 import { getLangFromUrl } from "@/i18n/utils";
-
-import authors from "@/data/authors.json";
+import type { InferEntrySchema, RenderedContent } from "astro:content";
 
 interface Props {
-  id: number;
+  author: {
+    id: string;
+    body?: string;
+    data: InferEntrySchema<"authors">;
+    rendered?: RenderedContent;
+    filePath?: string;
+  };
 }
 const lang = getLangFromUrl(Astro.url);
-const { id } = Astro.props;
-const author = authors.find((auth) => auth.id === id);
+const { author } = Astro.props;
 ---
 
 <aside>
-  {
-    author ? (
-      // <p>About the author</p>
-      <Image
-        src={author.avatar || "https://picsum.photos/300"}
-        alt={"profileImage of researcher"}
-        inferSize
-      />
-      <p>{author.name} {author.lastName}</p>
-      <p class="work">{author.occupation[lang]}</p>
-      <p>{author.city}, {author.country[lang]}</p>
-      <a class="mail" href={`mailto:${author.email}`}>{author.email}</a>
-      <ul class="social">
-        {author.social.map((item)=> (
-          item.link &&(
-          <li>
-            <a target="_blank" href={item.link} >
-              <Icon name={`tabler:${item.icon}`} />
-              <span>{item.label}</span>
-            </a>
-          </li>)
-        ))}
-      </ul>
-    ) :
-    (
-      <p>Author information not available</p>
-    )
-  }
+  <Image src={author.data.avatar} alt={author.data.name} />
+  <p>{author.data.name} {author.data.lastName}</p>
+  <p class="work">{author.data.occupation[lang]}</p>
+  <p>{author.data.city}, {author.data.country[lang]}</p>
+  <a class="mail" href={`mailto:${author.data.email}`}>{author.data.email}</a>
+  <ul class="social">
+    {
+      author.data.social.map(
+        (item) =>
+          item.link && (
+            <li>
+              <a target="_blank" href={item.link}>
+                <Icon name={`tabler:${item.icon}`} />
+                <span>{item.label}</span>
+              </a>
+            </li>
+          )
+      )
+    }
+  </ul>
 </aside>
 <style>
-  aside{
+  aside {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,43 +53,63 @@ const author = authors.find((auth) => auth.id === id);
     margin-inline: auto;
     border-radius: var(--fs-xs);
     border: 2px solid var(--inverse-bg-clr);
-    
-    p, a, span {
+
+    p,
+    a,
+    span {
       margin: 0;
+      padding: 0;
+      text-align: center;
     }
   }
-  img{
+  img {
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 50%;
     overflow: hidden;
-
   }
   .work {
     text-align: center;
   }
-  .mail{
+  .mail {
     text-decoration: underline;
   }
 
-  ul{
+  ul {
     display: flex;
     gap: var(--fs-s);
     list-style: none;
 
-    a{
+    a {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 4px;
       font-weight: 300;
-      svg{
+      svg {
         width: var(--fs-m);
         height: var(--fs-m);
       }
     }
   }
-  
+  li {
+    list-style: none;
+  }
+  ul:empty {
+    display: none;
+  }
+
+  @media screen and (width >=768px) {
+    aside {
+      max-width: calc(350px + var(--fs-xl));
+    }
+  }
+  @media screen and (width >= 1440px) {
+    aside {
+      position: sticky;
+      top: calc(var(--fs-xl) * 2.1);
+    }
+  }
 </style>
