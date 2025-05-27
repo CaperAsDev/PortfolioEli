@@ -21,17 +21,19 @@ const { Content } = getContentFromImport({ mdFiles, lang });
 <Projects />
 <BookSection />
 
-<style is:inline>
-  .home-intro h1 {
-    text-align: center;
-    font-weight: 600;
-    font-size: var(--fs-xl);
-    color: var(--h-text-clr);
-  }
-  .home-intro p {
-    text-align: center;
-    width: clamp(300px, 80vw, 1024px);
-    text-wrap: balance;
-    margin: 2rem auto;
+<style>
+  .home-intro {
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      font-size: var(--fs-xl);
+      color: var(--h-text-clr);
+    }
+    p {
+      text-align: center;
+      width: clamp(300px, 80vw, 1024px);
+      text-wrap: balance;
+      margin: 2rem auto;
+    }
   }
 </style>

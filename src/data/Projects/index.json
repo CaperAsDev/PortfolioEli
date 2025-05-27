@@ -1,5 +1,6 @@
 [
   {
+    "type": "Project",
     "id": "focus",
     "name": {
       "en": "FOCUS4PFAS (Marie Curie Fellowship)",
@@ -11,10 +12,10 @@
       "es": "Aquí encontrarás información clave y avances del proyecto FOCUS4PFAS, un proyecto Marie Curie que tiene como objetivo garantizar agua libre de PFAS.",
       "pt": "Aqui você encontrará informações importantes e o progresso do projeto FOCUS4PFAS, um projeto Marie Curie que visa garantir água livre de PFAS."
     },
-    "url": "/focus",
-    "pageReady": true
+    "url": "/focus"
   },
   {
+    "type": "Blog",
     "id": "education",
     "name": {
       "en": "Education in science",
@@ -26,10 +27,11 @@
       "es": "La educación es la base de la equidad social. Aquí destacamos el trabajo de profesores y profesoras que están transformando el mundo desde sus clases.",
       "pt": "Acreditamos que a educação é a chave para um futuro mais justo. Aqui, damos voz a professores que, com dedicação e ciência, estão mudando realidades dentro e fora da sala de aula."
     },
-    "url": "/education",
-    "pageReady": true
+    "url": "/education"
+
   },
   {
+    "type": "Blog",
     "id": "science",
     "name": {
       "en": "Science Without Borders",
@@ -41,10 +43,10 @@
       "es": "Descubre en esta sección proyectos científicos al rededor del mundo. Te contamos, de forma clara y breve, qué buscan, cómo avanzan y por qué nos conciernen a todos como sociedad.",
       "pt": "Explore projetos científicos em andamento ao redor do mundo. Nesta seção, apresentamos de forma clara e direta o que esses estudos buscam, como estão avançando e por que são essenciais para o futuro da nossa sociedade."
     },
-    "url": "/science",
-    "pageReady": true
+    "url": "/science"
   },
   {
+    "type": "Blog",
     "id": "social",
     "name": {
       "en": "Social Justice",
@@ -56,7 +58,6 @@
       "es": "Reflexionamos sobre lo que estamos haciendo como sociedad para avanzar hacia la justicia social, la equidad y la igualdad de género.",
       "pt": "Refletimos sobre o que estamos fazendo como sociedade para promover a justiça social, a equidade e a igualdade de gênero."
     },
-    "url": "/social",
-    "pageReady": true
+    "url": "/social"
   }
 ]

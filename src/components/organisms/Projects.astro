@@ -1,9 +1,10 @@
 ---
 import type { ImageMetadata } from "astro";
+import BlogsCards from "./BlogsCards.astro";
 import { selectImage } from "@/js/utils";
 
-import projects from "@/data/projects.json";
-import ProjectCard from "../molecules/ProjectCard.astro";
+import allProjects from "@/data/Projects/index.json";
+import ProjectCard from "@/components/molecules/ProjectCard.astro";
 import type { PathKey } from "@/i18n/types";
 
 const thumbnails = Object.entries(
@@ -14,25 +15,37 @@ const thumbnails = Object.entries(
     }
   )
 );
+const projects = allProjects.filter((project) => project.type === "Project");
 ---
 
-<section>
-  {
-    projects.map(({ url, ...project }) => (
-      <ProjectCard
-        {...project}
-        url={url as PathKey}
-        image={selectImage({ title: project.id, images: thumbnails })}
-      />
-    ))
-  }
-</section>
+<main>
+  <section>
+    <h2>Projects</h2>
+    {
+      projects.map(({ url, ...project }) => (
+        <ProjectCard
+          {...project}
+          url={url as PathKey}
+          image={selectImage({ title: project.id, images: thumbnails })}
+        />
+      ))
+    }
+  </section>
+  <BlogsCards />
+</main>
 <style>
-  section {
-    display: flex;
+  main {
     padding: var(--fs-s);
+  }
+  section {
+    display: grid;
     gap: calc(var(--fs-s));
-    justify-content: center;
-    flex-wrap: wrap;
+    place-items: center;
+
+    h2 {
+      text-align: center;
+      font-weight: 600;
+      font-size: var(--fs-l);
+    }
   }
 </style>

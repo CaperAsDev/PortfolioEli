@@ -123,7 +123,7 @@ const linkLabel = {
 
     .tags {
       position: absolute;
-      top: -70px;
+      top: calc(var(--fs-s) * -1);
       right: var(--fs-s);
       display: flex;
       gap: var(--fs-xs);
@@ -170,6 +170,17 @@ const linkLabel = {
     p {
       font-size: var(--fs-xs);
       margin: 0;
+    }
+  }
+
+  @media screen and (width >= 1024px) {
+    article {
+      width: calc(350px + 10vw);
+    }
+    .info-container {
+      .tags {
+        top: calc(var(--fs-xl) * -1);
+      }
     }
   }
 </style>
