@@ -48,7 +48,7 @@ const hrefBase = lang == "en" ? Astro.url.origin : Astro.url.href;
     border-radius: var(--fs-xs);
     overflow: hidden;
     color: oklch(from var(--ligth) l c h);
-    background-color: oklch(from var(--terciary-3) l c h);
+    background-color: oklch(from var(--dark-bg-clr) l c h);
   }
   .info {
     height: 100%;
@@ -56,7 +56,7 @@ const hrefBase = lang == "en" ? Astro.url.origin : Astro.url.href;
     grid-template-rows: auto 1fr auto;
     padding: var(--fs-xs);
     font-weight: 200;
-
+    place-items: center;
     p {
       text-align: left;
       padding: var(--fs-xs);
@@ -64,10 +64,12 @@ const hrefBase = lang == "en" ? Astro.url.origin : Astro.url.href;
     }
 
     a {
+      /* width: fit-content; */
+      width: 100%;
       align-self: flex-end;
       font-weight: 400;
       padding: var(--fs-xs);
-      border-radius: var(--fs-xs);
+      /* border-radius: var(--fs-xs); */
       background-color: oklch(from var(--secondary-0) l c h);
       color: oklch(from var(--primary-0) l c h);
       text-align: center;

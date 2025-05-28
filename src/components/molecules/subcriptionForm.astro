@@ -1,0 +1,184 @@
+---
+import { getLangFromUrl } from "@/i18n/utils";
+
+const labels = {
+  es: {
+    email: "Correo electrónico",
+    name: "Nombre",
+    subscribe: "Suscribirse",
+  },
+  en: {
+    email: "Email",
+    name: "Name",
+    subscribe: "Subscribe",
+  },
+  pt: {
+    email: "Email",
+    name: "Nome",
+    subscribe: "Inscrever-se",
+  },
+};
+const header = {
+  es: {
+    title: "¿Te interesa nuestro contenido?",
+    description:
+      "Suscríbete para recibir información sobre nuevas publicaciones.",
+  },
+  en: {
+    title: "Interested in our content?",
+    description: "Subscribe to receive updates on new posts.",
+  },
+  pt: {
+    title: "Gostou do nosso conteúdo?",
+    description: "Inscreva-se para receber novidades sobre novas publicações.",
+  },
+};
+const lang = getLangFromUrl(Astro.url);
+---
+
+<aside>
+  <h3>{header[lang].title}</h3>
+  <p>{header[lang].description}</p>
+  <form id="subscribe-form">
+    <label>
+      <span>{labels[lang].email}</span>
+      <input
+        type="email"
+        name="email"
+        placeholder="bridge@science.go"
+        required
+      />
+    </label>
+    <label>
+      <span>{labels[lang].name}</span>
+      <input type="text" name="metadata__name" placeholder="Marco" required />
+    </label>
+    <button type="submit">{labels[lang].subscribe}</button>
+  </form>
+</aside>
+<style>
+  aside {
+    display: grid;
+    place-items: center;
+    gap: var(--fs-xs);
+    padding: var(--fs-s);
+    border-radius: var(--fs-xs);
+    background-color: var(--dark-bd-clr);
+    color: var(--light);
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid var(--light);
+
+    .message {
+      border-radius: var(--fs-xs);
+      padding: var(--fs-s);
+      color: var(--light);
+      font-size: var(--fs-s);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .success-message {
+      background-color: var(--secondary-0);
+    }
+
+    .error-message {
+      background-color: darkred;
+    }
+  }
+
+  h3 {
+    font-size: var(--fs-m);
+    font-weight: 600;
+    text-align: center;
+  }
+  form {
+    display: grid;
+    gap: var(--fs-xs);
+    place-items: center;
+    width: 100%;
+  }
+  label {
+    display: flex;
+    gap: var(--fs-xs);
+
+    input {
+      padding: 2px 4px;
+      border: none;
+      border-radius: 4px;
+    }
+  }
+  button {
+    width: 100%;
+    padding: var(--fs-xs);
+    margin-block-start: var(--fs-s);
+    background-color: var(--secondary-0);
+    border-radius: var(--fs-xs);
+    font-size: var(--fs-s);
+    font-weight: 600;
+    color: var(--light);
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      background-color: oklch(from var(--secondary-0) calc(l - 0.1) c h);
+    }
+  }
+</style>
+<script>
+  const successMessage = {
+    es: "¡Suscripción exitosa!",
+    en: "Subscription successful!",
+    pt: "Inscrição bem-sucedida!",
+  };
+  const errorMessage = {
+    es: "Hubo un error con tu suscripción.",
+    en: "There was an error with your subscription.",
+    pt: "Houve um erro com sua inscrição.",
+  };
+  const pathLang = window.location.pathname.split("/")[1];
+  const lang: "es" | "en" | "pt" = (
+    ["es", "en", "pt"].includes(pathLang) ? pathLang : "en"
+  ) as "es" | "en" | "pt";
+
+  const pElement = document.createElement("p");
+  pElement.classList.add("message");
+  const ApiUrl =
+    "https://buttondown.com/api/emails/embed-subscribe/bridgetoscience";
+
+  const form = document.getElementById(
+    "subscribe-form"
+  ) as HTMLFormElement | null;
+  if (!form) {
+    console.error("Subscription form not found.");
+    throw new Error("Subscription form not found.");
+  }
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    fetch(ApiUrl, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          pElement.classList.add("success-message");
+          pElement.textContent = successMessage[lang];
+          form.insertAdjacentElement("beforebegin", pElement);
+          form.reset();
+        } else {
+          pElement.classList.add("error-message");
+          pElement.textContent = errorMessage[lang];
+          form.insertAdjacentElement("beforebegin", pElement);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("There was an error with your subscription.");
+      });
+  });
+</script>

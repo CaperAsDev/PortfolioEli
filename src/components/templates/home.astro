@@ -1,6 +1,7 @@
 ---
 import Projects from "@/components/organisms/Projects.astro";
 import BookSection from "@/components/organisms/BookSection.astro";
+import SubcriptionForm from "@/components/molecules/subcriptionForm.astro";
 import { getLangFromUrl } from "@/i18n/utils";
 import { getContentFromImport } from "@/js/utils.js";
 import type { MarkdownFile } from "@/types";
@@ -20,6 +21,7 @@ const { Content } = getContentFromImport({ mdFiles, lang });
 </div>
 <Projects />
 <BookSection />
+<SubcriptionForm />
 
 <style>
   .home-intro {
