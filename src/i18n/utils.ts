@@ -1,6 +1,8 @@
 import { Languages, defaultLang } from '@/i18n/consts';
 import availableRoutes from "@/availableRoutes.js";
 import type { LangKey, PathKey, LanguagesAnchorProps } from "@/i18n/types";
+import { Blogs } from '@/i18n/types';
+import { getCollection } from 'astro:content';
 
 
 export function getLangFromUrl (url : URL)  {
@@ -11,7 +13,7 @@ export function getLangFromUrl (url : URL)  {
   return defaultLang
 }
 
-
+//no usar
 export function shiftLang (url: URL) : LanguagesAnchorProps[] {
   //Get the pathname from the URL to manipulate it changing the language
 
@@ -47,7 +49,7 @@ export function shiftLang (url: URL) : LanguagesAnchorProps[] {
 
   return linksObj
 }
-
+// no usar
 export function isPathAvailable(path: PathKey, lang: LangKey) : boolean {
   const langAvailable = Object.hasOwn(availableRoutes, lang)
   if (!langAvailable) { // Check if the language is available in availableRoutes
@@ -104,6 +106,14 @@ export function getLink(path: "/home" | "/about", lang: LangKey) : string {
   return link
 }
 
+export const isBlogPost = (url: URL): Boolean => {
+  const pathArray = url.pathname.split("/").filter((path) => path !== "");
+  if (pathArray.length < 2) return false;
+  else if (pathArray[0].trim().length <= 2 && pathArray.length === 2)
+    return false; // Assuming lang codes are 2 characters long
+  else return true;
+};
+
 type MetaData = {
   title: string;
   description: string;
@@ -121,17 +131,32 @@ export class MetaManager {
   constructor(PagesMeta: PagesMeta) {
     this.metaCollection = PagesMeta;
   }
-  getMetaData({url, lang = defaultLang}: {
-    url: PathKey;
-    lang?: LangKey;
-}): MetaData {
-    const urlMeta = this.metaCollection[url];
+  async getMetaData({url}: {
+    url: URL;
+}): Promise<MetaData> {
+  const blogPost = isBlogPost(url);
+  if( blogPost ) {
+    const blogName = url.pathname.split('/').at(-2)?.trim() as Blogs;
+    const postSlug = url.pathname.split('/').at(-1)?.trim() || '';
+
+    const lang = getLangFromUrl(url);
+
+    const blogPosts = await getCollection(blogName, ( post ) => ( post.data.lang === lang && post.id.includes(postSlug)));
+
+    if (blogPosts.length === 0) {
+      return this.metaCollection['/home'][defaultLang];
+    } else return {title: blogPosts[0].data.title , description: blogPosts[0].data.description };
+  }
+  else{
+    const urlInfo = parseURL(url);
+    const urlMeta = this.metaCollection[urlInfo.url];
     if (urlMeta) {
-      return urlMeta[lang] || urlMeta[defaultLang];
+      return urlMeta[urlInfo.lang] || urlMeta[defaultLang];
     } else {
       console.warn(`No metadata found for URL: ${url}`);
       return this.metaCollection['/home'][defaultLang];
     }
+  }
   }
 }
 

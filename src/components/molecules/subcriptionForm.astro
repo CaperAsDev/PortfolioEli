@@ -66,7 +66,7 @@ const lang = getLangFromUrl(Astro.url);
     background-color: var(--dark-bd-clr);
     color: var(--light);
     max-width: 600px;
-    margin: 0 auto;
+    margin: var(--fs-s);
     border: 1px solid var(--light);
 
     .message {
@@ -125,12 +125,18 @@ const lang = getLangFromUrl(Astro.url);
       background-color: oklch(from var(--secondary-0) calc(l - 0.1) c h);
     }
   }
+
+  @media screen and (width > 425px) {
+    aside {
+      margin: 0 auto;
+    }
+  }
 </style>
 <script>
   const successMessage = {
-    es: "¡Suscripción exitosa!",
-    en: "Subscription successful!",
-    pt: "Inscrição bem-sucedida!",
+    es: "¡Suscripción exitosa! Te enviamos un correo para confirmar tu suscripción.",
+    en: "Subscription successful! We've sent you an email to confirm your subscription.",
+    pt: "Inscrição bem-sucedida! Enviamos um e-mail para confirmar sua inscrição.",
   };
   const errorMessage = {
     es: "Hubo un error con tu suscripción.",

@@ -42,13 +42,18 @@ const { title, description, banner, iconName } = Astro.props;
   }
   h1 {
     display: flex;
-    align-items: end;
+    align-items: center;
     gap: var(--fs-s);
     text-align: center;
     color: inherit;
     font-size: var(--fs-xl);
     font-weight: 600;
     padding: var(--fs-s);
+
+    svg {
+      width: calc(var(--fs-xl) * 1.5);
+      height: calc(var(--fs-xl) * 1.5);
+    }
   }
   p {
     color: inherit;
