@@ -190,7 +190,9 @@ const lang = getLangFromUrl(Astro.url);
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("There was an error with your subscription.");
+        pElement.classList.add("error-message");
+        pElement.textContent = errorMessage[lang];
+        form.insertAdjacentElement("beforebegin", pElement);
       });
   });
 </script>
