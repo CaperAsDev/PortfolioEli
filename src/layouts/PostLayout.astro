@@ -19,6 +19,8 @@ import Layout from "./Layout.astro";
 
     .hashes {
       display: flex;
+      flex-wrap: wrap;
+      gap: var(--fs-xs);
       justify-content: space-between;
     }
 
@@ -31,6 +33,7 @@ import Layout from "./Layout.astro";
     }
   }
   .blog-layout {
+    width: 100vw;
     padding: var(--fs-s);
     margin: 0 auto;
 
@@ -58,12 +61,10 @@ import Layout from "./Layout.astro";
 
     p {
       margin: 0;
-      padding: var(--fs-xs);
     }
 
     ul:not([class]) {
       list-style-type: disc;
-      margin-inline-start: calc(var(--fs-m));
     }
 
     li {
@@ -83,11 +84,10 @@ import Layout from "./Layout.astro";
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      padding: var(--fs-xs);
       gap: var(--fs-xs);
 
       & > :is(img, video) {
-        width: clamp(300px, 90%, 1200px);
+        width: clamp(280px, 90%, 1000px);
         height: auto;
         max-height: 90dvh;
         object-fit: cover;
@@ -100,8 +100,32 @@ import Layout from "./Layout.astro";
         text-align: center;
       }
     }
+    figure.multiImage {
+      display: grid;
+      place-items: center;
+
+      figcaption {
+        grid-column: 1 / -1;
+      }
+    }
   }
   @media screen and (width >= 768px) {
+    .blog-layout {
+      p {
+        padding: var(--fs-xs);
+      }
+
+      ul:not([class]) {
+        margin-inline-start: var(--fs-s);
+      }
+
+      figure.multiImage {
+        grid-template-columns: repeat(
+          auto-fit,
+          clamp(calc(280px + 10vw), 30vw, calc(400px + 10vw))
+        );
+      }
+    }
     .container {
       nav {
         justify-self: start;
@@ -124,9 +148,12 @@ import Layout from "./Layout.astro";
   @media screen and (width >= 1440px) {
     .container {
       grid-template-columns: auto 1fr;
+      gap: var(--fs-xl);
+      padding: var(--fs-xl);
 
       nav {
         grid-column: span 2;
+        margin: 0;
       }
 
       .hashes {
@@ -135,11 +162,12 @@ import Layout from "./Layout.astro";
 
       aside {
         align-self: flex-start;
-        margin: var(--fs-xl);
+        margin: 0;
         margin-top: calc(var(--fs-xl) * 2);
       }
 
       main {
+        width: auto;
         max-width: 1440px;
       }
     }

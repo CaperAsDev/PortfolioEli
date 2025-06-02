@@ -64,6 +64,10 @@ const lang = getLangFromUrl(Astro.url);
     place-items: center;
     color: var(--dark);
     background-color: oklch(from var(--primary-0) calc(l + 0.1) c h / 0.8);
+
+    & > p {
+      text-align: center;
+    }
   }
   .info-wrapper {
     width: 100%;
