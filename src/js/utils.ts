@@ -83,3 +83,9 @@ export const getContentFromImport = ({ mdFiles, lang }: { mdFiles: MarkdownFile[
   );
   return {Content: md?.Content, frontmatter: md?.frontmatter};
 }
+
+export const postPath = (pathWithLang: string) => {
+  const path = pathWithLang.split("/");
+  const blogIndex = "/" + path.at(-1);
+  return blogIndex;
+};

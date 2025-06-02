@@ -5,7 +5,7 @@ import { Blogs } from "@/i18n/types";
 import { blogsHero } from "@/i18n/ui"
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "@/i18n/utils";
-import { selectImage } from "@/js/utils"
+import { selectImage, postPath } from "@/js/utils"
 import PostCard from "@/components/molecules/PostCard.astro";
 
 const lang = getLangFromUrl(Astro.url);
@@ -37,12 +37,6 @@ const banners = Object.entries(
     }
   )
 );
-
-const postPath = (pathWithLang: string) => {
-  const path = pathWithLang.split("/");
-  const blogIndex = "/" + path.at(-1);
-  return blogIndex;
-};
 
 const sectionHeader = {
   [Blogs.Education]: {

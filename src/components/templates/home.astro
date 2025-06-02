@@ -5,6 +5,7 @@ import SubcriptionForm from "@/components/molecules/subcriptionForm.astro";
 import { getLangFromUrl } from "@/i18n/utils";
 import { getContentFromImport } from "@/js/utils.js";
 import type { MarkdownFile } from "@/types";
+import LastPosts from "../organisms/LastPosts.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const mdFiles: MarkdownFile[] = Object.values(
@@ -21,6 +22,7 @@ const { Content } = getContentFromImport({ mdFiles, lang });
 </div>
 <Projects />
 <BookSection />
+<LastPosts />
 <SubcriptionForm />
 
 <style>

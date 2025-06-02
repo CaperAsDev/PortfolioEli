@@ -100,6 +100,7 @@ const lang = getLangFromUrl(Astro.url);
   }
   label {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--fs-xs);
 
     input {
@@ -135,6 +136,7 @@ const lang = getLangFromUrl(Astro.url);
   @media screen and (width > 425px) {
     aside {
       margin: 0 auto;
+      margin-block-start: var(--fs-xl);
     }
   }
 </style>

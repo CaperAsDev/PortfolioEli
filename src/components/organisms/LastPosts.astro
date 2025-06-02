@@ -1,0 +1,105 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "@/components/molecules/PostCard.astro";
+
+import { getLangFromUrl } from "@/i18n/utils";
+import { Blogs } from "@/i18n/types";
+import { blogsHero } from "@/i18n/ui";
+import { postPath } from "@/js/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const lastPosts = [];
+
+for (const blog of Object.keys(Blogs) as Array<keyof typeof Blogs>) {
+  const posts = await getCollection(
+    Blogs[blog],
+    ({ data }) => data.lang === lang
+  );
+  const sortedPosts = posts.sort(
+    (a, b) =>
+      new Date(b.data.publishDate).getTime() -
+      new Date(a.data.publishDate).getTime()
+  );
+
+  lastPosts.push({...sortedPosts[0], category: Blogs[blog]});
+}
+
+const title = {
+  es: "Últimos posts",
+  en: "Last posts",
+  pt: "Últimos posts"
+};
+---
+<section>
+<header>
+  <h2>{title[lang]} &#128278</h2>
+
+</header>
+<div>
+
+  {
+    lastPosts.length > 0 &&
+    lastPosts.map((post) => (
+      <PostCard
+      title={post.data.title}
+      description={post.data.description}
+      tags={post.data.tags}
+      link={postPath(post.id)}
+      author={post.data.author},
+      publishedDate={post.data.publishDate}
+      category={post.category}
+      cover={post.data.cover}
+      color={blogsHero.color[post.category]}
+      />
+    ))
+  }
+  </div>
+</section>
+<style>
+  section {
+    margin: 0 auto;
+    padding: var(--fs-xs);
+  }
+  header {
+    position: relative;
+  }
+  h2 {
+    width: fit-content;
+    text-align: center;
+    font-weight: 600;
+    padding-inline-end: var(--fs-xs);
+    font-size: var(--fs-xl);
+    color: var(--h-text-clr);
+    background-color: var(--bg-clr);
+
+    &::after {
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      top: 60%;
+      content: "";
+      background-color: var(--inverse-bg-clr);
+      width: 100%;
+      height: 2px;
+    }
+  }
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--fs-s);
+  }
+
+  @media screen and (width >= 425px) {
+    section {
+      padding: var(--fs-s);
+    }
+  }
+  @media screen and (width >= 1440px) {
+    section {
+      max-width: 90%;
+    }
+    
+  }
+
+</style>
