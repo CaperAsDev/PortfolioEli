@@ -24,12 +24,8 @@ import Layout from "./Layout.astro";
       justify-content: space-between;
     }
 
-    nav {
-    }
     aside {
       margin: var(--fs-xs);
-    }
-    main {
     }
   }
   .blog-layout {
@@ -154,6 +150,9 @@ import Layout from "./Layout.astro";
       nav {
         grid-column: span 2;
         margin: 0;
+      }
+      nav + main {
+        grid-column: span 2;
       }
 
       .hashes {

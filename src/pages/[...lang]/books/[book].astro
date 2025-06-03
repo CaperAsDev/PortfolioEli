@@ -32,7 +32,7 @@ const { title, cover, author, isbn } = book.data;
 ---
 
 <PostLayout>
-  <Breadcrumb />
+  <Breadcrumb slot="breadcrumb" />
   <BookHero isbn={isbn} cover={cover} title={title} author={author} />
   <Content />
 </PostLayout>
