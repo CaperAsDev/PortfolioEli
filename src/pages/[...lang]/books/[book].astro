@@ -28,11 +28,17 @@ export async function getStaticPaths() {
 
 const { book } = Astro.props;
 const { Content } = await render(book);
-const { title, cover, author, isbn } = book.data;
+const { title, cover, author, isbn, publish_date } = book.data;
 ---
 
 <PostLayout>
   <Breadcrumb slot="breadcrumb" />
-  <BookHero isbn={isbn} cover={cover} title={title} author={author} />
+  <BookHero
+    isbn={isbn}
+    cover={cover}
+    title={title}
+    author={author}
+    publishDate={publish_date}
+  />
   <Content />
 </PostLayout>

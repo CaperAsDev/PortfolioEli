@@ -94,5 +94,53 @@
     "bio": null,
     "avatar": "./photos/juan-pablo-heredia-martin.png",
     "website": null
+  },
+  {
+    "id": "andrea-de-pilar-sanchez-pinzon",
+    "name": "Andrea de Pilar",
+    "lastName": "Sánchez Pinzón",
+    "city": "Cundinamarca",
+    "country": {
+      "es": "Colombia",
+      "en": "Colombia",
+      "pt": "Colômbia"
+    },
+    "occupation": {
+      "es": "Docente de Básica primaria, Escuela Rural Guasimal",
+      "en": "Primary School Teacher at Escuela Rural Guasimal",
+      "pt": "Professora do Ensino Fundamental na Escuela Rural Guasimal"
+    },
+    "email": "andreaquimsa@gmail.com",
+    "social": [],
+    "bio": null,
+    "avatar": "./photos/andrea-de-pilar-sanchez-pinzon.jpeg",
+    "website": null
+  },
+  {
+    "id": "pamela-jael-colman-vega",
+    "name": "Pamela Jael",
+    "lastName": "Colman-Vega",
+    "city": "Girona",
+    "country": {
+      "es": "España",
+      "en": "Spain",
+      "pt": "Espanha"
+    },
+    "occupation": {
+      "es": "Investigadora predoctoral en ICRA",
+      "en": "Pre-doctoral researcher at ICRA",
+      "pt": "Pesquisador de doutorado no ICRA"
+    },
+    "email": "pcolman@icra.cat",
+    "social": [
+      {
+        "label": "Linkedin",
+        "icon": "brand-linkedin",
+        "link": "https://www.linkedin.com/in/pamela-j-colman-v"
+      }
+    ],
+    "bio": null,
+    "avatar": "./photos/pamela-jael-colman-vega.png",
+    "website": null
   }
 ]

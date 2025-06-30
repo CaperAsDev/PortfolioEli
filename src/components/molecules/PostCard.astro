@@ -14,6 +14,7 @@ interface Props {
   category: string;
   cover: ImageMetadata;
   color: string;
+  absolutLink?: string;
 }
 
 const {
@@ -26,11 +27,12 @@ const {
   category,
   cover,
   color,
+  absolutLink,
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const originUrl = Astro.url.href;
-const postLink = `${originUrl}${link}`;
+const postLink = absolutLink || `${originUrl}${link}`;
 const postAuthor = await getEntry(author);
 
 const linkLabel = {

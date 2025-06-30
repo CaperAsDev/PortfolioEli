@@ -6,6 +6,7 @@ import { getLangFromUrl } from "@/i18n/utils";
 import { Blogs } from "@/i18n/types";
 import { blogsHero } from "@/i18n/ui";
 import { postPath } from "@/js/utils";
+import { defaultLang } from "@/i18n/consts";
 
 const lang = getLangFromUrl(Astro.url);
 const lastPosts = [];
@@ -29,6 +30,8 @@ const title = {
   en: "Last posts",
   pt: "Últimos posts"
 };
+
+const langPath = lang === defaultLang ? "/" : `/${lang}/`;
 ---
 <section>
 <header>
@@ -50,7 +53,7 @@ const title = {
       category={post.category}
       cover={post.data.cover}
       color={blogsHero.color[post.category]}
-      />
+      absolutLink={`${Astro.url.origin}${langPath}${post.category}${postPath(post.id)}`} />
     ))
   }
   </div>

@@ -29,6 +29,7 @@ const bookId = bookPath.at(-1) || bookPath[0];
   article {
     display: grid;
     place-items: center;
+    height: 100%;
     max-width: calc(300px + 10vw);
     padding: var(--fs-s);
     border: 2px solid var(--text-clr);
@@ -36,7 +37,8 @@ const bookId = bookPath.at(-1) || bookPath[0];
   }
   img {
     max-width: 100%;
-    height: auto;
+    width: auto;
+    height: clamp(200px, 50vh, 500px);
     object-fit: cover;
     margin-block: var(--fs-xs);
   }
@@ -45,6 +47,7 @@ const bookId = bookPath.at(-1) || bookPath[0];
     place-items: center;
   }
   h3 {
+    text-align: center;
     font-size: var(--fs-m);
     font-weight: 500;
   }

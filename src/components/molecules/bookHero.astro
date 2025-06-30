@@ -1,41 +1,30 @@
 ---
 import { Image } from "astro:assets";
-import { bookSection } from "@/i18n/ui";
 import { getLangFromUrl } from "@/i18n/utils";
-import books from "@/data/books.json";
 import type { ImageMetadata } from "astro";
 interface Props {
   isbn: number;
   cover: ImageMetadata;
   title: string;
   author: string;
+  publishDate: string;
 }
-const lang = getLangFromUrl(Astro.url);
-const { isbn, cover, title, author } = Astro.props;
-
-const bookData = books.find((book) => Number(book.isbn) === isbn);
+const { isbn, cover, title, author, publishDate } = Astro.props;
 ---
 
-{bookData && (
-<header>
-  <strong>{bookSection[lang].title}</strong>
-  <p>{bookSection[lang].description}</p>
-</header>
-  <article>
-    <Image
-      src={cover}
-      alt={title}
-      class="book-cover"
-    />
-    <div class="book-info">
-      <h2>{title}</h2>
-      <h3>{author}</h3>
-      <p>{bookData?.publish_date}</p>
-      <p>{bookData?.publishers?.[0]?.name}</p>
-      <p>{bookData?.number_of_pages} pages</p>
-    </div>
-  </article>
-  )}
+{
+  (
+    <article>
+      <Image src={cover} alt={title} class="book-cover" />
+      <div class="book-info">
+        <h2>{title}</h2>
+        <h3>{author}</h3>
+        <p>{publishDate}</p>
+        <p>ISBN: {isbn}</p>
+      </div>
+    </article>
+  )
+}
 <style>
   strong {
     font-size: var(--fs-l);

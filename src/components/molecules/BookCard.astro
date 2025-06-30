@@ -1,9 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import type { BookData } from "@/types";
 import { Image } from "astro:assets";
-import books from "@/data/books.json";
-
+import { defaultLang } from "@/i18n/consts";
 import { getLangFromUrl } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -13,33 +11,27 @@ const bookSelection = bookCollection.filter((book) => book.data.lang === lang);
 const sortedBooks = bookSelection.sort((a, b) => a.data.sort - b.data.sort);
 const lastBook = sortedBooks.at(-1) || sortedBooks[0];
 
-const path = "/books";
-const bookData: BookData | undefined = books.find(
-  (book) => Number(book.isbn) === lastBook?.data.isbn
-);
-
 const buttonText = {
   en: "Read More",
   es: "Leer más",
   pt: "Leia mais",
 };
+
+const path = lang === defaultLang ? `/books` : `/${lang}/books`;
 ---
 
-{
-  bookData && (
-    <article>
-      <Image src={lastBook?.data.cover} alt={`${bookData?.title}`} />
-      <div>
-        <header>
-          <h3>{bookData.title}</h3>
-          <small>{bookData.subtitle}</small>
-        </header>
-        <p>{lastBook?.data.intro}.</p>
-        <a href={path}>{buttonText[lang]}</a>
-      </div>
-    </article>
-  )
-}
+<article>
+  <Image src={lastBook?.data.cover} alt={`${lastBook.data.title} book cover`} />
+  <div>
+    <header>
+      <h3>{lastBook.data.title}</h3>
+      {lastBook?.data?.subtitle && <small>{lastBook?.data?.subtitle}</small>}
+    </header>
+    <p>{lastBook?.data.intro}</p>
+    <a href={path}>{buttonText[lang]}</a>
+  </div>
+</article>
+
 <style>
   article {
     display: flex;

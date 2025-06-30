@@ -37,8 +37,10 @@ const books = defineCollection({
     intro: z.string(),
     cover: image(),
     title: z.string(),
+    subtitle: z.string().optional(),
     author: z.string(),
-    sort: z.number()
+    sort: z.number(),
+    publish_date: z.string(),
   }),
 });
 

@@ -81,9 +81,9 @@ const sectionHeader = {
   }
   .bookCards-container {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--fs-s);
   }
 </style>
