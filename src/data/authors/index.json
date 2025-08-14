@@ -142,5 +142,32 @@
     "bio": null,
     "avatar": "./photos/pamela-jael-colman-vega.png",
     "website": null
+  },
+  {
+    "id": "omar-lomeli-ortega",
+    "name": "Omar",
+    "lastName": "Lomelí-Ortega",
+    "city": "Girona",
+    "country": {
+      "es": "España",
+      "en": "Spain",
+      "pt": "Espanha"
+    },
+    "occupation": {
+      "es": "Investigador Postdoctoral en ICRA",
+      "en": "Postdoctoral researcher at ICRA",
+      "pt": "Pesquisador de pós-doutorado no ICRA"
+    },
+    "email": "olomeli@icra.cat",
+    "social": [
+      {
+        "label": "Linkedin",
+        "icon": "brand-linkedin",
+        "link": "https://www.linkedin.com/in/carlos-omar-lomeli-ortega-710011151/"
+      }
+    ],
+    "bio": null,
+    "avatar": "./photos/omar-lomeli-ortega.jpeg",
+    "website": null
   }
 ]
