@@ -3,10 +3,15 @@ import { defaultLang } from "@/i18n/consts";
 import { getLangFromUrl } from "@/i18n/utils";
 import { getBreadcrumbs } from "@/js/utils";
 
+interface Props {
+  postTitle: string;
+}
+
 const lang = getLangFromUrl(Astro.url);
+const { postTitle } = Astro.props;
 const inDefaultLang = lang === defaultLang;
 
-const breadcrumbs = getBreadcrumbs({ url: Astro.url });
+const breadcrumbs = getBreadcrumbs({ url: Astro.url, postTitle });
 const linksArray = breadcrumbs.map(({ link }) => link);
 ---
 
@@ -30,7 +35,11 @@ const linksArray = breadcrumbs.map(({ link }) => link);
         }
         return (
           <li>
-            <a href={link}>
+            <a
+              href={index === 3 ? "#title" : link}
+              title={label}
+              aria-current={index === 3 ? "page" : false}
+            >
               <span>{label}</span>
             </a>
           </li>
@@ -62,8 +71,6 @@ const linksArray = breadcrumbs.map(({ link }) => link);
         list-style: "\1F3E1";
       }
       &:last-of-type {
-        pointer-events: none;
-
         &::marker {
           color: oklch(
             from var(--text-clr) calc(l - 0.1) calc(c + 0.1) calc(h + 20)
@@ -77,6 +84,8 @@ const linksArray = breadcrumbs.map(({ link }) => link);
       }
     }
     a {
+      display: grid;
+      place-items: center;
       text-decoration: none;
       color: var(--light);
 
@@ -86,7 +95,18 @@ const linksArray = breadcrumbs.map(({ link }) => link);
           from var(--text-clr) calc(l - 0.1) calc(c + 0.1) calc(h + 20)
         );
       }
+
+      &[aria-current="page"] {
+        cursor: default;
+      }
     }
+  }
+  span {
+    display: inline-block;
+    max-width: 13ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   @media screen and (width >= 700px) {

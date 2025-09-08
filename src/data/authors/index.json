@@ -169,5 +169,32 @@
     "bio": null,
     "avatar": "./photos/omar-lomeli-ortega.jpeg",
     "website": null
+  },
+  {
+    "id": "anna-pico",
+    "name": "Anna",
+    "lastName": "Pico",
+    "city": "Girona",
+    "country": {
+      "es": "España",
+      "en": "Spain",
+      "pt": "Espanha"
+    },
+    "occupation": {
+      "es": "Investigadora predoctoral en el Instituto Catalán de Investigación del Agua (ICRA)",
+      "en": "Predoctoral Researcher in Catalan Institute for Water Research (ICRA)",
+      "pt": "Pesquisadora de doutorado no Instituto Catalão de Pesquisa da Água (ICRA)"
+    },
+    "email": "apico@icra.cat",
+    "social": [
+      {
+        "label": "Linkedin",
+        "icon": "brand-linkedin",
+        "link": "https://www.linkedin.com/in/anna-pico-2857aa1a0/?originalSubdomain=es"
+      }
+    ],
+    "bio": null,
+    "avatar": "./photos/anna-pico.png",
+    "website": null
   }
 ]

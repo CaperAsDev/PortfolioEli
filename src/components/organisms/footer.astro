@@ -32,13 +32,6 @@ const lang = getLangFromUrl(Astro.url);
       </div>
     </div>
     <div class="sponsor">
-      <a
-        href="https://icra.cat/"
-        target="_blank"
-        aria-label="Go to ICRA web site"
-      >
-        <Image src={ICRA} alt={"ICRA LOGO"} />
-      </a>
       <Image class="focus" src={Focus} alt={"Focus for PFAS LOGO"} />
       <a
         href="https://marie-sklodowska-curie-actions.ec.europa.eu/"
@@ -99,7 +92,7 @@ const lang = getLangFromUrl(Astro.url);
   }
   .sponsor {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     place-items: center;
     gap: 1rem;
     border-top: 1px solid oklch(from var(--secondary-0) l c h / 1);

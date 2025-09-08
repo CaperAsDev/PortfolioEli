@@ -69,10 +69,10 @@ const { Content } = await render(post);
 
 <Layout>
   <ResearcherCard author={author} slot={"aside"} />
-  <Breadcrumb slot={"breadcrumb"} />
+  <Breadcrumb slot={"breadcrumb"} postTitle={post.data.title} />
   <ul class="hashes">
     {post.data.tags.map((hash) => <BlogHash hash={hash} />)}
   </ul>
-  <h1>{post.data.title}</h1>
+  <h1 id="title">{post.data.title}</h1>
   <Content />
 </Layout>

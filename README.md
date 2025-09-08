@@ -1,10 +1,4 @@
-- quitar by elisabeth--------> DONE
-- revisar foto about ----> DONE
-- quitar fondo a logo focus-----> DONE
-- contact information en lugar de about------> DONE
-- color texto revisar contraste ----> DONE
-- letrero de pagina en construccion -----> DONE
-- en about poner nombre bajo foto---------> DONE
-- quitar link de linkedind en header ------------> DONE
-- quirtar links de cards ----> DONE
-- el tama;o de la pantalla hace que el icono de cerrar el modal de under construction se salga
+- Ajustar un breack point a 1280px para que no se vea todo tan a los bordes
+- hacer filtro de blogs
+- poner breadcrum traducido a cada idioma (titulo del post)
+- habilitar para poder poner mas de dos hashes

@@ -3,7 +3,7 @@ import { Languages, defaultLang } from '@/i18n/consts';
 import { blogsNames } from '@/i18n/ui';
 import { getLangFromUrl } from '@/i18n/utils';
 
-export const getBreadcrumbs = ({ url }: { url: URL }) => {
+export const getBreadcrumbs = ({ url, postTitle }: { url: URL, postTitle: string }) => {
   const homeLabel = {
   en: "Home",
   es: "Inicio",
@@ -34,10 +34,12 @@ export const getBreadcrumbs = ({ url }: { url: URL }) => {
     } else {
       //if the path is not a lang or a blog, we can assume its a blog name with the format of blog-name
       //split the path by - and capitalize the first letter of each word
-      label = path
+      label = postTitle;
+      /*label = path
         .split("-")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
+        */
     }
 
     return {
