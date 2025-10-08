@@ -196,5 +196,28 @@
     "bio": null,
     "avatar": "./photos/anna-pico.png",
     "website": null
+  },
+  {
+    "id": "raquel-wielens-becker",
+    "name": "Raquel",
+    "lastName": "Wielens Becker",
+    "city": "Santa Maria",
+    "country": {
+      "es": "Brasil",
+      "en": "Brazil",
+      "pt": "Brasil"
+    },
+    "occupation": {
+      "es": "Investigadora Postdoctoral en la Universidad Federal de Santa María",
+      "en": "Postdoctoral Researcher at the Federal University of Santa Maria",
+      "pt": "Pesquisadora de pós-doutorado na Universidade Federal de Santa Maria"
+    },
+    "email": "raquelwbecker@gmail.com",
+    "social": [
+      
+    ],
+    "bio": null,
+    "avatar": "./photos/female.png",
+    "website": null
   }
 ]

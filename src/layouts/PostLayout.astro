@@ -86,7 +86,7 @@ import Layout from "./Layout.astro";
         width: clamp(280px, 90%, 1000px);
         height: auto;
         max-height: 90dvh;
-        object-fit: cover;
+        object-fit: contain;
       }
 
       figcaption {
@@ -112,6 +112,20 @@ import Layout from "./Layout.astro";
           padding: 0;
           font-size: var(--fs-xs);
         }
+      }
+    }
+    blockquote {
+      display: block;
+      text-align: center;
+      border-left: 4px solid var(--dark-bg-clr);
+      margin-inline: 0;
+      margin-block: var(--fs-m);
+      padding: var(--fs-xs) var(--fs-s);
+      background-color: oklch(from var(--inverse-bg-clr) l c h / 0.1);
+
+      p {
+        font-style: italic;
+        font-size: var(--fs-s);
       }
     }
   }
